@@ -1,6 +1,6 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q9
-title: Bridge Pattern Application
+title: Bridge Pattern and SOLID Principles
 year: 2025
 semester: B
 moed: B
@@ -9,14 +9,13 @@ topics:
 - Design Patterns
 - Bridge Pattern
 - SOLID Principles
-- Dependency Inversion Principle (DIP)
 skills:
-- Design Pattern Application
-- SOLID Principle Connection
+- Design Pattern knowledge
+- SOLID principles application
 ---
 
 ## Question
-תבנית העיצוב Bridge משמשת לפתרון בעיית DIP
+תבנית העיצוב Bridge משמשת לפתרון בעיית DIP תבנית העיצוב Bridge משמשת לפתרון בעיית ISP תבנית העיצוב Bridge משמשת לפתרון בעיית LSP תבנית העיצוב Bridge משמשת לפתרון בעיית SRP
 
 ### Options
 - תבנית העיצוב Bridge משמשת לפתרון בעיית DIP
@@ -25,4 +24,4 @@ skills:
 - תבנית העיצוב Bridge משמשת לפתרון בעיית SRP
 
 ## Answer
-תבנית ה-Bridge (גשר) מפרידה בין הפשטה לבין המימוש שלה, ומאפשרת להם להשתנות באופן בלתי תלוי. זהו יישום מובהק של עיקרון היפוך התלויות (DIP), שקובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה, אלא ששניהם צריכים להיות תלויים בהפשטות (ממשקים).
+תבנית ה-Bridge מפרידה בין הפשטה לבין היישום שלה, כך ששניהם יכולים להשתנות באופן בלתי תלוי. היא עושה זאת על ידי כך שהיא גורמת למודולים ברמה גבוהה להיות תלויים בהפשטות (ממשקים) ולא במימושים קונקרטיים. זהו יישום מובהק של **עיקרון היפוך התלויות (Dependency Inversion Principle - DIP)**.

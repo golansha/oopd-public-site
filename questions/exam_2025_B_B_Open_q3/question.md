@@ -1,179 +1,182 @@
 ---
 id: exam_2025_B_B_Open_q3
-title: Exam Management System - Adding New Operations (Visitor Pattern)
+title: Exam Management System - Adding New Operations
 year: 2025
 semester: B
 moed: B
 type: Open
 topics:
 - Design Patterns
+- Object-Oriented Design
 - Visitor Pattern
-- Open/Closed Principle
-- Exam Management
 skills:
 - Design Pattern Application
 - UML Diagramming
-- Code Structure
+- Java Programming
 ---
 
 ## Question
-במערכת לניהול בחינות ישנה מחלקה מופשטת Exam המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: MixedExam, OpenExam, ScrambledExam וכן הלאה.סעיף א (10 נקודות)נתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של Exam. להלן שתי פעולות לדוגמא:פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב- MixedExam-וב ScrambledExamפעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב OpenExam-וב ScrambledExamחשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות.הערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד.השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.
+במערכת לניהול בחינות ישנה מחלקה מופשטת Exam המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: MixedExam, OpenExam, ScrambledExam וכן הלאה.סעיף א (10 נקודות)נתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של Exam. להלן שתי פעולות לדוגמא :פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב- MixedExam-וב ScrambledExamפעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב OpenExam-וב ScrambledExamחשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות.הערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד.השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות.צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.
 
 ## Answer
-תבנית העיצוב המתאימה ביותר לדרישות אלו היא **Visitor Pattern**.
+התבנית המתאימה ביותר לפתרון בעיה זו היא **תבנית המבקר (Visitor Pattern)**.
 
 **הסבר:**
-דרישות המערכת מצביעות על צורך להוסיף פעולות חדשות על היררכיית אובייקטים קיימת (סוגי הבחינות: `OpenExam`, `MixedExam`, `ScrambledExam`, וכו') מבלי לשנות את המחלקות הקיימות עצמן. בנוסף, הפעולות הללו תלויות בסוג הספציפי של הבחינה. תבנית ה-Visitor מאפשרת להגדיר פעולות חדשות על מבנה אובייקטים מבלי לשנות את המחלקות של האובייקטים שעליהם הפעולות פועלות. זה תואם לעיקרון ה-Open/Closed Principle (OCP) - פתוח להרחבה, סגור לשינוי.
+תבנית המבקר מאפשרת להוסיף פעולות חדשות למבנה אובייקטים קיים (היררכיית `Exam`) מבלי לשנות את המחלקות של המבנה עצמו. זה מתאים לדרישה להוסיף פעולות שאינן באחריות ישירה של `Exam` ולצפי להוספת סוגי בחינות ופעולות חדשות בעתיד. כל פעולה חדשה (כמו בדיקת העתקות או ניתוח סטטיסטי) תמומש כמבקר (Visitor) נפרד, וכל סוג בחינה (Element) ידע 'לקבל' מבקר.
 
-**תרשים מחלקות (UML Conceptual Diagram):**
+**תרשים מחלקות (UML Diagram):**
 ```mermaid
 classDiagram
     direction LR
 
-    class Exam {
-        <<abstract>>
-        +accept(visitor:ExamVisitor)
-    }
-
-    class OpenExam {
-        +accept(visitor:ExamVisitor)
+    class Exam <<abstract>> {
+        +String examId
+        +accept(ExamVisitor visitor)
     }
 
     class MixedExam {
-        +accept(visitor:ExamVisitor)
+        +MixedExam(String examId)
+        +accept(ExamVisitor visitor)
+    }
+
+    class OpenExam {
+        +OpenExam(String examId)
+        +accept(ExamVisitor visitor)
     }
 
     class ScrambledExam {
-        +accept(visitor:ExamVisitor)
+        +ScrambledExam(String examId)
+        +accept(ExamVisitor visitor)
     }
 
-    class ExamVisitor {
-        <<interface>>
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+    interface ExamVisitor {
+        +visit(MixedExam exam)
+        +visit(OpenExam exam)
+        +visit(ScrambledExam exam)
     }
 
-    class PlagiarismChecker {
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+    class CheatingDetectorVisitor {
+        +visit(MixedExam exam)
+        +visit(OpenExam exam)
+        +visit(ScrambledExam exam)
     }
 
-    class StatisticalAnalyzer {
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+    class StatisticalAnalyzerVisitor {
+        +visit(MixedExam exam)
+        +visit(OpenExam exam)
+        +visit(ScrambledExam exam)
     }
 
-    Exam <|-- OpenExam
     Exam <|-- MixedExam
+    Exam <|-- OpenExam
     Exam <|-- ScrambledExam
 
-    ExamVisitor <|.. PlagiarismChecker
-    ExamVisitor <|.. StatisticalAnalyzer
+    ExamVisitor <|.. CheatingDetectorVisitor
+    ExamVisitor <|.. StatisticalAnalyzerVisitor
 
-    Exam --> ExamVisitor : uses >
+    Exam "1" --> "1" ExamVisitor : uses >
 ```
 
-**קוד עבור המחלקות (מבנה בלבד):**
+**קוד עבור המחלקות (Java Code Structure):**
 
 ```java
-// 1. The Visitor Interface
-interface ExamVisitor {
-    void visit(OpenExam exam);
-    void visit(MixedExam exam);
-    void visit(ScrambledExam exam);
-    // Add visit methods for any new Exam types
-}
+// Element Interface/Abstract Class
+public abstract class Exam {
+    private String examId; // Example field
 
-// 2. The Abstract Element (Exam)
-abstract class Exam {
+    public Exam(String examId) {
+        this.examId = examId;
+    }
+
+    public String getExamId() {
+        return examId;
+    }
+
+    // The key method for the Visitor pattern
     public abstract void accept(ExamVisitor visitor);
 }
 
-// 3. Concrete Elements (Exam Subtypes)
-class OpenExam extends Exam {
-    // Exam specific properties and methods
+// Concrete Elements
+public class MixedExam extends Exam {
+    public MixedExam(String examId) {
+        super(examId);
+    }
+
     @Override
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
+    // MixedExam specific methods/fields
 }
 
-class MixedExam extends Exam {
-    // Exam specific properties and methods
+public class OpenExam extends Exam {
+    public OpenExam(String examId) {
+        super(examId);
+    }
+
     @Override
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
+    // OpenExam specific methods/fields
 }
 
-class ScrambledExam extends Exam {
-    // Exam specific properties and methods
+public class ScrambledExam extends Exam {
+    public ScrambledExam(String examId) {
+        super(examId);
+    }
+
     @Override
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
+    // ScrambledExam specific methods/fields
 }
 
-// 4. Concrete Visitors (New Operations)
-class PlagiarismChecker implements ExamVisitor {
-    @Override
-    public void visit(OpenExam exam) {
-        // Logic for checking plagiarism in OpenExam
-        System.out.println("Checking plagiarism for OpenExam: " + exam.getClass().getSimpleName());
-    }
+// Visitor Interface
+public interface ExamVisitor {
+    void visit(MixedExam exam);
+    void visit(OpenExam exam);
+    void visit(ScrambledExam exam);
+}
 
+// Concrete Visitor 1: Cheating Detector
+public class CheatingDetectorVisitor implements ExamVisitor {
     @Override
     public void visit(MixedExam exam) {
-        // Logic for checking plagiarism in MixedExam
-        System.out.println("Checking plagiarism for MixedExam: " + exam.getClass().getSimpleName());
+        System.out.println("Checking MixedExam " + exam.getExamId() + " for cheating.");
+        // Specific logic for MixedExam cheating detection
+    }
+
+    @Override
+    public void visit(OpenExam exam) {
+        System.out.println("Cheating detection not applicable for OpenExam " + exam.getExamId() + ".");
     }
 
     @Override
     public void visit(ScrambledExam exam) {
-        // Logic for checking plagiarism in ScrambledExam
-        System.out.println("Checking plagiarism for ScrambledExam: " + exam.getClass().getSimpleName());
+        System.out.println("Checking ScrambledExam " + exam.getExamId() + " for cheating.");
+        // Specific logic for ScrambledExam cheating detection
     }
 }
 
-class StatisticalAnalyzer implements ExamVisitor {
+// Concrete Visitor 2: Statistical Analyzer
+public class StatisticalAnalyzerVisitor implements ExamVisitor {
     @Override
-    public void visit(OpenExam exam) {
-        // Logic for statistical analysis of OpenExam
-        System.out.println("Performing statistical analysis for OpenExam: " + exam.getClass().getSimpleName());
+    public void visit(MixedExam exam) {
+        System.out.println("Statistical analysis not applicable for MixedExam " + exam.getExamId() + ".");
     }
 
     @Override
-    public void visit(MixedExam exam) {
-        // Logic for statistical analysis of MixedExam
-        System.out.println("Performing statistical analysis for MixedExam: " + exam.getClass().getSimpleName());
+    public void visit(OpenExam exam) {
+        System.out.println("Performing statistical analysis on OpenExam " + exam.getExamId() + ".");
+        // Specific logic for OpenExam statistical analysis
     }
 
     @Override
     public void visit(ScrambledExam exam) {
-        // Logic for statistical analysis of ScrambledExam
-        System.out.println("Performing statistical analysis for ScrambledExam: " + exam.getClass().getSimpleName());
-    }
-}
-
-// Example Usage:
-public class ExamSystem {
-    public static void main(String[] args) {
-        List<Exam> exams = List.of(
-            new OpenExam(),
-            new MixedExam(),
-            new ScrambledExam()
-        );
-
-        ExamVisitor plagiarismChecker = new PlagiarismChecker();
-        ExamVisitor statisticalAnalyzer = new StatisticalAnalyzer();
-
-        for (Exam exam : exams) {
-            exam.accept(plagiarismChecker);
-            exam.accept(statisticalAnalyzer);
-        }
+        System.out.println("Performing statistical analysis on ScrambledExam " + exam.getExamId() + ".");
+        // Specific logic for ScrambledExam statistical analysis
     }
 }
 ```

@@ -1,18 +1,18 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q13
-title: Package Cohesion Principles - Application Release
+title: Package Cohesion and Coupling Principles
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
 topics:
 - Package Design Principles
-- Common Closure Principle (CCP)
-- Common Reuse Principle (CRP)
+- Cohesion
+- Coupling
+- CCP
+- CRP
 skills:
-- Package Design
-- Principle Application
-- Architectural Analysis
+- Applying package principles to real-world scenarios
 ---
 
 ## Question
@@ -25,4 +25,6 @@ skills:
 - אף עיקרון לא מופר
 
 ## Answer
-קיימת הפרה של עיקרון השימוש המשותף (Common Reuse Principle - CRP). עיקרון CRP קובע כי מחלקות שמשתמשים בהן יחד צריכות להיות באותה חבילה. אם משתמשים במחלקה אחת מחבילה, יש להשתמש בכולן. במקרה זה, הלקוחות זקוקים רק לחלק מהפונקציונליות, אך נאלצים לקבל חבילה גדולה שכוללת הכול, מה שמפר את CRP. לעומת זאת, עיקרון הסגירה המשותפת (CCP) קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. מכיוון שיש 'סיבה אחת לשינוי שמשפיעה על כל המחלקות', החלטה לשחרר חבילה גדולה שכוללת הכול דווקא תואמת את CCP.
+ההחלטה לשחרר חבילה גדולה שכוללת הכל, למרות ש'רוב הלקוחות זקוקים רק לחלק מהפונקציונליות', מפרה את **עיקרון השימוש החוזר המשותף (Common Reuse Principle - CRP)**. עיקרון זה קובע שמחלקות שמשתמשים בהן יחד צריכות להיות באותה חבילה, ואם לא משתמשים בהן יחד, הן לא צריכות להיות באותה חבילה. בכך שהלקוחות נאלצים לקחת את כל החבילה, הם תלויים בקוד שהם לא צריכים.
+
+מצד שני, העובדה ש'יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה' תומכת ב**עיקרון הסגירה המשותפת (Common Closure Principle - CCP)**, הקובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. לכן, CCP אינו מופר במקרה זה. לפיכך, רק CRP מופר.

@@ -1,6 +1,6 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q16
-title: Template Method Implementation
+title: Template Method Pattern Implementation
 year: 2025
 semester: B
 moed: B
@@ -8,14 +8,12 @@ type: Multiple Choice
 topics:
 - Design Patterns
 - Template Method Pattern
-- Object-Oriented Programming
 skills:
-- Design Pattern Understanding
-- Implementation Concepts
+- Conceptual understanding of Template Method
 ---
 
 ## Question
-כיצד יש לממש את תבנית העיצוב template method?
+?template method כיצד יש לממש את תבנית העיצוב
 
 ### Options
 - ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.
@@ -24,4 +22,4 @@ skills:
 - ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.
 
 ## Answer
-תבנית ה-Template Method (מתודת תבנית) ממומשת על ידי הגדרת שלד של אלגוריתם במתודה של מחלקת בסיס (ה'מתודה התבניתית'), כאשר חלק מהשלבים באלגוריתם מוגדרים כמתודות מופשטות (או 'ווים' - hooks) שמומשות על ידי המחלקות היורשות. כך, המחלקות היורשות יכולות לספק מימושים שונים לשלבים ספציפיים באלגוריתם מבלי לשנות את מבנה האלגוריתם הכללי.
+תבנית מתודת התבנית (Template Method Pattern) מגדירה את השלד של אלגוריתם במחלקת בסיס (superclass), אך מאפשרת לתתי-מחלקות (subclasses) לדרוס שלבים ספציפיים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מתבצע על ידי הגדרת 'מתודת תבנית' במחלקת הבסיס שקוראת למתודות מופשטות (או מתודות ווירטואליות עם מימוש ברירת מחדל) שתתי-המחלקות מממשות באופן ספציפי. לכן, התשובה הנכונה היא 'ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס'.

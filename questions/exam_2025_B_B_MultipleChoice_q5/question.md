@@ -1,6 +1,6 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q5
-title: Human-Heart Relationship
+title: Relationship between Human and Heart
 year: 2025
 semester: B
 moed: B
@@ -8,10 +8,10 @@ type: Multiple Choice
 topics:
 - UML
 - Object-Oriented Concepts
-- Class Relationships
+- Relationships
 skills:
-- UML Interpretation
-- Conceptual Understanding
+- UML interpretation
+- Conceptual understanding
 ---
 
 ## Question
@@ -24,4 +24,4 @@ skills:
 - Aggregation
 
 ## Answer
-Composition (הרכבה) היא הקשר המתאים ביותר. לב הוא חלק חיוני מאדם, וקיומו של הלב תלוי בקיומו של האדם (כלומר, אם האדם נהרס, גם הלב נהרס כחלק ממנו). זהו קשר 'חזק' של חלק-שלם, שבו החלק אינו יכול להתקיים באופן עצמאי מחוץ לשלם.
+הקשר בין Human ל-Heart הוא **Composition**. לב הוא חלק חיוני מאדם ואינו יכול להתקיים באופן עצמאי מחוץ לגוף האדם. זהו קשר 'שלם-חלק' חזק, שבו חיי החלק תלויים בחיי השלם.

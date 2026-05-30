@@ -1,29 +1,26 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q11
-title: LSP Violation Check
+title: LSP Violation Testing
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
 topics:
 - SOLID Principles
-- Liskov Substitution Principle (LSP)
-- Polymorphism
-- Testing
+- LSP
 skills:
-- LSP Application
-- Code Analysis
-- Design Principles
+- Applying LSP
+- Testing for LSP
 ---
 
 ## Question
-מחלקת NetworkConnection מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת HttpConnection יורשת ממחלקת NetworkConnection ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול HTTP. מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון Liskov Substitution Principle (LSP)? הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.
+מחלקת NetworkConnection מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת HttpConnection יורשת ממחלקת NetworkConnection ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול HTTP. מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון Liskov Substitution Principle (LSP)?
 
 ### Options
-- נתון הקוד של הפונקציה copy המעתיקה את האלמנטים הנמצאים ברשימה src לתוך הרשימה dest. בקוד הושמטו הטיפוסים של src,dest
+- הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.
 - וידוא שפונקציית ה-sendData של HttpClient מסוגלת להתמודד עם כל המידע שמחלקת NetworkConnection יכולה לשלוח.
 - הרצת סדרת בדיקות על מופע NetworkConnection ולוודא שהתנהגותן נשמרת גם על מופע HttpClient כולל התייחסות לפלטים ותופעות לוואי.
 - יש שתי תשובות אחרות נכונות.
 
 ## Answer
-האפשרות "נתון הקוד של הפונקציה copy המעתיקה את האלמנטים הנמצאים ברשימה src לתוך הרשימה dest. בקוד הושמטו הטיפוסים של src,dest" אינה קשורה כלל לבדיקת עמידה בעקרון LSP עבור המחלקות `NetworkConnection` ו-`HttpConnection`. שתי האפשרויות האחרות (וידוא יכולת טיפול בנתונים והרצת בדיקות על מופעים חלופיים) הן בדיוק מה שנדרש כדי לבדוק עמידה ב-LSP.
+עיקרון ההחלפה של ליסקוב (LSP) עוסק בתאימות התנהגותית של תתי-מחלקות למחלקות הבסיס שלהן. 'הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת' היא הנחה קונספטואלית, ולא חלק מתהליך בדיקה בפועל של התנהגות. LSP דורש בדיקה אמפירית שהתנהגות תת-הטיפוס תואמת את ציפיות טיפוס הבסיס, ולא רק הסתמכות על הגדרה מילונית או קונספטואלית.
