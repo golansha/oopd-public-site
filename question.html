@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צפייה בשאלה</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8 font-sans text-gray-900">
+    <div class="max-w-4xl mx-auto">
+        
+        <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 font-medium">
+            &rarr; חזרה למאגר השאלות
+        </a>
+
+        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+            
+            <div class="border-b pb-4 mb-6">
+                <h1 id="qTitle" class="text-3xl font-bold text-gray-800 mb-2">טוען שאלה...</h1>
+                <p id="qMeta" class="text-gray-500"></p>
+            </div>
+
+            <div id="markdownContent" class="text-lg leading-relaxed space-y-4"></div>
+
+            <div id="imageContainer" class="mt-8 hidden">
+                <img id="qImage" src="" alt="תרשים נלווה" class="max-w-full border rounded shadow-sm">
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        async function loadQuestion() {
+            // 1. Get the Question ID from the web address
+            const urlParams = new URLSearchParams(window.location.search);
+            const questionId = urlParams.get('id');
+
+            if (!questionId) {
+                document.getElementById('qTitle').innerText = 'שגיאה: לא נבחרה שאלה';
+                return;
+            }
+
+            try {
+                // 2. Look up the question in your database
+                const dbResponse = await fetch('./data/database.json');
+                const questions = await dbResponse.json();
+                const question = questions.find(q => q.id === questionId);
+
+                if (!question) {
+                    document.getElementById('qTitle').innerText = 'השאלה לא נמצאה';
+                    return;
+                }
+
+                // 3. Fill in the header details
+                document.getElementById('qTitle').innerText = question.title;
+                document.getElementById('qMeta').innerText = `שנה: ${question.year} | סמסטר ${question.semester} מועד ${question.moed} | סוג: ${question.type}`;
+
+                // 4. Handle embedded images in the JSON (from assets.images array)
+                if (question.assets && question.assets.images && question.assets.images.length > 0) {
+                    // For simplicity, showing the first image if it exists. 
+                    // You can loop through them if there are multiple images per question.
+                    document.getElementById('qImage').src = question.assets.images[0];
+                    document.getElementById('imageContainer').classList.remove('hidden');
+                }
+
+                // 5. Construct the Markdown content directly from the JSON data!
+                let constructedMarkdown = '';
+                
+                // Add the question text
+                if (question.question_text) {
+                    constructedMarkdown += `### השאלה\n${question.question_text}\n\n`;
+                }
+
+                // Add the options (if it's a multiple choice question)
+                if (question.options && question.options.length > 0) {
+                    constructedMarkdown += `### אפשרויות\n`;
+                    question.options.forEach(opt => {
+                        // Using HTML directly for the options so the dir="auto" tags stay intact
+                        constructedMarkdown += `<div class="mb-2 p-2 bg-gray-50 border rounded">${opt}</div>\n`;
+                    });
+                    constructedMarkdown += `\n`;
+                }
+
+                // Add the answer text
+                if (question.answer_text) {
+                    // Adding a visual separator and the answer
+                    constructedMarkdown += `<hr class="my-6">\n### פתרון\n${question.answer_text}\n`;
+                }
+
+                // Convert the constructed Markdown string to HTML and inject it
+                document.getElementById('markdownContent').innerHTML = marked.parse(constructedMarkdown);
+
+            } catch (error) {
+                console.error("Error loading question:", error);
+                document.getElementById('qTitle').innerText = 'שגיאה בטעינת הנתונים';
+            }
+        }
+
+        loadQuestion();
+    </script>    
+    <style>
+        #markdownContent code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; }
+        #markdownContent pre { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 0.5rem; direction: ltr; text-align: left; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;}
+        #markdownContent pre code { background: transparent; padding: 0; color: inherit; }
+    </style>
+</body>
+</html>
