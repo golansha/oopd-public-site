@@ -1,25 +1,27 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q10
-title: SRP Violation in Invoice Class
+title: SRP ו-Invoice Class
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
 topics:
 - SOLID Principles
-- SRP
+- Single Responsibility Principle (SRP)
+- Class Design
 skills:
-- Applying SRP to class design
+- Principle Application
+- Class Responsibility
 ---
 
 ## Question
 נתונה מחלקה בשם Invoice שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?
 
 ### Options
-- public boolean checkClubMembership() - פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון
-- public boolean isEmpty() - פעולה שבודקת אם בחשבונית אין פריטים לחיוב
-- public double getTotalAmount() - פעולה שמחשבת את הסכום הכולל של הפריטים
-- public void addItem(double price) - פעולה שמוסיפה פריט לחשבונית
+- פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - public boolean checkClubMembership)(
+- פעולה שבודקת אם בחשבונית אין פריטים לחיוב - public boolean isEmpty)(
+- פעולה שמחשבת את הסכום הכולל של הפריטים - public double getTotalAmount)(
+- פעולה שמוסיפה פריט לחשבונית - public void addItem(double price(
 
 ## Answer
-עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות אחריות אחת בלבד. מחלקת `Invoice` אחראית על ניהול נתוני החשבונית (פריטים, סכום כולל וכו'). הפעולה `checkClubMembership()` בודקת מאפיין של הלקוח הקשור לחשבונית, ולא מאפיין או התנהגות של החשבונית עצמה. אחריות זו שייכת למחלקת `Customer` או לשירות ניהול חברות, ולא למחלקת `Invoice`.
+עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת לשינוי. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (פריטים, סכום כולל וכו'). הפונקציה `checkClubMembership()` בודקת מידע הקשור ללקוח ולתוכנית מועדון, וזו אחריות שונה מאחריות החשבונית עצמה. לכן, פעולה זו אינה שייכת למחלקת `Invoice` לפי SRP, ועדיף שתהיה במחלקה נפרדת כמו `Customer` או `MembershipService`.

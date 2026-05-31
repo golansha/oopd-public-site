@@ -1,6 +1,6 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q7
-title: SOLID Principle for Adding Interfaces
+title: SOLID - Interface Segregation Principle
 year: 2025
 semester: B
 moed: B
@@ -8,8 +8,10 @@ type: Multiple Choice
 topics:
 - SOLID Principles
 - Interface Segregation Principle (ISP)
+- Object-Oriented Design
 skills:
-- Conceptual understanding of SOLID
+- Principle Application
+- Design Analysis
 ---
 
 ## Question
@@ -22,4 +24,4 @@ skills:
 - SRP
 
 ## Answer
-**עיקרון הפרדת הממשקים (Interface Segregation Principle - ISP)** קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם אינם משתמשים בהם. יישום עיקרון זה מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר ללקוח. תהליך זה מוסיף ממשקים למערכת, אך אינו משנה את המספר הכולל של הפונקציות המופשטות, אלא רק מפיץ אותן בין הממשקים החדשים.
+עיקרון ה-Interface Segregation Principle (ISP) קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום עיקרון זה מוביל לעיתים קרובות לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. כתוצאה מכך, ייתכן שיווצרו יותר ממשקים במערכת, אך סך הפונקציות המופשטות (המתודות) נשאר זהה, רק שהן מחולקות בין מספר ממשקים שונים.

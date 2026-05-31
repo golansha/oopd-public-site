@@ -1,27 +1,30 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q14
-title: Dependency Injection Definition
+title: Design Patterns in Weather Monitoring System
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
 topics:
-- Dependency Injection
-- IoC
+- Design Patterns
+- Observer Pattern
+- Adapter Pattern
+- UML Diagrams
 skills:
-- Conceptual understanding of DI
+- Pattern Identification
+- UML Interpretation
 ---
 
 ## Question
-Dependency Injection - "הזרקת תלויות" סמן מהמשפטים הבאים את הנכון ביותר:
+להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר. ![Image](image_13_1.png) מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?
 
 ### Options
-- Dependency Injection הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.
-- ישנן שתי תשובות אחרות נכונות.
-- כדי להזריק תלויות באמצעות Dependency Injection, השדות המוזרקים חייבים להיות מוגדרות כממשקים.
-- אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.
+- Adapter-ו Observer
+- Bridge-ו Observer
+- Bridge- AlarmClock
+- Proxy-ו Observer
 
 ## Answer
-הזרקת תלויות (Dependency Injection - DI) היא תבנית עיצוב שבה אובייקט מקבל את התלויות שלו מבחוץ, במקום ליצור אותן בעצמו. המשפט הראשון מתאר את מהות התבנית: 'שיטה לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם'. למרות שהמילה 'מובנית' עשויה להיות מעט מטעה (זוהי תבנית שמומשת לרוב באמצעות פריימוורקים ולא 'מובנית' בשפה עצמה), היא האפשרות הנכונה ביותר מבין האפשרויות, שכן האחרות שגויות באופן מובהק:
-*   שדות מוזרקים אינם חייבים להיות ממשקים (אפשר להזריק גם מחלקות קונקרטיות, אם כי עדיף ממשקים).
-*   פריימוורקים של DI יודעים לטפל במצבי עמימות (לדוגמה, באמצעות `@Named` או `@Qualifier`) ולבחור את המימוש הנכון.
+בתרשים באות לידי ביטוי שתי תבניות עיצוב:
+1.  **Observer Pattern:** ממשק `X` עם מתודת `update(data:int)` מייצג את ה-Observer. המחלקות `MonitoringScreen` ו-`MS_TemperatureX` מממשות את `X` (או `MS_TemperatureX` מממשת `X` ומשתמשת ב-`MonitoringScreen`). המחלקה `Y` היא ה-Subject, עם מתודות `add(x:X)`, `removeX(x:X)` ו-`notifyX(data:int)`, המאפשרות להרשמה, הסרה ועדכון של אובייקטי `X`.
+2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` פועלת כ-Adapter. היא מממשת את ממשק `X` (ה-Target) ומקבלת בבנאי שלה אובייקט `MonitoringScreen` (ה-Adaptee). כאשר נקראת מתודת `update` על `MS_TemperatureX`, היא מתרגמת את הקריאה למתודה `displayTemperature` של אובייקט `MonitoringScreen` הפנימי. בכך, היא מאפשרת לאובייקט `MonitoringScreen` (שאינו תואם ישירות לממשק `X`) להשתלב במנגנון ה-Observer.
