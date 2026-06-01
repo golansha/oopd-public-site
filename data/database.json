@@ -17,12 +17,12 @@
     ],
     "question_text": "נתונה מחלקה בשם Invoice שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמחשבת את הסכום הכולל של הפריטים - public double getTotalAmount)(</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - public boolean checkClubMembership)(</span>",
       "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם בחשבונית אין פריטים לחיוב - public boolean isEmpty)(</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמוסיפה פריט לחשבונית - public void addItem(double price(</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - public boolean checkClubMembership)(</span>"
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמחשבת את הסכום הכולל של הפריטים - public double getTotalAmount)(</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת לשינוי. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (פריטים, סכום כולל וכו'). הפונקציה `checkClubMembership()` בודקת מידע הקשור ללקוח ולתוכנית מועדון, וזו אחריות שונה מאחריות החשבונית עצמה. לכן, פעולה זו אינה שייכת למחלקת `Invoice` לפי SRP, ועדיף שתהיה במחלקה נפרדת כמו `Customer` או `MembershipService`.",
+    "answer_text": "**התשובה הנכונה היא: א'**<br><br>עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת לשינוי. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (פריטים, סכום כולל וכו'). הפונקציה `checkClubMembership()` בודקת מידע הקשור ללקוח ולתוכנית מועדון, וזו אחריות שונה מאחריות החשבונית עצמה. לכן, פעולה זו אינה שייכת למחלקת `Invoice` לפי SRP, ועדיף שתהיה במחלקה נפרדת כמו `Customer` או `MembershipService`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q10/question.md"
     }
@@ -45,12 +45,12 @@
     ],
     "question_text": "מחלקת NetworkConnection מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת HttpConnection יורשת ממחלקת NetworkConnection ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול HTTP. מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון Liskov Substitution ?Principle (LSP)",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">יש שתי תשובות אחרות נכונות.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">וידוא שפונקציית ה-sendData של HttpClient מסוגלת להתמודד עם כל המידע שמחלקת NetworkConnection יכולה לשלוח.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הרצת סדרת בדיקות על מופע NetworkConnection ולוודא שהתנהגותן נשמרת גם על מופע HttpClient כולל התייחסות לפלטים ותופעות לוואי.</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">וידוא שפונקציית ה-sendData של HttpClient מסוגלת להתמודד עם כל המידע שמחלקת NetworkConnection יכולה לשלוח.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הרצת סדרת בדיקות על מופע NetworkConnection ולוודא שהתנהגותן נשמרת גם על מופע HttpClient כולל התייחסות לפלטים ותופעות לוואי.</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">יש שתי תשובות אחרות נכונות.</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עיקרון ההחלפה של ליסקוב (LSP) עוסק בתת-טיפוס התנהגותי: אם S הוא תת-טיפוס של T, אז אובייקטים מטיפוס T ניתנים להחלפה באובייקטים מטיפוס S מבלי לשנות את התכונות הרצויות של התוכנית. 'הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת' אינה חלק מתהליך הבדיקה של LSP. LSP דורש אימות באמצעות בדיקות קפדניות (למשל, לוודא שתנאי קדם לא מתחזקים, תנאי בתר לא נחלשים, אינווריאנטים נשמרים, ומתודות מתנהגות כמצופה כאשר תת-טיפוס מוחלף בטיפוס הבסיס). ההנחה הזו היא סמנטית-תיאורית ולא בדיקה התנהגותית.",
+    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עיקרון ההחלפה של ליסקוב (LSP) עוסק בתת-טיפוס התנהגותי: אם S הוא תת-טיפוס של T, אז אובייקטים מטיפוס T ניתנים להחלפה באובייקטים מטיפוס S מבלי לשנות את התכונות הרצויות של התוכנית. 'הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת' אינה חלק מתהליך הבדיקה של LSP. LSP דורש אימות באמצעות בדיקות קפדניות (למשל, לוודא שתנאי קדם לא מתחזקים, תנאי בתר לא נחלשים, אינווריאנטים נשמרים, ומתודות מתנהגות כמצופה כאשר תת-טיפוס מוחלף בטיפוס הבסיס). ההנחה הזו היא סמנטית-תיאורית ולא בדיקה התנהגותית.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q11/question.md"
     }
@@ -73,12 +73,12 @@
     ],
     "question_text": "נתון הקוד של הפונקציה copy המעתיקה את האלמנטים הנמצאים ברשימה src לתוך הרשימה dest. בקוד הושמטו הטיפוסים של src,dest public static <T> void copy(dest, src){ for (int i=0; i<src.size(); i++) dest.set(i,src.get(i)); } מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? super T> src)</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? extends T> src)</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? extends T> src)</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? extends T> src)</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? super T> src)</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? extends T> src)</span>"
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? super T> src)</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של כלל PECS (Producer-Extends, Consumer-Super):\n*   הרשימה `src` היא 'מפיקה' (Producer) של אובייקטים מטיפוס `T` (קוראים ממנה באמצעות `src.get(i)`). לכן, יש להשתמש ב-`? extends T` כדי לאפשר קריאה של `T` או תת-טיפוסים שלו.\n*   הרשימה `dest` היא 'צורכת' (Consumer) של אובייקטים מטיפוס `T` (כותבים אליה באמצעות `dest.set(i, ...)`). לכן, יש להשתמש ב-`? super T` כדי לאפשר כתיבה של `T` או תת-טיפוסים שלו.",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של כלל PECS (Producer-Extends, Consumer-Super):\n*   הרשימה `src` היא 'מפיקה' (Producer) של אובייקטים מטיפוס `T` (קוראים ממנה באמצעות `src.get(i)`). לכן, יש להשתמש ב-`? extends T` כדי לאפשר קריאה של `T` או תת-טיפוסים שלו.\n*   הרשימה `dest` היא 'צורכת' (Consumer) של אובייקטים מטיפוס `T` (כותבים אליה באמצעות `dest.set(i, ...)`). לכן, יש להשתמש ב-`? super T` כדי לאפשר כתיבה של `T` או תת-טיפוסים שלו.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q12/question.md"
     }
@@ -103,8 +103,8 @@
     "options": [
       "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CRP</span>",
       "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">עיקרון CRP ו-CCP מופרים</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CCP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אף עיקרון לא מופר</span>"
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אף עיקרון לא מופר</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CCP</span>"
     ],
     "answer_text": "**התשובה הנכונה היא: א'**<br><br>ההחלטה לשחרר 'חבילה גדולה שכוללת הכול' כאשר 'מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות' מהווה הפרה של **Common Reuse Principle (CRP)**. עיקרון זה קובע כי מחלקות שמשתמשים בהן יחד צריכות להיות ארוזות יחד, ולקוחות לא צריכים להיות תלויים בחבילות שמכילות מחלקות שהם לא משתמשים בהן. בכך שמאלצים לקוחות לקבל חבילה גדולה עם פונקציונליות מיותרת, מפרים את CRP.\n\nהמשפט 'יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה' מצביע על כך שכל המחלקות משתנות יחד מאותה סיבה. זהו למעשה תיאור של **Common Closure Principle (CCP)**, הקובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. לכן, חלק זה של התיאור דווקא תומך בעמידה ב-CCP. עם זאת, מכיוון שהאפשרות הראשונה היא 'קיימת הפרה של עיקרון CRP', וזו הפרה ברורה מהתיאור, זו התשובה הנכונה.",
     "assets": {
@@ -128,14 +128,14 @@
       "Pattern Identification",
       "UML Interpretation"
     ],
-    "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר. ![Image](image_13_1.png) מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
+    "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר. ![Image](./questions/exam_2025_B_B_MultipleChoice_q14/image_13_1.png) מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Bridge- AlarmClock</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Adapter-ו Observer</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Proxy-ו Observer</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Bridge-ו Observer</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Adapter-ו Observer</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Proxy-ו Observer</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Bridge-ו Observer</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Bridge- AlarmClock</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>בתרשים באות לידי ביטוי שתי תבניות עיצוב:\n1.  **Observer Pattern:** ממשק `X` עם מתודת `update(data:int)` מייצג את ה-Observer. המחלקות `MonitoringScreen` ו-`MS_TemperatureX` מממשות את `X` (או `MS_TemperatureX` מממשת `X` ומשתמשת ב-`MonitoringScreen`). המחלקה `Y` היא ה-Subject, עם מתודות `add(x:X)`, `removeX(x:X)` ו-`notifyX(data:int)`, המאפשרות להרשמה, הסרה ועדכון של אובייקטי `X`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` פועלת כ-Adapter. היא מממשת את ממשק `X` (ה-Target) ומקבלת בבנאי שלה אובייקט `MonitoringScreen` (ה-Adaptee). כאשר נקראת מתודת `update` על `MS_TemperatureX`, היא מתרגמת את הקריאה למתודה `displayTemperature` של אובייקט `MonitoringScreen` הפנימי. בכך, היא מאפשרת לאובייקט `MonitoringScreen` (שאינו תואם ישירות לממשק `X`) להשתלב במנגנון ה-Observer.",
+    "answer_text": "**התשובה הנכונה היא: א'**<br><br>בתרשים באות לידי ביטוי שתי תבניות עיצוב:\n1.  **Observer Pattern:** ממשק `X` עם מתודת `update(data:int)` מייצג את ה-Observer. המחלקות `MonitoringScreen` ו-`MS_TemperatureX` מממשות את `X` (או `MS_TemperatureX` מממשת `X` ומשתמשת ב-`MonitoringScreen`). המחלקה `Y` היא ה-Subject, עם מתודות `add(x:X)`, `removeX(x:X)` ו-`notifyX(data:int)`, המאפשרות להרשמה, הסרה ועדכון של אובייקטי `X`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` פועלת כ-Adapter. היא מממשת את ממשק `X` (ה-Target) ומקבלת בבנאי שלה אובייקט `MonitoringScreen` (ה-Adaptee). כאשר נקראת מתודת `update` על `MS_TemperatureX`, היא מתרגמת את הקריאה למתודה `displayTemperature` של אובייקט `MonitoringScreen` הפנימי. בכך, היא מאפשרת לאובייקט `MonitoringScreen` (שאינו תואם ישירות לממשק `X`) להשתלב במנגנון ה-Observer.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md",
       "images": [
@@ -162,9 +162,9 @@
     "question_text": "כיצד יש לממש את תבנית העיצוב template method?",
     "options": [
       "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.</span>"
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.</span>"
     ],
     "answer_text": "**התשובה הנכונה היא: ג'**<br><br>תבנית ה-Template Method מגדירה את השלד של אלגוריתם במחלקת בסיס (superclass), אך מאפשרת למחלקות יורשות (subclasses) לשנות שלבים ספציפיים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי מתודת תבנית (לא מופשטת) במחלקת הבסיס, שקוראת למתודות מופשטות (או 'ווים' - hooks) שמוגדרות במחלקת הבסיס וממומשות באופן שונה על ידי המחלקות היורשות. האפשרות הראשונה מתארת בדיוק מנגנון זה: מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
     "assets": {
@@ -189,10 +189,10 @@
     ],
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה HiLoDataImp המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת HiLoDatalmp. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, Temperature Sensor, TemperatureHiLo, PersistantImp</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy</span>",
       "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy</span>"
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, Temperature Sensor, TemperatureHiLo, PersistantImp</span>"
     ],
     "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הסדר הנכון של המחלקות, מהעקיף ביותר ועד הישיר ביותר, המעורבות בהפעלת `HiLoDataImp` (או ה-`HiLoProxy` שלה) במערכת ניטור מזג האוויר הוא כדלקמן:\n1.  **Nimbus1_0Clock:** השעון הראשי של המערכת, שמספק את אות הזמן הבסיסי.\n2.  **AlarmClock:** מקבל את אותות הזמן מהשעון ויוצר אירועי אזעקה במועדים מוגדרים (לדוגמה, כל דקה או שעה).\n3.  **TemperatureSensor:** חיישן הטמפרטורה, שמבצע קריאה בפועל של הטמפרטורה כאשר הוא מופעל (לרוב על ידי ה-AlarmClock או רכיב אחר).\n4.  **Nimbus1_0Temperature:** רכיב שמקבל את נתוני הטמפרטורה הגולמיים מהחיישן ומעבד אותם (לדוגמה, מבצע המרה או סינון).\n5.  **TemperatureHiLo:** רכיב שאחראי על חישוב וניהול ערכי המינימום והמקסימום היומיים של הטמפרטורה, על בסיס הנתונים המעובדים מ-Nimbus1_0Temperature.\n6.  **HiLoProxy:** פרוקסי ל-`HiLoDataImp`, שמקבל את הנתונים מ-TemperatureHiLo ומעביר אותם ל-`HiLoDataImp` בפועל, תוך כדי טיפול בפעולות נוספות כמו רישום או אבטחה. `HiLoDataImp` היא המחלקה שמבצעת את החישוב הסופי של המינימום/מקסימום.\n\nהאפשרות הראשונה מציגה את הרצף הלוגי והתקין של זרימת הנתונים והפעלת הפונקציות במערכת זו.",
     "assets": {
@@ -217,12 +217,12 @@
     ],
     "question_text": "מה הקשר העקרוני בין המחלקה Human (אדם) למחלקה Heart (לב)",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Aggregation</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Association</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Dependency</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Composition</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Composition</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Dependency</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Aggregation</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Association</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>הקשר בין Human ל-Heart הוא Composition (הרכבה). Composition הוא סוג חזק של Aggregation (צבירה), המציין קשר 'חלק-שלם' שבו החלק (Heart) אינו יכול להתקיים ללא השלם (Human) וקשור אליו באופן בלעדי. אם ה-Human נהרס, גם ה-Heart נהרס (בהקשר של יצור חי). זהו קשר בעלות חזק עם תלות מחזור חיים.",
+    "answer_text": "**התשובה הנכונה היא: א'**<br><br>הקשר בין Human ל-Heart הוא Composition (הרכבה). Composition הוא סוג חזק של Aggregation (צבירה), המציין קשר 'חלק-שלם' שבו החלק (Heart) אינו יכול להתקיים ללא השלם (Human) וקשור אליו באופן בלעדי. אם ה-Human נהרס, גם ה-Heart נהרס (בהקשר של יצור חי). זהו קשר בעלות חזק עם תלות מחזור חיים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q5/question.md"
     }
@@ -243,14 +243,14 @@
       "UML Interpretation",
       "Error Detection"
     ],
-    "question_text": "נתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד ![Image](image_10_1.jpeg) איפה הטעות?",
+    "question_text": "נתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד ![Image](./questions/exam_2025_B_B_MultipleChoice_q6/image_10_1.jpeg) איפה הטעות?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 2</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 4</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 3</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 1</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 3</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 2</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 1</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 4</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הטעות נמצאת ב'מיקום 4'. בתרשים רצף, `isAboutToWin()` הוא תנאי שמירה (guard condition) או פעולה. אם הוא תנאי שמירה, הוא צריך להיות על הודעה או על פרגמנט משולב (combined fragment), ולא כפעולה עצמאית לפני פעולות אחרות כמו `print(num = 2)` או `tm(300)`. המיקום הנוכחי שלו כפעולה לפני פעולות אחרות אינו תקין מבחינת סמנטיקה של תרשימי רצף, במיוחד בהשוואה לתרשים המצבים המקורי שבו `isAboutToWin()` הוא תנאי מעבר.",
+    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>הטעות נמצאת ב'מיקום 4'. בתרשים רצף, `isAboutToWin()` הוא תנאי שמירה (guard condition) או פעולה. אם הוא תנאי שמירה, הוא צריך להיות על הודעה או על פרגמנט משולב (combined fragment), ולא כפעולה עצמאית לפני פעולות אחרות כמו `print(num = 2)` או `tm(300)`. המיקום הנוכחי שלו כפעולה לפני פעולות אחרות אינו תקין מבחינת סמנטיקה של תרשימי רצף, במיוחד בהשוואה לתרשים המצבים המקורי שבו `isAboutToWin()` הוא תנאי מעבר.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q6/question.md",
       "images": [
@@ -276,12 +276,12 @@
     ],
     "question_text": "יישום של איזה מהעקרונות SOLID הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">SRP</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ISP</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">DIP</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">SRP</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">LSP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">DIP</span>"
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ISP</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>עיקרון ה-Interface Segregation Principle (ISP) קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום עיקרון זה מוביל לעיתים קרובות לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. כתוצאה מכך, ייתכן שיווצרו יותר ממשקים במערכת, אך סך הפונקציות המופשטות (המתודות) נשאר זהה, רק שהן מחולקות בין מספר ממשקים שונים.",
+    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עיקרון ה-Interface Segregation Principle (ISP) קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום עיקרון זה מוביל לעיתים קרובות לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. כתוצאה מכך, ייתכן שיווצרו יותר ממשקים במערכת, אך סך הפונקציות המופשטות (המתודות) נשאר זהה, רק שהן מחולקות בין מספר ממשקים שונים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q7/question.md"
     }
@@ -304,12 +304,12 @@
     ],
     "question_text": "מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה יעיל יותר ודורש פחות משאבים.</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה יעיל יותר ודורש פחות משאבים.</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.</span>",
       "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר לתחזוקה.</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עיקרון האחריות היחידה (SRP) מתמקד בשיפור תחזוקתיות, קריאות וגמישות הקוד על ידי הבטחה שלכל מחלקה יש אחריות אחת בלבד (סיבה אחת לשינוי). יתרונותיו כוללים קלות תחזוקה, קלות למידה ופיתוח מקבילי. עם זאת, SRP אינו מבטיח שהקוד יהיה 'יעיל יותר' מבחינת ביצועים או שידרוש 'פחות משאבים'. לעיתים קרובות, הוא אף עשוי להוביל ליצירת יותר מחלקות ואובייקטים, מה שעלול להגדיל במעט את צריכת הזיכרון, אך זה בדרך כלל זניח לעומת היתרונות התחזוקתיים.",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>עיקרון האחריות היחידה (SRP) מתמקד בשיפור תחזוקתיות, קריאות וגמישות הקוד על ידי הבטחה שלכל מחלקה יש אחריות אחת בלבד (סיבה אחת לשינוי). יתרונותיו כוללים קלות תחזוקה, קלות למידה ופיתוח מקבילי. עם זאת, SRP אינו מבטיח שהקוד יהיה 'יעיל יותר' מבחינת ביצועים או שידרוש 'פחות משאבים'. לעיתים קרובות, הוא אף עשוי להוביל ליצירת יותר מחלקות ואובייקטים, מה שעלול להגדיל במעט את צריכת הזיכרון, אך זה בדרך כלל זניח לעומת היתרונות התחזוקתיים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q8/question.md"
     }
@@ -332,12 +332,12 @@
     ],
     "question_text": "סמן את התשובה הנכונה ביותר",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית SRP</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית DIP</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית ISP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית LSP</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית ISP</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית LSP</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית DIP</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית SRP</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>תבנית ה-Bridge מפרידה הפשטה מהמימוש שלה, ומאפשרת לשניהם להשתנות באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), הקובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה, אלא ששניהם צריכים להיות תלויים בהפשטות. ה-Bridge משיג זאת על ידי כך שגם ההפשטה וגם המימוש שלה תלויים בממשק (ממשק ה-Implementor).",
+    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>תבנית ה-Bridge מפרידה הפשטה מהמימוש שלה, ומאפשרת לשניהם להשתנות באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), הקובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה, אלא ששניהם צריכים להיות תלויים בהפשטות. ה-Bridge משיג זאת על ידי כך שגם ההפשטה וגם המימוש שלה תלויים בממשק (ממשק ה-Implementor).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q9/question.md"
     }
@@ -383,7 +383,7 @@
       "Refactoring",
       "UML Diagrams"
     ],
-    "question_text": "(2 נקודות) איזה עיקרון בעיצוב חבילות מופר בתרשים שלפניך?\n(5 נקודות) כיצד ניתן לתקן זאת ללא העברה של מחלקות מחבילה לחבילה? שרטט תרשים חדש. אין צורך לשרטט מחדש חלקים בתרשים שלא השתנו. הסבר כיצד השינוי פותר את ההפרה.\n![Image](image_4_1.png)",
+    "question_text": "(2 נקודות) איזה עיקרון בעיצוב חבילות מופר בתרשים שלפניך?\n(5 נקודות) כיצד ניתן לתקן זאת ללא העברה של מחלקות מחבילה לחבילה? שרטט תרשים חדש. אין צורך לשרטט מחדש חלקים בתרשים שלא השתנו. הסבר כיצד השינוי פותר את ההפרה.\n![Image](./questions/exam_2025_B_B_Open_q2/image_4_1.png)",
     "options": [],
     "answer_text": "**א. העיקרון המופר:**\nהעיקרון המופר הוא **Acyclic Dependencies Principle (ADP) - עקרון התלות הלא-מחזורית**. עיקרון זה קובע כי גרף התלויות בין חבילות במערכת צריך להיות חסר מחזורים (DAG - Directed Acyclic Graph). בתרשים המקורי, קיימת תלות מחזורית בין החבילות P1, P2 ו-P3:\nP1 -> P2 (לדוגמה: C תלוי ב-H, A תלוי ב-H)\nP2 -> P3 (לדוגמה: H תלוי ב-D, J תלוי ב-E)\nP3 -> P1 (לדוגמה: D תלוי ב-A, F תלוי ב-C)\n\n**ב. תיקון ההפרה:**\nכדי לתקן את ההפרה מבלי להעביר מחלקות בין חבילות, נשתמש ב**Dependency Inversion Principle (DIP)**. נהפוך את התלות מ-P3 ל-P1 על ידי יצירת ממשק בחבילה P3, ש-P1 תממש. כך, P3 תהיה תלויה בממשק שהיא עצמה מגדירה, ו-P1 תהיה תלויה בממשק זה (באמצעות מימוש), ובכך נשבור את המחזוריות.\n\n**שלבי התיקון:**\n1.  **זיהוי התלויות המחזוריות:** התלויות מ-P3 ל-P1 הן: D->A, E->B, F->C, G->A.\n2.  **היפוך תלות:** עבור כל מחלקה ב-P1 שבה תלויה מחלקה מ-P3, ניצור ממשק בחבילה P3. לדוגמה:\n    *   ניצור ממשק `IA` ב-P3. מחלקה `A` ב-P1 תממש את `IA`.\n    *   ניצור ממשק `IB` ב-P3. מחלקה `B` ב-P1 תממש את `IB`.\n    *   ניצור ממשק `IC` ב-P3. מחלקה `C` ב-P1 תממש את `IC`.\n3.  **עדכון התלויות ב-P3:** המחלקות D, E, F, G ב-P3 יתלו עתה בממשקים `IA`, `IB`, `IC` במקום במחלקות `A`, `B`, `C` ישירות.\n\n**תרשים מתוקן (רק החלקים שהשתנו):**\n\n**חבילה P1:**\n*   `A` (מממש את `IA`)\n*   `B` (מממש את `IB`)\n*   `C` (מממש את `IC`)\n\n**חבילה P3:**\n*   `<<interface>> IA`\n*   `<<interface>> IB`\n*   `<<interface>> IC`\n*   `D` (תלוי ב-`IA`)\n*   `E` (תלוי ב-`IB`)\n*   `F` (תלוי ב-`IC`)\n*   `G` (תלוי ב-`IA`)\n\n**הסבר כיצד השינוי פותר את ההפרה:**\nלאחר השינוי, התלויות הן:\n*   P1 -> P2 (ללא שינוי)\n*   P2 -> P3 (ללא שינוי)\n*   P3 -> P3 (D, E, F, G תלויים בממשקים IA, IB, IC שנמצאים ב-P3)\n*   P1 מממש את הממשקים ב-P3 (P1 תלוי ב-P3 לצורך מימוש, אך זו תלות בכיוון ההפוך מהתלות המקורית ששברנו).\n\nהמחזוריות P3 -> P1 נשברה. כעת, P3 תלויה רק בעצמה (בממשקים שהיא מגדירה), ו-P1 תלויה ב-P3 דרך מימוש הממשקים. זה יוצר גרף תלויות חד-כיווני (P1 -> P2 -> P3), ובכך עומד בעיקרון ADP. היתרון הוא ששינויים ב-P1 לא יחייבו שינויים ב-P3 (אלא אם כן הממשקים ב-P3 משתנים), ו-P3 הופכת לחבילה יציבה יותר.",
     "assets": {
