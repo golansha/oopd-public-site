@@ -63,7 +63,7 @@
                 if (question.options && question.options.length > 0) {
                     constructedMarkdown += `### אפשרויות\n`;
                     question.options.forEach(opt => {
-                        constructedMarkdown += `<div class="mb-2 p-2 bg-gray-50 border rounded">${opt}</div>\n`;
+                        constructedMarkdown += `- ${opt}\n`; // יצירת פריט רשימה תקני
                     });
                     constructedMarkdown += `\n`;
                 }
@@ -92,6 +92,8 @@
                 border-radius: 0.25rem;
                 font-family: monospace;
         }
+        #markdownContent ul { list-style: none; padding: 0; }
+        #markdownContent li { margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.25rem; }
         #markdownContent pre { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 0.5rem; direction: ltr; text-align: left; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;}
         #markdownContent pre code { background: transparent; padding: 0; color: inherit; }
     </style>

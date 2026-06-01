@@ -10,12 +10,12 @@
     "skills": [],
     "question_text": "נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון `SRP`?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`</span>"
+      "א. פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`",
+      "ב. פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`",
+      "ג. פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`",
+      "ד. פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עקרון `SRP` (Single Responsibility Principle) קובע שלמחלקה צריכה להיות אחריות אחת ויחידה. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום כולל, בדיקה אם ריקה). בדיקת חברות במועדון (`checkClubMembership()`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פעולה זו מפרה את `SRP`.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעקרון `SRP` (Single Responsibility Principle) קובע שלמחלקה צריכה להיות אחריות אחת ויחידה. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום כולל, בדיקה אם ריקה). בדיקת חברות במועדון (`checkClubMembership()`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פעולה זו מפרה את `SRP`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q10/question.md"
     }
@@ -31,11 +31,11 @@
     "skills": [],
     "question_text": "מחלקת `NetworkConnection` מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת `HttpConnection` יורשת ממחלקת `NetworkConnection` ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול `HTTP`. מה מהדברים הבאים `אינו` מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`? הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות `HTTP` מוגדר כסוג של חיבור רשת.",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">יש שתי תשובות אחרות נכונות.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי.</span>"
+      "א. וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.",
+      "ב. יש שתי תשובות אחרות נכונות.",
+      "ג. הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>עקרון `LSP` (Liskov Substitution Principle) עוסק בכך שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. האפשרות הראשונה, \"וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח\", מתארת תנאי או דרישה שצריכה להתקיים עבור `LSP`, אך היא אינה מתארת `תהליך בדיקה` בפועל. לעומת זאת, האפשרות השנייה, \"הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient`\", מתארת בבירור תהליך בדיקה אקטיבי של `LSP`.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעקרון `LSP` (Liskov Substitution Principle) עוסק בכך שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. האפשרות הראשונה, \"וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח\", מתארת תנאי או דרישה שצריכה להתקיים עבור `LSP`, אך היא אינה מתארת `תהליך בדיקה` בפועל. לעומת זאת, האפשרות השנייה, \"הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient`\", מתארת בבירור תהליך בדיקה אקטיבי של `LSP`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q11/question.md"
     }
@@ -51,12 +51,12 @@
     "skills": [],
     "question_text": "נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`\n`public static <T> void copy(dest, src){ for (int i=0; i<src.size(); i++) dest.set(i,src.get(i)); }`\nמהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`public static <T> void copy (List<? extends T> dest, List<? super T> src)`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`public static <T> void copy (List<? extends T> dest, List<? extends T> src)`</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`public static <T> void copy (List<? super T> dest, List<? super T> src)`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`public static <T> void copy (List<? super T> dest, List<? extends T> src)`</span>"
+      "א. `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`",
+      "ב. `public static <T> void copy (List<? super T> dest, List<? super T> src)`",
+      "ג. `public static <T> void copy (List<? super T> dest, List<? extends T> src)`",
+      "ד. `public static <T> void copy (List<? extends T> dest, List<? super T> src)`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עבור פונקציית `copy` שמעתיקה אלמנטים מ-`src` ל-`dest`, יש להשתמש ב-`PECS` (Producer Extends, Consumer Super). `src` היא 'מפיקה' (Producer) של אלמנטים, ולכן צריכה להיות `List<? extends T>`. `dest` היא 'צורכת' (Consumer) של אלמנטים, ולכן צריכה להיות `List<? super T>`. החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעבור פונקציית `copy` שמעתיקה אלמנטים מ-`src` ל-`dest`, יש להשתמש ב-`PECS` (Producer Extends, Consumer Super). `src` היא 'מפיקה' (Producer) של אלמנטים, ולכן צריכה להיות `List<? extends T>`. `dest` היא 'צורכת' (Consumer) של אלמנטים, ולכן צריכה להיות `List<? super T>`. החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q12/question.md"
     }
@@ -72,12 +72,12 @@
     "skills": [],
     "question_text": "בחברת 'אפליקציות בע\"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון `CRP`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">עיקרון `CRP` ו-`CCP` מופרים</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון `CCP`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אף עיקרון לא מופר</span>"
+      "א. עיקרון `CRP` ו-`CCP` מופרים",
+      "ב. אף עיקרון לא מופר",
+      "ג. קיימת הפרה של עיקרון `CCP`",
+      "ד. קיימת הפרה של עיקרון `CRP`"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>התיאור מצביע על הפרה של עקרון `CRP` (Common Reuse Principle). `CRP` קובע כי מחלקות שמשתמשות יחד צריכות להיות באותה חבילה, ומחלקות שאינן משתמשות יחד לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, אך החברה משחררת חבילה גדולה שכוללת הכל, זה אומר שהלקוחות נאלצים לקבל תלות במחלקות שהם לא משתמשים בהן, מה שמפר את `CRP`. עקרון `CCP` (Common Closure Principle) קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. העובדה שיש 'סיבה אחת לשינוי שמשפיעה על כל המחלקות' דווקא תומכת ב-`CCP`.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהתיאור מצביע על הפרה של עקרון `CRP` (Common Reuse Principle). `CRP` קובע כי מחלקות שמשתמשות יחד צריכות להיות באותה חבילה, ומחלקות שאינן משתמשות יחד לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, אך החברה משחררת חבילה גדולה שכוללת הכל, זה אומר שהלקוחות נאלצים לקבל תלות במחלקות שהם לא משתמשים בהן, מה שמפר את `CRP`. עקרון `CCP` (Common Closure Principle) קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. העובדה שיש 'סיבה אחת לשינוי שמשפיעה על כל המחלקות' דווקא תומכת ב-`CCP`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q13/question.md"
     }
@@ -93,12 +93,12 @@
     "skills": [],
     "question_text": "`Dependency Injection` - \"הזרקת תלויות\" סמן מהמשפטים הבאים את הנכון ביותר:",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Dependency Injection` הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">כדי להזריק תלויות באמצעות `Dependency Injection`, השדות המוזרקים חייבים להיות מוגדרות כממשקים.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ישנן שתי תשובות אחרות נכונות.</span>"
+      "א. ישנן שתי תשובות אחרות נכונות.",
+      "ב. אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.",
+      "ג. כדי להזריק תלויות באמצעות `Dependency Injection`, השדות המוזרקים חייבים להיות מוגדרות כממשקים.",
+      "ד. `Dependency Injection` הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>`Dependency Injection` היא טכניקה שבה אובייקט מקבל את התלויות שלו מבחוץ במקום ליצור אותן בעצמו. ההגדרה הראשונה מתארת זאת בצורה מדויקת: זוהי שיטה לאתחול אובייקטים על ידי 'הזרקת' התלויות שלהם (בדרך כלל דרך קונסטרוקטור, setter או שדה). שדות מוזרקים לא חייבים להיות ממשקים (אף כי זהו שימוש נפוץ ומומלץ), ואין דו-משמעות אם משתמשים בממשקים, שכן ה-`DI` קונטיינר יודע איזו מימוש ספציפי להזריק.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\n`Dependency Injection` היא טכניקה שבה אובייקט מקבל את התלויות שלו מבחוץ במקום ליצור אותן בעצמו. ההגדרה הראשונה מתארת זאת בצורה מדויקת: זוהי שיטה לאתחול אובייקטים על ידי 'הזרקת' התלויות שלהם (בדרך כלל דרך קונסטרוקטור, setter או שדה). שדות מוזרקים לא חייבים להיות ממשקים (אף כי זהו שימוש נפוץ ומומלץ), ואין דו-משמעות אם משתמשים בממשקים, שכן ה-`DI` קונטיינר יודע איזו מימוש ספציפי להזריק.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md"
     }
@@ -114,12 +114,12 @@
     "skills": [],
     "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.\n![Image](./questions/exam_2025_B_B_MultipleChoice_q15/image_13_1.png)\nמהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Adapter`-ו `Observer`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Bridge`-ו `AlarmClock`</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Bridge`-ו `Observer`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Proxy`-ו `Observer`</span>"
+      "א. `Bridge`-ו `AlarmClock`",
+      "ב. `Adapter`-ו `Observer`",
+      "ג. `Proxy`-ו `Observer`",
+      "ד. `Bridge`-ו `Observer`"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>התרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקות `MonitoringScreen` ו-`MS_TemperatureX` הן `Observers` (או `Concrete Observers`) המקבלות עדכונים מ-`TemperatureSensor` (ה-`Subject`). המחלקה `Y` היא כנראה `Subject` או `Observer` כללי יותר. `X` הוא ממשק ה-`Observer`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` היא `Adapter` שמקבלת `MonitoringScreen` בקונסטרוקטור שלה ומממשת את ממשק `X` (ה-`Observer`). היא מתאימה את הממשק של `MonitoringScreen` לממשק הנדרש על ידי `X` (ה-`Observer`).\nלכן, התבניות הן `Adapter` ו-`Observer`.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקות `MonitoringScreen` ו-`MS_TemperatureX` הן `Observers` (או `Concrete Observers`) המקבלות עדכונים מ-`TemperatureSensor` (ה-`Subject`). המחלקה `Y` היא כנראה `Subject` או `Observer` כללי יותר. `X` הוא ממשק ה-`Observer`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` היא `Adapter` שמקבלת `MonitoringScreen` בקונסטרוקטור שלה ומממשת את ממשק `X` (ה-`Observer`). היא מתאימה את הממשק של `MonitoringScreen` לממשק הנדרש על ידי `X` (ה-`Observer`).\nלכן, התבניות הן `Adapter` ו-`Observer`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q15/question.md",
       "images": [
@@ -138,12 +138,12 @@
     "skills": [],
     "question_text": "כיצד יש לממש את תבנית העיצוב `template method`?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.</span>"
+      "א. ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.",
+      "ב. ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
+      "ג. לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.",
+      "ד. להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס."
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>תבנית `Template Method` מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, ומשאירה את השלבים הספציפיים למימוש על ידי מחלקות יורשות. הדרך הנכונה לממש זאת היא ליצור פונקציה (ה-`template method`) במחלקת הבסיס שקוראת לפונקציות מופשטות (או וירטואליות) אחרות, אשר ממומשות באופן שונה במחלקות היורשות. כך, השלד נשאר קבוע, אך הפרטים משתנים.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nתבנית `Template Method` מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, ומשאירה את השלבים הספציפיים למימוש על ידי מחלקות יורשות. הדרך הנכונה לממש זאת היא ליצור פונקציה (ה-`template method`) במחלקת הבסיס שקוראת לפונקציות מופשטות (או וירטואליות) אחרות, אשר ממומשות באופן שונה במחלקות היורשות. כך, השלד נשאר קבוע, אך הפרטים משתנים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q16/question.md"
     }
@@ -159,12 +159,12 @@
     "skills": [],
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `HiLoProxy`</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">`Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `PersistantImp`</span>"
+      "א. `AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`",
+      "ב. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `PersistantImp`",
+      "ג. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `HiLoProxy`",
+      "ד. `Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>הסדר הנכון של המחלקות, מהעקיף ביותר (הגורם הראשוני) ועד הישיר ביותר (האובייקט המושפע ישירות), בהפעלת `HiLoDataImp` במערכת ניטור מזג האוויר הוא:\n1.  `Nimbus1_0Clock`: השעון הראשי שמפעיל את המערכת.\n2.  `AlarmClock`: מקבל התראות מהשעון ומפעיל פעולות בזמנים קבועים.\n3.  `TemperatureSensor`: החיישן שמודד את הטמפרטורה.\n4.  `Nimbus1_0Temperature`: אובייקט שמייצג את קריאת הטמפרטורה הספציפית מהחיישן.\n5.  `TemperatureHiLo`: מחשב את ערכי המינימום והמקסימום של הטמפרטורה.\n6.  `HiLoProxy`: פרוקסי ל-`HiLoDataImp` שמטפל בגישה לנתוני המינימום/מקסימום.\nהאפשרות הראשונה (והשלישית, שהיא כנראה כפולה בטעות במקור) משקפת את השרשרת הלוגית של הפעלת הפונקציות במערכת.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר (הגורם הראשוני) ועד הישיר ביותר (האובייקט המושפע ישירות), בהפעלת `HiLoDataImp` במערכת ניטור מזג האוויר הוא:\n1.  `Nimbus1_0Clock`: השעון הראשי שמפעיל את המערכת.\n2.  `AlarmClock`: מקבל התראות מהשעון ומפעיל פעולות בזמנים קבועים.\n3.  `TemperatureSensor`: החיישן שמודד את הטמפרטורה.\n4.  `Nimbus1_0Temperature`: אובייקט שמייצג את קריאת הטמפרטורה הספציפית מהחיישן.\n5.  `TemperatureHiLo`: מחשב את ערכי המינימום והמקסימום של הטמפרטורה.\n6.  `HiLoProxy`: פרוקסי ל-`HiLoDataImp` שמטפל בגישה לנתוני המינימום/מקסימום.\nהאפשרות הראשונה (והשלישית, שהיא כנראה כפולה בטעות במקור) משקפת את השרשרת הלוגית של הפעלת הפונקציות במערכת.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q17/question.md"
     }
@@ -180,12 +180,12 @@
     "skills": [],
     "question_text": "מה הקשר העקרוני בין המחלקה `Human` (אדם) למחלקה `Heart` (לב)",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Aggregation</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Composition</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Dependency</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Association</span>"
+      "א. Composition",
+      "ב. Association",
+      "ג. Aggregation",
+      "ד. Dependency"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition) מכיוון שלב הוא חלק בלתי נפרד מאדם, ואינו יכול להתקיים באופן עצמאי מחוץ להקשר של האדם. אם האדם נהרס, הלב נהרס יחד איתו. זוהי צורה חזקה של אגרגציה, שבה החלק אינו יכול להתקיים ללא השלם.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition) מכיוון שלב הוא חלק בלתי נפרד מאדם, ואינו יכול להתקיים באופן עצמאי מחוץ להקשר של האדם. אם האדם נהרס, הלב נהרס יחד איתו. זוהי צורה חזקה של אגרגציה, שבה החלק אינו יכול להתקיים ללא השלם.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q5/question.md"
     }
@@ -201,12 +201,12 @@
     "skills": [],
     "question_text": "נתונים תרשימי המצבים עבור מקרה הבוחן 'הצב והארנב' שנלמד בכיתה.\n![Image](image_9_1.png)\nנתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד\n![Image](./questions/exam_2025_B_B_MultipleChoice_q6/image_10_1.jpeg)\nאיפה הטעות?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 1</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 4</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 2</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 3</span>"
+      "א. מיקום 1",
+      "ב. מיקום 2",
+      "ג. מיקום 4",
+      "ד. מיקום 3"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הטעות נמצאת במיקום 4. הפעולה `isAboutToWin()` צריכה להיות לפני `tm(300)` ולא אחריו, שכן היא קובעת אם המצב הבא הוא ניצחון או המשך ריצה רגילה, והטיימר קשור למשך הריצה. בסדר פעולות הגיוני, יש לבדוק את התנאי לפני שמפעילים טיימר או פעולה שתלויה בתוצאת הבדיקה.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהטעות נמצאת במיקום 4. הפעולה `isAboutToWin()` צריכה להיות לפני `tm(300)` ולא אחריו, שכן היא קובעת אם המצב הבא הוא ניצחון או המשך ריצה רגילה, והטיימר קשור למשך הריצה. בסדר פעולות הגיוני, יש לבדוק את התנאי לפני שמפעילים טיימר או פעולה שתלויה בתוצאת הבדיקה.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q6/question.md",
       "images": [
@@ -225,12 +225,12 @@
     "skills": [],
     "question_text": "יישום של איזה מהעקרונות `SOLID` הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">SRP</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ISP</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">DIP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">LSP</span>"
+      "א. DIP",
+      "ב. LSP",
+      "ג. ISP",
+      "ד. SRP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>עקרון `ISP` (Interface Segregation Principle) קובע כי לקוחות לא צריכים להיות תלויים בממשקים שהם אינם משתמשים בהם. יישום `ISP` מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. זה אכן מוסיף ממשקים למערכת, אך אינו בהכרח משנה את מספר הפונקציות המופשטות הכולל, אלא רק מארגן אותן מחדש בממשקים שונים.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעקרון `ISP` (Interface Segregation Principle) קובע כי לקוחות לא צריכים להיות תלויים בממשקים שהם אינם משתמשים בהם. יישום `ISP` מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. זה אכן מוסיף ממשקים למערכת, אך אינו בהכרח משנה את מספר הפונקציות המופשטות הכולל, אלא רק מארגן אותן מחדש בממשקים שונים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q7/question.md"
     }
@@ -246,12 +246,12 @@
     "skills": [],
     "question_text": "מהו `אינו` יתרון של יישום עיקרון האחריות היחידה (`SRP`) בתכנון מחלקות בתוכנה?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה יעיל יותר ודורש פחות משאבים.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר לתחזוקה.</span>"
+      "א. הקוד נהיה יעיל יותר ודורש פחות משאבים.",
+      "ב. הקוד נהיה קל יותר לתחזוקה.",
+      "ג. הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.",
+      "ד. ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>עקרון `SRP` (Single Responsibility Principle) מתמקד בהפרדת אחריויות כדי לשפר תחזוקה, קריאות ופיתוח מקבילי. הוא אינו מבטיח שהקוד יהיה יעיל יותר מבחינת ביצועים או שידרוש פחות משאבי חומרה/זיכרון. יעילות קוד תלויה באלגוריתמים ובמימוש הספציפי, לא ישירות בעקרון `SRP`.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעקרון `SRP` (Single Responsibility Principle) מתמקד בהפרדת אחריויות כדי לשפר תחזוקה, קריאות ופיתוח מקבילי. הוא אינו מבטיח שהקוד יהיה יעיל יותר מבחינת ביצועים או שידרוש פחות משאבי חומרה/זיכרון. יעילות קוד תלויה באלגוריתמים ובמימוש הספציפי, לא ישירות בעקרון `SRP`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q8/question.md"
     }
@@ -267,12 +267,12 @@
     "skills": [],
     "question_text": "תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב `Bridge` משמשת לפתרון בעיית `SRP`</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב `Bridge` משמשת לפתרון בעיית `ISP`</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב `Bridge` משמשת לפתרון בעיית `LSP`</span>"
+      "א. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `LSP`",
+      "ב. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `ISP`",
+      "ג. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`",
+      "ד. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `SRP`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>תבנית `Bridge` מאפשרת להפריד הפשטה ממימוש, כך שניתן לשנות אותם באופן בלתי תלוי. היא תומכת בעקרון `DIP` (Dependency Inversion Principle) בכך שהיא מאפשרת להפשטה להיות תלויה בממשק (המגשר) ולא במימוש קונקרטי, ובכך הופכת את התלות לכיוון ההפוך או מנתקת אותה.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nתבנית `Bridge` מאפשרת להפריד הפשטה ממימוש, כך שניתן לשנות אותם באופן בלתי תלוי. היא תומכת בעקרון `DIP` (Dependency Inversion Principle) בכך שהיא מאפשרת להפשטה להיות תלויה בממשק (המגשר) ולא במימוש קונקרטי, ובכך הופכת את התלות לכיוון ההפוך או מנתקת אותה.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q9/question.md"
     }
