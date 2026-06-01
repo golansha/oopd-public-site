@@ -17,14 +17,14 @@
     ],
     "question_text": "נתונה מחלקה בשם Invoice שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם בחשבונית אין פריטים לחיוב - public boolean isEmpty)(</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמוסיפה פריט לחשבונית - public void addItem(double price(</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמחשבת את הסכום הכולל של הפריטים - public double getTotalAmount)(</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמחשבת את הסכום הכולל של הפריטים - public double getTotalAmount)(</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם בחשבונית אין פריטים לחיוב - public boolean isEmpty)(</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שמוסיפה פריט לחשבונית - public void addItem(double price(</span>",
       "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - public boolean checkClubMembership)(</span>"
     ],
     "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת לשינוי. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (פריטים, סכום כולל וכו'). הפונקציה `checkClubMembership()` בודקת מידע הקשור ללקוח ולתוכנית מועדון, וזו אחריות שונה מאחריות החשבונית עצמה. לכן, פעולה זו אינה שייכת למחלקת `Invoice` לפי SRP, ועדיף שתהיה במחלקה נפרדת כמו `Customer` או `MembershipService`.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q10/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q10/question.md"
     }
   },
   {
@@ -45,14 +45,14 @@
     ],
     "question_text": "מחלקת NetworkConnection מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת HttpConnection יורשת ממחלקת NetworkConnection ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול HTTP. מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון Liskov Substitution ?Principle (LSP)",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הרצת סדרת בדיקות על מופע NetworkConnection ולוודא שהתנהגותן נשמרת גם על מופע HttpClient כולל התייחסות לפלטים ותופעות לוואי.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">יש שתי תשובות אחרות נכונות.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">וידוא שפונקציית ה-sendData של HttpClient מסוגלת להתמודד עם כל המידע שמחלקת NetworkConnection יכולה לשלוח.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">יש שתי תשובות אחרות נכונות.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">וידוא שפונקציית ה-sendData של HttpClient מסוגלת להתמודד עם כל המידע שמחלקת NetworkConnection יכולה לשלוח.</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הרצת סדרת בדיקות על מופע NetworkConnection ולוודא שהתנהגותן נשמרת גם על מופע HttpClient כולל התייחסות לפלטים ותופעות לוואי.</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>עיקרון ההחלפה של ליסקוב (LSP) עוסק בתת-טיפוס התנהגותי: אם S הוא תת-טיפוס של T, אז אובייקטים מטיפוס T ניתנים להחלפה באובייקטים מטיפוס S מבלי לשנות את התכונות הרצויות של התוכנית. 'הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת' אינה חלק מתהליך הבדיקה של LSP. LSP דורש אימות באמצעות בדיקות קפדניות (למשל, לוודא שתנאי קדם לא מתחזקים, תנאי בתר לא נחלשים, אינווריאנטים נשמרים, ומתודות מתנהגות כמצופה כאשר תת-טיפוס מוחלף בטיפוס הבסיס). ההנחה הזו היא סמנטית-תיאורית ולא בדיקה התנהגותית.",
+    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עיקרון ההחלפה של ליסקוב (LSP) עוסק בתת-טיפוס התנהגותי: אם S הוא תת-טיפוס של T, אז אובייקטים מטיפוס T ניתנים להחלפה באובייקטים מטיפוס S מבלי לשנות את התכונות הרצויות של התוכנית. 'הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת' אינה חלק מתהליך הבדיקה של LSP. LSP דורש אימות באמצעות בדיקות קפדניות (למשל, לוודא שתנאי קדם לא מתחזקים, תנאי בתר לא נחלשים, אינווריאנטים נשמרים, ומתודות מתנהגות כמצופה כאשר תת-טיפוס מוחלף בטיפוס הבסיס). ההנחה הזו היא סמנטית-תיאורית ולא בדיקה התנהגותית.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q11/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q11/question.md"
     }
   },
   {
@@ -73,14 +73,14 @@
     ],
     "question_text": "נתון הקוד של הפונקציה copy המעתיקה את האלמנטים הנמצאים ברשימה src לתוך הרשימה dest. בקוד הושמטו הטיפוסים של src,dest public static <T> void copy(dest, src){ for (int i=0; i<src.size(); i++) dest.set(i,src.get(i)); } מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? super T> src)</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? super T> src)</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? extends T> src)</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? extends T> src)</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? super T> src)</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? extends T> dest, List<? extends T> src)</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? super T> src)</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">public static <T> void copy (List<? super T> dest, List<? extends T> src)</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של כלל PECS (Producer-Extends, Consumer-Super):\n*   הרשימה `src` היא 'מפיקה' (Producer) של אובייקטים מטיפוס `T` (קוראים ממנה באמצעות `src.get(i)`). לכן, יש להשתמש ב-`? extends T` כדי לאפשר קריאה של `T` או תת-טיפוסים שלו.\n*   הרשימה `dest` היא 'צורכת' (Consumer) של אובייקטים מטיפוס `T` (כותבים אליה באמצעות `dest.set(i, ...)`). לכן, יש להשתמש ב-`? super T` כדי לאפשר כתיבה של `T` או תת-טיפוסים שלו.",
+    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של כלל PECS (Producer-Extends, Consumer-Super):\n*   הרשימה `src` היא 'מפיקה' (Producer) של אובייקטים מטיפוס `T` (קוראים ממנה באמצעות `src.get(i)`). לכן, יש להשתמש ב-`? extends T` כדי לאפשר קריאה של `T` או תת-טיפוסים שלו.\n*   הרשימה `dest` היא 'צורכת' (Consumer) של אובייקטים מטיפוס `T` (כותבים אליה באמצעות `dest.set(i, ...)`). לכן, יש להשתמש ב-`? super T` כדי לאפשר כתיבה של `T` או תת-טיפוסים שלו.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q12/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q12/question.md"
     }
   },
   {
@@ -101,14 +101,14 @@
     ],
     "question_text": "בחברת 'אפליקציות בע\"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">עיקרון CRP ו-CCP מופרים</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אף עיקרון לא מופר</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CRP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CCP</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CRP</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">עיקרון CRP ו-CCP מופרים</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">קיימת הפרה של עיקרון CCP</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">אף עיקרון לא מופר</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>ההחלטה לשחרר 'חבילה גדולה שכוללת הכול' כאשר 'מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות' מהווה הפרה של **Common Reuse Principle (CRP)**. עיקרון זה קובע כי מחלקות שמשתמשים בהן יחד צריכות להיות ארוזות יחד, ולקוחות לא צריכים להיות תלויים בחבילות שמכילות מחלקות שהם לא משתמשים בהן. בכך שמאלצים לקוחות לקבל חבילה גדולה עם פונקציונליות מיותרת, מפרים את CRP.\n\nהמשפט 'יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה' מצביע על כך שכל המחלקות משתנות יחד מאותה סיבה. זהו למעשה תיאור של **Common Closure Principle (CCP)**, הקובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. לכן, חלק זה של התיאור דווקא תומך בעמידה ב-CCP. עם זאת, מכיוון שהאפשרות הראשונה היא 'קיימת הפרה של עיקרון CRP', וזו הפרה ברורה מהתיאור, זו התשובה הנכונה.",
+    "answer_text": "**התשובה הנכונה היא: א'**<br><br>ההחלטה לשחרר 'חבילה גדולה שכוללת הכול' כאשר 'מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות' מהווה הפרה של **Common Reuse Principle (CRP)**. עיקרון זה קובע כי מחלקות שמשתמשים בהן יחד צריכות להיות ארוזות יחד, ולקוחות לא צריכים להיות תלויים בחבילות שמכילות מחלקות שהם לא משתמשים בהן. בכך שמאלצים לקוחות לקבל חבילה גדולה עם פונקציונליות מיותרת, מפרים את CRP.\n\nהמשפט 'יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה' מצביע על כך שכל המחלקות משתנות יחד מאותה סיבה. זהו למעשה תיאור של **Common Closure Principle (CCP)**, הקובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. לכן, חלק זה של התיאור דווקא תומך בעמידה ב-CCP. עם זאת, מכיוון שהאפשרות הראשונה היא 'קיימת הפרה של עיקרון CRP', וזו הפרה ברורה מהתיאור, זו התשובה הנכונה.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q13/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q13/question.md"
     }
   },
   {
@@ -137,9 +137,9 @@
     ],
     "answer_text": "**התשובה הנכונה היא: ב'**<br><br>בתרשים באות לידי ביטוי שתי תבניות עיצוב:\n1.  **Observer Pattern:** ממשק `X` עם מתודת `update(data:int)` מייצג את ה-Observer. המחלקות `MonitoringScreen` ו-`MS_TemperatureX` מממשות את `X` (או `MS_TemperatureX` מממשת `X` ומשתמשת ב-`MonitoringScreen`). המחלקה `Y` היא ה-Subject, עם מתודות `add(x:X)`, `removeX(x:X)` ו-`notifyX(data:int)`, המאפשרות להרשמה, הסרה ועדכון של אובייקטי `X`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` פועלת כ-Adapter. היא מממשת את ממשק `X` (ה-Target) ומקבלת בבנאי שלה אובייקט `MonitoringScreen` (ה-Adaptee). כאשר נקראת מתודת `update` על `MS_TemperatureX`, היא מתרגמת את הקריאה למתודה `displayTemperature` של אובייקט `MonitoringScreen` הפנימי. בכך, היא מאפשרת לאובייקט `MonitoringScreen` (שאינו תואם ישירות לממשק `X`) להשתלב במנגנון ה-Observer.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q14/question.md",
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md",
       "images": [
-        "/questions/exam_2025_B_B_MultipleChoice_q14/image_13_1.png"
+        "./questions/exam_2025_B_B_MultipleChoice_q14/image_13_1.png"
       ]
     }
   },
@@ -161,14 +161,14 @@
     ],
     "question_text": "כיצד יש לממש את תבנית העיצוב template method?",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>תבנית ה-Template Method מגדירה את השלד של אלגוריתם במחלקת בסיס (superclass), אך מאפשרת למחלקות יורשות (subclasses) לשנות שלבים ספציפיים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי מתודת תבנית (לא מופשטת) במחלקת הבסיס, שקוראת למתודות מופשטות (או 'ווים' - hooks) שמוגדרות במחלקת הבסיס וממומשות באופן שונה על ידי המחלקות היורשות. האפשרות הראשונה מתארת בדיוק מנגנון זה: מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
+    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>תבנית ה-Template Method מגדירה את השלד של אלגוריתם במחלקת בסיס (superclass), אך מאפשרת למחלקות יורשות (subclasses) לשנות שלבים ספציפיים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי מתודת תבנית (לא מופשטת) במחלקת הבסיס, שקוראת למתודות מופשטות (או 'ווים' - hooks) שמוגדרות במחלקת הבסיס וממומשות באופן שונה על ידי המחלקות היורשות. האפשרות הראשונה מתארת בדיוק מנגנון זה: מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q15/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q15/question.md"
     }
   },
   {
@@ -189,14 +189,14 @@
     ],
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה HiLoDataImp המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת HiLoDatalmp. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, Temperature Sensor, TemperatureHiLo, PersistantImp</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>"
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, Temperature Sensor, TemperatureHiLo, PersistantImp</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>הסדר הנכון של המחלקות, מהעקיף ביותר ועד הישיר ביותר, המעורבות בהפעלת `HiLoDataImp` (או ה-`HiLoProxy` שלה) במערכת ניטור מזג האוויר הוא כדלקמן:\n1.  **Nimbus1_0Clock:** השעון הראשי של המערכת, שמספק את אות הזמן הבסיסי.\n2.  **AlarmClock:** מקבל את אותות הזמן מהשעון ויוצר אירועי אזעקה במועדים מוגדרים (לדוגמה, כל דקה או שעה).\n3.  **TemperatureSensor:** חיישן הטמפרטורה, שמבצע קריאה בפועל של הטמפרטורה כאשר הוא מופעל (לרוב על ידי ה-AlarmClock או רכיב אחר).\n4.  **Nimbus1_0Temperature:** רכיב שמקבל את נתוני הטמפרטורה הגולמיים מהחיישן ומעבד אותם (לדוגמה, מבצע המרה או סינון).\n5.  **TemperatureHiLo:** רכיב שאחראי על חישוב וניהול ערכי המינימום והמקסימום היומיים של הטמפרטורה, על בסיס הנתונים המעובדים מ-Nimbus1_0Temperature.\n6.  **HiLoProxy:** פרוקסי ל-`HiLoDataImp`, שמקבל את הנתונים מ-TemperatureHiLo ומעביר אותם ל-`HiLoDataImp` בפועל, תוך כדי טיפול בפעולות נוספות כמו רישום או אבטחה. `HiLoDataImp` היא המחלקה שמבצעת את החישוב הסופי של המינימום/מקסימום.\n\nהאפשרות הראשונה מציגה את הרצף הלוגי והתקין של זרימת הנתונים והפעלת הפונקציות במערכת זו.",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הסדר הנכון של המחלקות, מהעקיף ביותר ועד הישיר ביותר, המעורבות בהפעלת `HiLoDataImp` (או ה-`HiLoProxy` שלה) במערכת ניטור מזג האוויר הוא כדלקמן:\n1.  **Nimbus1_0Clock:** השעון הראשי של המערכת, שמספק את אות הזמן הבסיסי.\n2.  **AlarmClock:** מקבל את אותות הזמן מהשעון ויוצר אירועי אזעקה במועדים מוגדרים (לדוגמה, כל דקה או שעה).\n3.  **TemperatureSensor:** חיישן הטמפרטורה, שמבצע קריאה בפועל של הטמפרטורה כאשר הוא מופעל (לרוב על ידי ה-AlarmClock או רכיב אחר).\n4.  **Nimbus1_0Temperature:** רכיב שמקבל את נתוני הטמפרטורה הגולמיים מהחיישן ומעבד אותם (לדוגמה, מבצע המרה או סינון).\n5.  **TemperatureHiLo:** רכיב שאחראי על חישוב וניהול ערכי המינימום והמקסימום היומיים של הטמפרטורה, על בסיס הנתונים המעובדים מ-Nimbus1_0Temperature.\n6.  **HiLoProxy:** פרוקסי ל-`HiLoDataImp`, שמקבל את הנתונים מ-TemperatureHiLo ומעביר אותם ל-`HiLoDataImp` בפועל, תוך כדי טיפול בפעולות נוספות כמו רישום או אבטחה. `HiLoDataImp` היא המחלקה שמבצעת את החישוב הסופי של המינימום/מקסימום.\n\nהאפשרות הראשונה מציגה את הרצף הלוגי והתקין של זרימת הנתונים והפעלת הפונקציות במערכת זו.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q16/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q16/question.md"
     }
   },
   {
@@ -217,14 +217,14 @@
     ],
     "question_text": "מה הקשר העקרוני בין המחלקה Human (אדם) למחלקה Heart (לב)",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Dependency</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Aggregation</span>",
       "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Association</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Composition</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Aggregation</span>"
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Dependency</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">Composition</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>הקשר בין Human ל-Heart הוא Composition (הרכבה). Composition הוא סוג חזק של Aggregation (צבירה), המציין קשר 'חלק-שלם' שבו החלק (Heart) אינו יכול להתקיים ללא השלם (Human) וקשור אליו באופן בלעדי. אם ה-Human נהרס, גם ה-Heart נהרס (בהקשר של יצור חי). זהו קשר בעלות חזק עם תלות מחזור חיים.",
+    "answer_text": "**התשובה הנכונה היא: ד'**<br><br>הקשר בין Human ל-Heart הוא Composition (הרכבה). Composition הוא סוג חזק של Aggregation (צבירה), המציין קשר 'חלק-שלם' שבו החלק (Heart) אינו יכול להתקיים ללא השלם (Human) וקשור אליו באופן בלעדי. אם ה-Human נהרס, גם ה-Heart נהרס (בהקשר של יצור חי). זהו קשר בעלות חזק עם תלות מחזור חיים.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q5/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q5/question.md"
     }
   },
   {
@@ -246,15 +246,15 @@
     "question_text": "נתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד ![Image](image_10_1.jpeg) איפה הטעות?",
     "options": [
       "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 2</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 1</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 4</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 3</span>"
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 4</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 3</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">מיקום 1</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>הטעות נמצאת ב'מיקום 4'. בתרשים רצף, `isAboutToWin()` הוא תנאי שמירה (guard condition) או פעולה. אם הוא תנאי שמירה, הוא צריך להיות על הודעה או על פרגמנט משולב (combined fragment), ולא כפעולה עצמאית לפני פעולות אחרות כמו `print(num = 2)` או `tm(300)`. המיקום הנוכחי שלו כפעולה לפני פעולות אחרות אינו תקין מבחינת סמנטיקה של תרשימי רצף, במיוחד בהשוואה לתרשים המצבים המקורי שבו `isAboutToWin()` הוא תנאי מעבר.",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>הטעות נמצאת ב'מיקום 4'. בתרשים רצף, `isAboutToWin()` הוא תנאי שמירה (guard condition) או פעולה. אם הוא תנאי שמירה, הוא צריך להיות על הודעה או על פרגמנט משולב (combined fragment), ולא כפעולה עצמאית לפני פעולות אחרות כמו `print(num = 2)` או `tm(300)`. המיקום הנוכחי שלו כפעולה לפני פעולות אחרות אינו תקין מבחינת סמנטיקה של תרשימי רצף, במיוחד בהשוואה לתרשים המצבים המקורי שבו `isAboutToWin()` הוא תנאי מעבר.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q6/question.md",
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q6/question.md",
       "images": [
-        "/questions/exam_2025_B_B_MultipleChoice_q6/image_10_1.jpeg"
+        "./questions/exam_2025_B_B_MultipleChoice_q6/image_10_1.jpeg"
       ]
     }
   },
@@ -277,13 +277,13 @@
     "question_text": "יישום של איזה מהעקרונות SOLID הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
     "options": [
       "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">SRP</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">DIP</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ISP</span>",
-      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">LSP</span>"
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ISP</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">LSP</span>",
+      "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">DIP</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עיקרון ה-Interface Segregation Principle (ISP) קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום עיקרון זה מוביל לעיתים קרובות לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. כתוצאה מכך, ייתכן שיווצרו יותר ממשקים במערכת, אך סך הפונקציות המופשטות (המתודות) נשאר זהה, רק שהן מחולקות בין מספר ממשקים שונים.",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>עיקרון ה-Interface Segregation Principle (ISP) קובע שלקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום עיקרון זה מוביל לעיתים קרובות לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. כתוצאה מכך, ייתכן שיווצרו יותר ממשקים במערכת, אך סך הפונקציות המופשטות (המתודות) נשאר זהה, רק שהן מחולקות בין מספר ממשקים שונים.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q7/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q7/question.md"
     }
   },
   {
@@ -305,13 +305,13 @@
     "question_text": "מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?",
     "options": [
       "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה יעיל יותר ודורש פחות משאבים.</span>",
-      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.</span>",
+      "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה יעיל יותר ודורש פחות משאבים.</span>",
       "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">הקוד נהיה קל יותר לתחזוקה.</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>עיקרון האחריות היחידה (SRP) מתמקד בשיפור תחזוקתיות, קריאות וגמישות הקוד על ידי הבטחה שלכל מחלקה יש אחריות אחת בלבד (סיבה אחת לשינוי). יתרונותיו כוללים קלות תחזוקה, קלות למידה ופיתוח מקבילי. עם זאת, SRP אינו מבטיח שהקוד יהיה 'יעיל יותר' מבחינת ביצועים או שידרוש 'פחות משאבים'. לעיתים קרובות, הוא אף עשוי להוביל ליצירת יותר מחלקות ואובייקטים, מה שעלול להגדיל במעט את צריכת הזיכרון, אך זה בדרך כלל זניח לעומת היתרונות התחזוקתיים.",
+    "answer_text": "**התשובה הנכונה היא: ג'**<br><br>עיקרון האחריות היחידה (SRP) מתמקד בשיפור תחזוקתיות, קריאות וגמישות הקוד על ידי הבטחה שלכל מחלקה יש אחריות אחת בלבד (סיבה אחת לשינוי). יתרונותיו כוללים קלות תחזוקה, קלות למידה ופיתוח מקבילי. עם זאת, SRP אינו מבטיח שהקוד יהיה 'יעיל יותר' מבחינת ביצועים או שידרוש 'פחות משאבים'. לעיתים קרובות, הוא אף עשוי להוביל ליצירת יותר מחלקות ואובייקטים, מה שעלול להגדיל במעט את צריכת הזיכרון, אך זה בדרך כלל זניח לעומת היתרונות התחזוקתיים.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q8/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q8/question.md"
     }
   },
   {
@@ -332,14 +332,14 @@
     ],
     "question_text": "סמן את התשובה הנכונה ביותר",
     "options": [
-      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית DIP</span>",
-      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית SRP</span>",
+      "א. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית SRP</span>",
+      "ב. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית DIP</span>",
       "ג. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית ISP</span>",
       "ד. <span dir=\"auto\" style=\"unicode-bidi: isolate; display: inline-block;\">תבנית העיצוב Bridge משמשת לפתרון בעיית LSP</span>"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**<br><br>תבנית ה-Bridge מפרידה הפשטה מהמימוש שלה, ומאפשרת לשניהם להשתנות באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), הקובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה, אלא ששניהם צריכים להיות תלויים בהפשטות. ה-Bridge משיג זאת על ידי כך שגם ההפשטה וגם המימוש שלה תלויים בממשק (ממשק ה-Implementor).",
+    "answer_text": "**התשובה הנכונה היא: ב'**<br><br>תבנית ה-Bridge מפרידה הפשטה מהמימוש שלה, ומאפשרת לשניהם להשתנות באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), הקובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה, אלא ששניהם צריכים להיות תלויים בהפשטות. ה-Bridge משיג זאת על ידי כך שגם ההפשטה וגם המימוש שלה תלויים בממשק (ממשק ה-Implementor).",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_MultipleChoice_q9/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q9/question.md"
     }
   },
   {
@@ -363,7 +363,7 @@
     "options": [],
     "answer_text": "```java\nimport java.util.Comparator;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.stream.Collectors;\n\nclass Player {\n    private String name;\n    private int score;\n\n    public Player(String name, int score) {\n        this.name = name;\n        this.score = score;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public int getScore() {\n        return score;\n    }\n\n    @Override\n    public String toString() {\n        return \"Player{\" +\n               \"name='\" + name + '\\'' +\n               \", score=\" + score +\n               '}';\n    }\n}\n\npublic class HighScoreManager {\n\n    public static List<String> getHighScoreList(List<Player> players) {\n        return players.stream()\n                .collect(Collectors.groupingBy(\n                        Player::getName, // Group by player name\n                        Collectors.mapping(\n                                Player::getScore, // Map to scores\n                                Collectors.reducing(0, Integer::max) // Find max score for each player\n                        )\n                ))\n                .entrySet().stream() // Stream of Map.Entry<String, Integer> (playerName, maxScore)\n                .sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())) // Sort by max score descending\n                .limit(10) // Take top 10\n                .map(Map.Entry::getKey) // Get player names\n                .collect(Collectors.toList()); // Collect to a list\n    }\n\n    public static void main(String[] args) {\n        List<Player> players = List.of(\n                new Player(\"Alice\", 100),\n                new Player(\"Bob\", 150),\n                new Player(\"Alice\", 120), // Alice's score updated\n                new Player(\"Charlie\", 80),\n                new Player(\"Bob\", 130),\n                new Player(\"David\", 200),\n                new Player(\"Eve\", 90),\n                new Player(\"Frank\", 110),\n                new Player(\"Grace\", 160),\n                new Player(\"Heidi\", 70),\n                new Player(\"Ivan\", 190),\n                new Player(\"Judy\", 140),\n                new Player(\"Karen\", 170)\n        );\n\n        List<String> highScores = getHighScoreList(players);\n        System.out.println(\"Top 10 High Score Players: \" + highScores);\n        // Expected output (order might vary for same scores, but names should be correct):\n        // Top 10 High Score Players: [David, Ivan, Karen, Grace, Bob, Judy, Alice, Frank, Eve, Charlie]\n    }\n}\n```\n\n**Explanation:**\n1.  **`players.stream()`**: Start a stream from the input list of `Player` objects.\n2.  **`collect(Collectors.groupingBy(Player::getName, ...))`**: Group the players by their name. For each group (each unique player name), we need to find their maximum score.\n3.  **`Collectors.mapping(Player::getScore, Collectors.reducing(0, Integer::max))`**: This is the downstream collector for `groupingBy`. It first maps each `Player` object in a group to its `score` (using `Player::getScore`). Then, for these scores, it uses `Collectors.reducing(0, Integer::max)` to find the maximum score. `0` is the identity for `Integer::max` (assuming scores are non-negative).\n    *   The result of this step is a `Map<String, Integer>` where the key is the player's name and the value is their highest score.\n4.  **`.entrySet().stream()`**: Convert the map into a stream of `Map.Entry<String, Integer>` objects so we can sort them.\n5.  **`.sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder()))`**: Sort these entries based on their score (value) in descending order. `Comparator.reverseOrder()` ensures the highest scores come first.\n6.  **`.limit(10)`**: Take only the top 10 entries after sorting.\n7.  **`.map(Map.Entry::getKey)`**: From the top 10 entries, extract only the player names (the keys).\n8.  **`.collect(Collectors.toList())`**: Collect the resulting player names into a `List<String>`.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_Open_q1/question.md"
+      "markdown": "./questions/exam_2025_B_B_Open_q1/question.md"
     }
   },
   {
@@ -387,9 +387,9 @@
     "options": [],
     "answer_text": "**א. העיקרון המופר:**\nהעיקרון המופר הוא **Acyclic Dependencies Principle (ADP) - עקרון התלות הלא-מחזורית**. עיקרון זה קובע כי גרף התלויות בין חבילות במערכת צריך להיות חסר מחזורים (DAG - Directed Acyclic Graph). בתרשים המקורי, קיימת תלות מחזורית בין החבילות P1, P2 ו-P3:\nP1 -> P2 (לדוגמה: C תלוי ב-H, A תלוי ב-H)\nP2 -> P3 (לדוגמה: H תלוי ב-D, J תלוי ב-E)\nP3 -> P1 (לדוגמה: D תלוי ב-A, F תלוי ב-C)\n\n**ב. תיקון ההפרה:**\nכדי לתקן את ההפרה מבלי להעביר מחלקות בין חבילות, נשתמש ב**Dependency Inversion Principle (DIP)**. נהפוך את התלות מ-P3 ל-P1 על ידי יצירת ממשק בחבילה P3, ש-P1 תממש. כך, P3 תהיה תלויה בממשק שהיא עצמה מגדירה, ו-P1 תהיה תלויה בממשק זה (באמצעות מימוש), ובכך נשבור את המחזוריות.\n\n**שלבי התיקון:**\n1.  **זיהוי התלויות המחזוריות:** התלויות מ-P3 ל-P1 הן: D->A, E->B, F->C, G->A.\n2.  **היפוך תלות:** עבור כל מחלקה ב-P1 שבה תלויה מחלקה מ-P3, ניצור ממשק בחבילה P3. לדוגמה:\n    *   ניצור ממשק `IA` ב-P3. מחלקה `A` ב-P1 תממש את `IA`.\n    *   ניצור ממשק `IB` ב-P3. מחלקה `B` ב-P1 תממש את `IB`.\n    *   ניצור ממשק `IC` ב-P3. מחלקה `C` ב-P1 תממש את `IC`.\n3.  **עדכון התלויות ב-P3:** המחלקות D, E, F, G ב-P3 יתלו עתה בממשקים `IA`, `IB`, `IC` במקום במחלקות `A`, `B`, `C` ישירות.\n\n**תרשים מתוקן (רק החלקים שהשתנו):**\n\n**חבילה P1:**\n*   `A` (מממש את `IA`)\n*   `B` (מממש את `IB`)\n*   `C` (מממש את `IC`)\n\n**חבילה P3:**\n*   `<<interface>> IA`\n*   `<<interface>> IB`\n*   `<<interface>> IC`\n*   `D` (תלוי ב-`IA`)\n*   `E` (תלוי ב-`IB`)\n*   `F` (תלוי ב-`IC`)\n*   `G` (תלוי ב-`IA`)\n\n**הסבר כיצד השינוי פותר את ההפרה:**\nלאחר השינוי, התלויות הן:\n*   P1 -> P2 (ללא שינוי)\n*   P2 -> P3 (ללא שינוי)\n*   P3 -> P3 (D, E, F, G תלויים בממשקים IA, IB, IC שנמצאים ב-P3)\n*   P1 מממש את הממשקים ב-P3 (P1 תלוי ב-P3 לצורך מימוש, אך זו תלות בכיוון ההפוך מהתלות המקורית ששברנו).\n\nהמחזוריות P3 -> P1 נשברה. כעת, P3 תלויה רק בעצמה (בממשקים שהיא מגדירה), ו-P1 תלויה ב-P3 דרך מימוש הממשקים. זה יוצר גרף תלויות חד-כיווני (P1 -> P2 -> P3), ובכך עומד בעיקרון ADP. היתרון הוא ששינויים ב-P1 לא יחייבו שינויים ב-P3 (אלא אם כן הממשקים ב-P3 משתנים), ו-P3 הופכת לחבילה יציבה יותר.",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_Open_q2/question.md",
+      "markdown": "./questions/exam_2025_B_B_Open_q2/question.md",
       "images": [
-        "/questions/exam_2025_B_B_Open_q2/image_4_1.png"
+        "./questions/exam_2025_B_B_Open_q2/image_4_1.png"
       ]
     }
   },
@@ -414,7 +414,7 @@
     "options": [],
     "answer_text": "**תבנית העיצוב:** Visitor Pattern\n\n**הסבר:**\nתבנית ה-Visitor מאפשרת להוסיף פעולות חדשות למבנה אובייקטים קיים (כמו היררכיית המחלקות `Exam`) מבלי לשנות את המחלקות עצמן. זה מתאים לדרישה שפעולות חדשות אינן תחת האחריות הישירה של `Exam` ושיש צפי להוספת סוגי בחינות חדשות בעתיד, מה שהופך את המערכת לגמישה וקלה להרחבה.\n\n**תרשים מחלקות (UML):**\n```mermaid\nclassDiagram\n    abstract class Exam {\n        +accept(visitor: ExamVisitor)\n    }\n\n    class OpenExam {\n        +accept(visitor: ExamVisitor)\n    }\n    class MixedExam {\n        +accept(visitor: ExamVisitor)\n    }\n    class ScrambledExam {\n        +accept(visitor: ExamVisitor)\n    }\n\n    interface ExamVisitor {\n        +visit(exam: OpenExam)\n        +visit(exam: MixedExam)\n        +visit(exam: ScrambledExam)\n    }\n\n    class CheatingDetectionVisitor {\n        +visit(exam: OpenExam)\n        +visit(exam: MixedExam)\n        +visit(exam: ScrambledExam)\n    }\n\n    class StatisticalAnalysisVisitor {\n        +visit(exam: OpenExam)\n        +visit(exam: MixedExam)\n        +visit(exam: ScrambledExam)\n    }\n\n    Exam <|-- OpenExam\n    Exam <|-- MixedExam\n    Exam <|-- ScrambledExam\n\n    ExamVisitor <|.. CheatingDetectionVisitor\n    ExamVisitor <|.. StatisticalAnalysisVisitor\n\n    Exam \"1\" --> \"1\" ExamVisitor : uses >\n```\n\n**קוד המחלקות:**\n\n```java\n// 1. Element Interface (Exam)\nabstract class Exam {\n    String title;\n\n    public Exam(String title) {\n        this.title = title;\n    }\n\n    public String getTitle() {\n        return title;\n    }\n\n    // The accept method is crucial for the Visitor pattern\n    public abstract void accept(ExamVisitor visitor);\n}\n\n// 2. Concrete Elements\nclass OpenExam extends Exam {\n    public OpenExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\nclass MixedExam extends Exam {\n    public MixedExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\nclass ScrambledExam extends Exam {\n    public ScrambledExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\n// 3. Visitor Interface\ninterface ExamVisitor {\n    void visit(OpenExam exam);\n    void visit(MixedExam exam);\n    void visit(ScrambledExam exam);\n    // Add new visit methods for new Exam types as they are introduced\n}\n\n// 4. Concrete Visitors (for specific operations)\nclass CheatingDetectionVisitor implements ExamVisitor {\n    @Override\n    public void visit(OpenExam exam) {\n        // Logic for cheating detection for OpenExam\n        System.out.println(\"Performing cheating detection for Open Exam: \" + exam.getTitle());\n    }\n\n    @Override\n    public void visit(MixedExam exam) {\n        // Logic for cheating detection for MixedExam\n        System.out.println(\"Performing cheating detection for Mixed Exam: \" + exam.getTitle());\n    }\n\n    @Override\n    public void visit(ScrambledExam exam) {\n        // Logic for cheating detection for ScrambledExam\n        System.out.println(\"Performing cheating detection for Scrambled Exam: \" + exam.getTitle());\n    }\n}\n\nclass StatisticalAnalysisVisitor implements ExamVisitor {\n    @Override\n    public void visit(OpenExam exam) {\n        // Logic for statistical analysis for OpenExam\n        System.out.println(\"Performing statistical analysis for Open Exam: \" + exam.getTitle());\n    }\n\n    @Override\n    public void visit(MixedExam exam) {\n        // Logic for statistical analysis for MixedExam\n        System.out.println(\"Performing statistical analysis for Mixed Exam: \" + exam.getTitle());\n    }\n\n    @Override\n    public void visit(ScrambledExam exam) {\n        // Logic for statistical analysis for ScrambledExam\n        System.out.println(\"Performing statistical analysis for Scrambled Exam: \" + exam.getTitle());\n    }\n}\n\n// Example Usage (Client Code)\npublic class ExamClient {\n    public static void main(String[] args) {\n        List<Exam> exams = List.of(\n                new OpenExam(\"Math Midterm\"),\n                new MixedExam(\"Physics Final\"),\n                new ScrambledExam(\"Chemistry Quiz\")\n        );\n\n        ExamVisitor cheatingDetector = new CheatingDetectionVisitor();\n        ExamVisitor statsAnalyzer = new StatisticalAnalysisVisitor();\n\n        System.out.println(\"--- Running Cheating Detection ---\");\n        for (Exam exam : exams) {\n            exam.accept(cheatingDetector);\n        }\n\n        System.out.println(\"\\n--- Running Statistical Analysis ---\");\n        for (Exam exam : exams) {\n            exam.accept(statsAnalyzer);\n        }\n    }\n}\n```",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_Open_q3/question.md"
+      "markdown": "./questions/exam_2025_B_B_Open_q3/question.md"
     }
   },
   {
@@ -441,7 +441,7 @@
     "options": [],
     "answer_text": "**תבניות העיצוב:** Bridge Pattern, Iterator Pattern\n\n**הסבר:**\n1.  **Bridge Pattern:** נדרש לאפשר החלפה של מבנה הנתונים הפנימי של `ExamContainer` (לדוגמה, מ-`LinkedList` ל-`ArrayList`) מבלי לשנות את קוד הלקוח. תבנית ה-Bridge מפרידה את ההפשטה (`ExamContainer`) מהמימוש שלה (מבנה הנתונים בפועל), כך ששניהם יכולים להשתנות באופן בלתי תלוי. `ExamContainer` יחזיק הפניה לממשק `ExamDataStructure`.\n2.  **Iterator Pattern:** נדרש לאפשר ללקוח לעבור על כל הבחינות ב-`ExamContainer` מבלי להיות תלוי במבנה הנתונים הספציפי. תבנית ה-Iterator מספקת דרך לגשת לאלמנטים של אובייקט אגרגציה באופן סדרתי מבלי לחשוף את הייצוג הפנימי שלו. `ExamContainer` יממש את הממשק `Iterable<Exam>` ויספק `Iterator<Exam>`.\n\n**תרשים מחלקות (UML):**\n```mermaid\nclassDiagram\n    abstract class Exam {\n        +check()\n    }\n\n    interface ExamDataStructure {\n        +addExam(exam: Exam)\n        +createIterator(): Iterator<Exam>\n    }\n\n    class LinkedListExamDataStructure {\n        -exams: List<Exam>\n        +addExam(exam: Exam)\n        +createIterator(): Iterator<Exam>\n    }\n\n    class ArrayListExamDataStructure {\n        -exams: List<Exam>\n        +addExam(exam: Exam)\n        +createIterator(): Iterator<Exam>\n    }\n\n    class ExamContainer {\n        -dataStructure: ExamDataStructure\n        +ExamContainer(dataStructure: ExamDataStructure)\n        +addExam(exam: Exam)\n        +iterator(): Iterator<Exam>\n    }\n\n    ExamContainer \"1\" --> \"1\" ExamDataStructure : uses (Bridge)\n    ExamDataStructure <|.. LinkedListExamDataStructure\n    ExamDataStructure <|.. ArrayListExamDataStructure\n    ExamContainer ..|> Iterable : implements\n    Iterable <|-- Iterator : creates\n\n    class OpenExam\n    class MixedExam\n    class ScrambledExam\n    Exam <|-- OpenExam\n    Exam <|-- MixedExam\n    Exam <|-- ScrambledExam\n```\n\n**קוד המחלקות:**\n\n```java\nimport java.util.Iterator;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.util.ArrayList;\n\n// Assuming Exam and its subclasses (OpenExam, MixedExam, ScrambledExam) are defined as in 3A\n// For completeness, defining them here again:\n\nabstract class Exam {\n    String title;\n\n    public Exam(String title) {\n        this.title = title;\n    }\n\n    public String getTitle() {\n        return title;\n    }\n\n    public abstract void check();\n}\n\nclass OpenExam extends Exam {\n    public OpenExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking OpenExam: \" + title);\n    }\n}\n\nclass MixedExam extends Exam {\n    public MixedExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking MixedExam: \" + title);\n    }\n}\n\nclass ScrambledExam extends Exam {\n    public ScrambledExam(String title) {\n        super(title);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking ScrambledExam: \" + title);\n    }\n}\n\n// Implementor Interface for Bridge Pattern\ninterface ExamDataStructure {\n    void addExam(Exam exam);\n    Iterator<Exam> createIterator();\n}\n\n// Concrete Implementor 1: LinkedList\nclass LinkedListExamDataStructure implements ExamDataStructure {\n    private List<Exam> exams = new LinkedList<>();\n\n    @Override\n    public void addExam(Exam exam) {\n        exams.add(exam);\n    }\n\n    @Override\n    public Iterator<Exam> createIterator() {\n        return exams.iterator();\n    }\n}\n\n// Concrete Implementor 2: ArrayList (for demonstration of flexibility)\nclass ArrayListExamDataStructure implements ExamDataStructure {\n    private List<Exam> exams = new ArrayList<>();\n\n    @Override\n    public void addExam(Exam exam) {\n        exams.add(exam);\n    }\n\n    @Override\n    public Iterator<Exam> createIterator() {\n        return exams.iterator();\n    }\n}\n\n// Abstraction for Bridge Pattern, also implements Iterable for Iterator Pattern\nclass ExamContainer implements Iterable<Exam> {\n    private ExamDataStructure dataStructure;\n\n    public ExamContainer(ExamDataStructure dataStructure) {\n        this.dataStructure = dataStructure;\n    }\n\n    public void addExam(Exam exam) {\n        dataStructure.addExam(exam);\n    }\n\n    @Override\n    public Iterator<Exam> iterator() {\n        return dataStructure.createIterator();\n    }\n}\n\n// Main class to demonstrate usage\npublic class Main {\n\n    // Client code as provided in the question\n    public static void checkAllExams(ExamContainer examContainer) {\n        for (Exam exam : examContainer) {\n            exam.check();\n        }\n    }\n\n    public static void main(String[] args) {\n        // Initialize ExamContainer with LinkedList implementation\n        System.out.println(\"Initializing with LinkedListExamDataStructure:\");\n        ExamContainer container = new ExamContainer(new LinkedListExamDataStructure());\n\n        // Add three exams of different types\n        container.addExam(new OpenExam(\"Midterm 1\"));\n        container.addExam(new MixedExam(\"Final Exam\"));\n        container.addExam(new ScrambledExam(\"Quiz 3\"));\n\n        // Client code checks all exams without knowing the underlying data structure\n        checkAllExams(container);\n\n        System.out.println(\"\\nInitializing with ArrayListExamDataStructure (demonstrating flexibility):\");\n        ExamContainer anotherContainer = new ExamContainer(new ArrayListExamDataStructure());\n        anotherContainer.addExam(new OpenExam(\"Pop Quiz\"));\n        anotherContainer.addExam(new MixedExam(\"Semester Project\"));\n        checkAllExams(anotherContainer);\n    }\n}\n```",
     "assets": {
-      "markdown": "/questions/exam_2025_B_B_Open_q4/question.md"
+      "markdown": "./questions/exam_2025_B_B_Open_q4/question.md"
     }
   }
 ]
