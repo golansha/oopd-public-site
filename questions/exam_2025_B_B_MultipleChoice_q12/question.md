@@ -11,7 +11,12 @@ skills: []
 
 ## Question
 נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`
-`public static <T> void copy(dest, src){ for (int i=0; i<src.size(); i++) dest.set(i,src.get(i)); }`
+```java
+public static <T> void copy(dest, src) { 
+    for (int i=0; i<src.size(); i++) 
+        dest.set(i, src.get(i)); 
+}
+```
 מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?
 
 ### Options
