@@ -1,17 +1,14 @@
 ---
 id: exam_2025_B_B_Open_q3
-title: תבניות עיצוב לניהול בחינות
+title: ניהול בחינות - תבניות עיצוב
 year: 2025
 semester: B
 moed: B
 type: Open
 topics:
-- Design Patterns
-- Visitor Pattern
-- Strategy Pattern
-- Iterator Pattern
-- Open/Closed Principle
-- Dependency Inversion Principle (DIP)
+- Design Patterns (Visitor)
+- Object-Oriented Design
+- Extensibility
 skills:
 - Applying design patterns
 - UML class diagramming
@@ -19,54 +16,35 @@ skills:
 ---
 
 ## Question
-במערכת לניהול בחינות ישנה מחלקה מופשטת `Exam` המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: `MixedExam`, `OpenExam`, `ScrambledExam` וכן הלאה.
-**סעיף א (10 נקודות)**
-נתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של `Exam`. להלן שתי פעולות לדוגמא :
-*   פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב- `MixedExam`-וב `ScrambledExam`
-*   פעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב `OpenExam`-וב `ScrambledExam`
-חשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות.
-הערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד.
-השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות.
-צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.
-
-**סעיף ב (10 נקודות)**
-במכללה מסוימת, המשתמשת במערכת הנייל, רוצים מדי פעם לשמור מופעי בחינות במבנה נתונים. אחד השימושים האפשריים במבני הנתונים הוא למשל לשמור את כל מופעי הבחינות שהתקיימו בסמסטר מסוים במחלקת מחשבים.
-נתונות הדרישות הבאות :
-*   הקליינט יוכל להוסיף בחינות למבנה הנתונים.
-*   לא להיות מוגבלים למבנה נתונים ספציפי. דהיינו, יהיה ניתן להחליף את מבנה הנתונים בלי שיהיה צורך לשנות את הקוד של הקליינט שניגש לנתונים.
-*   הקליינט יוכל לעבור על כל מופעי הבחינות, בלי להיות תלוי כלל במבנה הנתונים הספציפי שבו השתמשו.
-הניחו כי למחלקה `Exam` יש פונקציה מופשטת `check`. נרצה שהקוד הבא יעבוד בצורה תקינה :
-`public void checkAllExams(ExamContainer examContainer){`
-`for (Exam exam: examContainer){`
-`exam.check();`
-`}`
-`}`
-יש לתכנן את המחלקה `ExamContainer` כך שמבנה הנתונים הפנימי שלה יהיה ניתן להחלפה ללא צורך לקמפל מחדש את הקוד שלה. ניתן להשתמש במחלקות המוגדרות באופן מובנה בשפת `Java`.
-השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות.
-צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. ממש פונקציה ראשית שבה מאתחלים מופע של `ExamContainer` המתבסס על רשימה מקושרת (`LinkedList`) ומוסיפים למבנה הנתונים שלושה מופעים של בחינה (מסוגים לבחירתך).
+במערכת לניהול בחינות ישנה מחלקה מופשטת `Exam` המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: `MixedExam`, `OpenExam`, `ScrambledExam` וכן הלאה. סעיף א (10 נקודות) נתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של `Exam`. להלן שתי פעולות לדוגמא : * פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב- `MixedExam`-וב `ScrambledExam` * פעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב `OpenExam`-וב `ScrambledExam` חשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות. הערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד. השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.
 
 ## Answer
-**פתרון סעיף א:**
-בעיה זו מתארת מצב שבו יש להוסיף פעולות חדשות להיררכיה קיימת של סוגי `Exam` (`MixedExam`, `OpenExam`, `ScrambledExam`) מבלי לשנות את מחלקות ה-`Exam` עצמן. הפעולות גם בעלות מימושים שונים עבור סוגי `Exam` שונים. זהו מקרה שימוש קלאסי עבור **תבנית העיצוב Visitor**.
+הבעיה המתוארת, שבה יש היררכיית אובייקטים קיימת (`Exam` ותתי-המחלקות שלו) וצורך להוסיף פעולות חדשות על אובייקטים אלה מבלי לשנות את ההיררכיה הקיימת, היא מקרה קלאסי לשימוש ב**תבנית העיצוב Visitor (מבקר)**.
 
-**תבנית עיצוב בשימוש:** Visitor Pattern
+**שם תבנית העיצוב:** Visitor Pattern
 
-**תרשים מחלקות UML:**
+**הסבר:**
+תבנית ה-Visitor מאפשרת להגדיר פעולה חדשה על אלמנטים של היררכיית אובייקטים מבלי לשנות את המחלקות של האלמנטים עצמם. במקום זאת, הפעולה מוגדרת במחלקת Visitor נפרדת. כל אלמנט בהיררכיה 'מקבל' את ה-Visitor, וה-Visitor מבצע את הפעולה הספציפית עבור סוג האלמנט.
+
+**תרשים מחלקות (UML):**
+
 ```mermaid
 classDiagram
     direction LR
+
     class Exam {
         <<abstract>>
-        +accept(visitor:ExamVisitor)
+        +accept(visitor: ExamVisitor)
     }
+
     class OpenExam {
-        +accept(visitor:ExamVisitor)
+        +accept(visitor: ExamVisitor)
     }
     class MixedExam {
-        +accept(visitor:ExamVisitor)
+        +accept(visitor: ExamVisitor)
     }
     class ScrambledExam {
-        +accept(visitor:ExamVisitor)
+        +accept(visitor: ExamVisitor)
     }
 
     Exam <|-- OpenExam
@@ -75,44 +53,43 @@ classDiagram
 
     class ExamVisitor {
         <<interface>>
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+        +visit(openExam: OpenExam)
+        +visit(mixedExam: MixedExam)
+        +visit(scrambledExam: ScrambledExam)
     }
 
-    class PlagiarismChecker {
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+    class CheatingDetectionVisitor {
+        +visit(openExam: OpenExam)
+        +visit(mixedExam: MixedExam)
+        +visit(scrambledExam: ScrambledExam)
     }
-    class StatisticalAnalyzer {
-        +visit(exam:OpenExam)
-        +visit(exam:MixedExam)
-        +visit(exam:ScrambledExam)
+    class StatisticalAnalysisVisitor {
+        +visit(openExam: OpenExam)
+        +visit(mixedExam: MixedExam)
+        +visit(scrambledExam: ScrambledExam)
     }
 
-    ExamVisitor <|.. PlagiarismChecker
-    ExamVisitor <|.. StatisticalAnalyzer
+    ExamVisitor <|.. CheatingDetectionVisitor
+    ExamVisitor <|.. StatisticalAnalysisVisitor
 
-    Exam "1" *-- "0..*" ExamVisitor : uses
+    Exam "1" --> "1" ExamVisitor : uses >
+
 ```
 
-**מבנה הקוד:**
-```java
-import java.util.List;
+**קוד עבור המחלקות:**
 
-// 1. The abstract Exam class (Element)
+```java
+// 1. Element Abstract Class
 public abstract class Exam {
     public abstract void accept(ExamVisitor visitor);
 }
 
-// 2. Concrete Exam classes (Concrete Elements)
+// 2. Concrete Elements
 public class OpenExam extends Exam {
     @Override
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
-    // Other OpenExam specific methods/fields
 }
 
 public class MixedExam extends Exam {
@@ -120,7 +97,6 @@ public class MixedExam extends Exam {
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
-    // Other MixedExam specific methods/fields
 }
 
 public class ScrambledExam extends Exam {
@@ -128,74 +104,77 @@ public class ScrambledExam extends Exam {
     public void accept(ExamVisitor visitor) {
         visitor.visit(this);
     }
-    // Other ScrambledExam specific methods/fields
 }
 
-// 3. The Visitor Interface
+// 3. Visitor Interface
 public interface ExamVisitor {
-    void visit(OpenExam exam);
-    void visit(MixedExam exam);
-    void visit(ScrambledExam exam);
-    // Add visit methods for any new Exam types
+    void visit(OpenExam openExam);
+    void visit(MixedExam mixedExam);
+    void visit(ScrambledExam scrambledExam);
 }
 
-// 4. Concrete Visitor Implementations
-public class PlagiarismChecker implements ExamVisitor {
+// 4. Concrete Visitors
+public class CheatingDetectionVisitor implements ExamVisitor {
     @Override
-    public void visit(OpenExam exam) {
-        // Plagiarism check logic for OpenExam (if applicable, otherwise empty or throw UnsupportedOperationException)
-        System.out.println("Performing plagiarism check for OpenExam.");
+    public void visit(OpenExam openExam) {
+        // פעולה זו אינה נתמכת עבור OpenExam, או מימוש ברירת מחדל
+        System.out.println("Cheating detection not applicable for OpenExam");
     }
 
     @Override
-    public void visit(MixedExam exam) {
-        // Plagiarism check logic for MixedExam
-        System.out.println("Performing plagiarism check for MixedExam.");
+    public void visit(MixedExam mixedExam) {
+        // מימוש בדיקת העתקות עבור MixedExam
+        System.out.println("Performing cheating detection for MixedExam");
     }
 
     @Override
-    public void visit(ScrambledExam exam) {
-        // Plagiarism check logic for ScrambledExam
-        System.out.println("Performing plagiarism check for ScrambledExam.");
-    }
-}
-
-public class StatisticalAnalyzer implements ExamVisitor {
-    @Override
-    public void visit(OpenExam exam) {
-        // Statistical analysis logic for OpenExam
-        System.out.println("Performing statistical analysis for OpenExam.");
-    }
-
-    @Override
-    public void visit(MixedExam exam) {
-        // Statistical analysis logic for MixedExam (if applicable, otherwise empty or throw UnsupportedOperationException)
-        System.out.println("Performing statistical analysis for MixedExam.");
-    }
-
-    @Override
-    public void visit(ScrambledExam exam) {
-        // Statistical analysis logic for ScrambledExam
-        System.out.println("Performing statistical analysis for ScrambledExam.");
+    public void visit(ScrambledExam scrambledExam) {
+        // מימוש בדיקת העתקות עבור ScrambledExam
+        System.out.println("Performing cheating detection for ScrambledExam");
     }
 }
 
-// Example Usage:
-public class ClientA {
+public class StatisticalAnalysisVisitor implements ExamVisitor {
+    @Override
+    public void visit(OpenExam openExam) {
+        // מימוש בדיקות סטטיסטיות עבור OpenExam
+        System.out.println("Performing statistical analysis for OpenExam");
+    }
+
+    @Override
+    public void visit(MixedExam mixedExam) {
+        // פעולה זו אינה נתמכת עבור MixedExam, או מימוש ברירת מחדל
+        System.out.println("Statistical analysis not applicable for MixedExam");
+    }
+
+    @Override
+    public void visit(ScrambledExam scrambledExam) {
+        // מימוש בדיקות סטטיסטיות עבור ScrambledExam
+        System.out.println("Performing statistical analysis for ScrambledExam");
+    }
+}
+
+// דוגמת שימוש (לא נדרש בשאלה, אך להמחשה)
+public class Main {
     public static void main(String[] args) {
-        List<Exam> exams = List.of(new OpenExam(), new MixedExam(), new ScrambledExam());
+        List<Exam> exams = List.of(
+                new OpenExam(),
+                new MixedExam(),
+                new ScrambledExam()
+        );
 
-        ExamVisitor plagiarismChecker = new PlagiarismChecker();
-        ExamVisitor statisticalAnalyzer = new StatisticalAnalyzer();
+        ExamVisitor cheatingDetector = new CheatingDetectionVisitor();
+        ExamVisitor statsAnalyzer = new StatisticalAnalysisVisitor();
 
+        System.out.println("--- Running Cheating Detection ---");
         for (Exam exam : exams) {
-            exam.accept(plagiarismChecker);
-            exam.accept(statisticalAnalyzer);
+            exam.accept(cheatingDetector);
+        }
+
+        System.out.println("\n--- Running Statistical Analysis ---");
+        for (Exam exam : exams) {
+            exam.accept(statsAnalyzer);
         }
     }
 }
 ```
-
-**פתרון סעיף ב:**
-לבעיה זו יש שתי דרישות עיקריות:
-1.  **מבנה נתונים פנימי גמיש:** ה-`ExamContainer` צריך לאפשר החלפה של מבנה הנתונים הפנימי שלו מבלי לשנות את קוד הלקוח. זה מצביע על **תבנית Strategy** או **Bridge** עבור מנגנון האחסון. בהינתן ההקשר של 

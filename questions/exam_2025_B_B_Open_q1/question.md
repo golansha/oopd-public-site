@@ -11,38 +11,25 @@ topics:
 - Data Processing
 skills:
 - Stream API usage
+- functional programming
+- data aggregation
 - filtering
-- mapping
-- reducing
-- collecting
-- distinct
 - sorting
-- limiting
 ---
 
 ## Question
 במערכת נתונה המייצגת משחק, יש מחלקה בשם `Player` שמכילה את הפונקציות הבאות: `getScore`: מחזירה את כמות הנקודות של השחקן `getName`: מחזירה את שם השחקן במהלך המשחק, בכל פעם שאחד השחקנים מקבל נקודות, נוצר מופע חדש של השחקן עם מספר הנקודות המעודכן. המופעים מתווספים לרשימה ובכל שניה מופעל תהליך שמעדכן את מספר הנקודות של כל שחקן על המסך. קצב המשחק גבוה מאד ולכן ייתכן שברשימה יהיו כמה מופעים עבור אותו השחקן ורק המופע עם המספר המקסימלי של נקודות הוא המופע המעודכן. בהנתן רשימת המופעים, `players`, כתוב פונקציה שמחזירה את רשימת שמות עשרת השחקנים (ללא כפילויות) שצברו את מירב הנקודות? אין להשתמש בפונקציות עזר. יש להשתמש ב `Java Streams` בלבד (אין להשתמש בלולאות או בפונקציית `ForEach`). `Public static getHighScoreList(List<Player> players){`
 
 ## Answer
-הבעיה דורשת למצוא את עשרת השחקנים המובילים עם הניקוד הגבוה ביותר, תוך התחשבות בכך שיכולים להיות מספר אובייקטי `Player` עבור אותו שחקן, ואנו מתעניינים רק באובייקט עם הניקוד המקסימלי. יש להשתמש ב-`Java Streams` בלבד, ללא לולאות או `forEach`.
-
-**שלבים:**
-1.  **קיבוץ לפי שם שחקן:** השתמש ב-`Collectors.groupingBy` כדי לקבץ אובייקטי `Player` לפי ה-`name` שלהם.
-2.  **מציאת הניקוד המקסימלי לכל שחקן:** בתוך כל קבוצה, השתמש ב-`Collectors.reducing` עם `BinaryOperator.maxBy` ו-`Comparator.comparing(Player::getScore)` כדי למצוא את אובייקט ה-`Player` עם הניקוד המקסימלי עבור אותו שם.
-3.  **סינון אופציונליים ריקים:** `reducing` מחזיר `Optional<Player>`, לכן יש לסנן אופציונליים ריקים (אם כי בהקשר זה, לא סביר אם `players` אינה ריקה).
-4.  **מיון לפי ניקוד (יורד):** מיין את אובייקטי ה-`Player` שהתקבלו לפי ה-`score` שלהם בסדר יורד.
-5.  **הגבלה לעשרת הראשונים:** קח רק את עשרת השחקנים המובילים.
-6.  **מיפוי לשמות:** חלץ את ה-`name` של כל `Player`.
-7.  **איסוף לרשימה:** אסוף את השמות ל-`List<String>`.
+הפתרון דורש שימוש ב-`Java Streams` כדי לקבץ את השחקנים לפי שמם, למצוא את הניקוד המקסימלי לכל שחקן, למיין את השחקנים לפי הניקוד בסדר יורד, להגביל לעשרת השחקנים המובילים ולבסוף לאסוף את שמותיהם לרשימה.
 
 ```java
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BinaryOperator;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-// Assuming Player class exists with getName() and getScore()
+// Assume Player class exists with getName() and getScore() methods
 class Player {
     private String name;
     private int score;
@@ -62,25 +49,55 @@ class Player {
 
     @Override
     public String toString() {
-        return "Player{" + "name='" + name + '\'' + ", score=" + score + '}';
+        return "Player{" +
+               "name='" + name + '\'' +
+               ", score=" + score +
+               '}';
     }
 }
 
-public class ExamSolution {
+public class GameAnalyzer {
+
     public static List<String> getHighScoreList(List<Player> players) {
         return players.stream()
+                // Group players by name and for each name, find the player with the max score
                 .collect(Collectors.groupingBy(
                         Player::getName,
-                        Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Player::getScore)))
+                        Collectors.collectingAndThen(
+                                Collectors.maxBy(Comparator.comparingInt(Player::getScore)),
+                                opt -> opt.orElse(null) // Handle case where a name might have no players (shouldn't happen with groupingBy)
+                        )
                 ))
-                .values() // Get the Optional<Player> values from the map
-                .stream()
-                .filter(Optional::isPresent) // Filter out empty Optionals
-                .map(Optional::get) // Get the Player object from the Optional
-                .sorted(Comparator.comparing(Player::getScore).reversed()) // Sort by score descending
-                .limit(10) // Take top 10
+                .values().stream() // Get the unique players (with max scores) from the map values
+                .filter(java.util.Objects::nonNull) // Filter out any nulls if orElse(null) was hit
+                .sorted(Comparator.comparingInt(Player::getScore).reversed()) // Sort by score descending
+                .limit(10) // Take the top 10
                 .map(Player::getName) // Map to player names
-                .collect(Collectors.toList()); // Collect into a List
+                .collect(Collectors.toList()); // Collect into a list
+    }
+
+    public static void main(String[] args) {
+        List<Player> players = List.of(
+                new Player("Alice", 100),
+                new Player("Bob", 150),
+                new Player("Alice", 120), // Alice's max score is 120
+                new Player("Charlie", 80),
+                new Player("Bob", 130),
+                new Player("David", 200),
+                new Player("Eve", 110),
+                new Player("Frank", 170),
+                new Player("Grace", 90),
+                new Player("Heidi", 160),
+                new Player("Ivan", 190),
+                new Player("Judy", 140),
+                new Player("Karen", 210),
+                new Player("Liam", 70)
+        );
+
+        List<String> topPlayers = getHighScoreList(players);
+        System.out.println("Top 10 Players by Score: " + topPlayers);
+        // Expected output (order might vary for same scores, but names should be correct):
+        // [Karen, David, Ivan, Frank, Heidi, Bob, Judy, Alice, Eve, Grace]
     }
 }
 ```

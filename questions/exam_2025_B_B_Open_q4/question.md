@@ -1,144 +1,131 @@
 ---
 id: exam_2025_B_B_Open_q4
-title: ניהול בחינות - מבנה נתונים גמיש
+title: ניהול בחינות - תבניות עיצוב
 year: 2025
 semester: B
 moed: B
 type: Open
 topics:
-- Design Patterns
-- Bridge Pattern
-- Iterator Pattern
-- Data Structures
+- Design Patterns (Strategy, Iterator)
 - Object-Oriented Design
+- Data Structures
 skills:
-- Pattern Application
-- UML Diagrams
-- Code Implementation
-- Abstraction
+- Applying design patterns
+- UML class diagramming
+- Java code structure
+- main method implementation
 ---
 
 ## Question
-במכללה מסוימת, המשתמשת במערכת הנייל, רוצים מדי פעם לשמור מופעי בחינות במבנה נתונים. אחד השימושים האפשריים במבני הנתונים הוא למשל לשמור את כל מופעי הבחינות שהתקיימו בסמסטר מסוים במחלקת מחשבים. נתונות הדרישות הבאות : • הקליינט יוכל להוסיף בחינות למבנה הנתונים. • לא להיות מוגבלים למבנה נתונים ספציפי. דהיינו, יהיה ניתן להחליף את מבנה הנתונים בלי שיהיה צורך לשנות את הקוד של הקליינט שניגש לנתונים. • הקליינט יוכל לעבור על כל מופעי הבחינות, בלי להיות תלוי כלל במבנה הנתונים הספציפי שבו השתמשו. הניחו כי למחלקה Exam יש פונקציה מופשטת check. נרצה שהקוד הבא יעבוד בצורה תקינה : public void checkAllExams(ExamContainer examContainer){ for (Exam exam: examContainer){ exam.check(); } } יש לתכנן את המחלקה ExamContainer כך שמבנה הנתונים הפנימי שלה יהיה ניתן להחלפה ללא צורך לקמפל מחדש את הקוד שלה. ניתן להשתמש במחלקות המוגדרות באופן מובנה בשפת Java. השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. ממש פונקציה ראשית שבה מאתחלים מופע של ExamContainer המתבסס על רשימה מקושרת (LinkedList) ומוסיפים למבנה הנתונים שלושה מופעים של בחינה (מסוגים לבחירתך).
+סעיף ב (10 נקודות) במכללה מסוימת, המשתמשת במערכת הנייל, רוצים מדי פעם לשמור מופעי בחינות במבנה נתונים. אחד השימושים האפשריים במבני הנתונים הוא למשל לשמור את כל מופעי הבחינות שהתקיימו בסמסטר מסוים במחלקת מחשבים. נתונות הדרישות הבאות : * הקליינט יוכל להוסיף בחינות למבנה הנתונים. * לא להיות מוגבלים למבנה נתונים ספציפי. דהיינו, יהיה ניתן להחליף את מבנה הנתונים בלי שיהיה צורך לשנות את הקוד של הקליינט שניגש לנתונים. * הקליינט יוכל לעבור על כל מופעי הבחינות, בלי להיות תלוי כלל במבנה הנתונים הספציפי שבו השתמשו. הניחו כי למחלקה `Exam` יש פונקציה מופשטת `check`. נרצה שהקוד הבא יעבוד בצורה תקינה : `public void checkAllExams(ExamContainer examContainer){ for (Exam exam: examContainer){ exam.check(); } }` יש לתכנן את המחלקה `ExamContainer` כך שמבנה הנתונים הפנימי שלה יהיה ניתן להחלפה ללא צורך לקמפל מחדש את הקוד שלה. ניתן להשתמש במחלקות המוגדרות באופן מובנה בשפת `Java`. השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. ממש פונקציה ראשית שבה מאתחלים מופע של `ExamContainer` המתבסס על רשימה מקושרת (`LinkedList`) ומוסיפים למבנה הנתונים שלושה מופעים של בחינה (מסוגים לבחירתך).
 
 ## Answer
-**תבניות העיצוב:** Bridge Pattern, Iterator Pattern
+הדרישות בשאלה מצביעות על שימוש בשתי תבניות עיצוב עיקריות:
+1.  **Strategy Pattern (תבנית אסטרטגיה):** כדי לאפשר החלפה של מבנה הנתונים הפנימי של `ExamContainer` מבלי לשנות את הקוד של הלקוח.
+2.  **Iterator Pattern (תבנית איטרטור):** כדי לאפשר ללקוח לעבור על כל מופעי הבחינות ב-`ExamContainer` מבלי להיות תלוי במבנה הנתונים הפנימי. הדרישה לקוד `for (Exam exam: examContainer)` מחייבת את `ExamContainer` לממש את ממשק `Iterable`.
 
-**הסבר:**
-1.  **Bridge Pattern:** נדרש לאפשר החלפה של מבנה הנתונים הפנימי של `ExamContainer` (לדוגמה, מ-`LinkedList` ל-`ArrayList`) מבלי לשנות את קוד הלקוח. תבנית ה-Bridge מפרידה את ההפשטה (`ExamContainer`) מהמימוש שלה (מבנה הנתונים בפועל), כך ששניהם יכולים להשתנות באופן בלתי תלוי. `ExamContainer` יחזיק הפניה לממשק `ExamDataStructure`.
-2.  **Iterator Pattern:** נדרש לאפשר ללקוח לעבור על כל הבחינות ב-`ExamContainer` מבלי להיות תלוי במבנה הנתונים הספציפי. תבנית ה-Iterator מספקת דרך לגשת לאלמנטים של אובייקט אגרגציה באופן סדרתי מבלי לחשוף את הייצוג הפנימי שלו. `ExamContainer` יממש את הממשק `Iterable<Exam>` ויספק `Iterator<Exam>`.
+**שמות תבניות העיצוב:** Strategy Pattern, Iterator Pattern
 
 **תרשים מחלקות (UML):**
+
 ```mermaid
 classDiagram
-    abstract class Exam {
+    direction LR
+
+    class Exam {
+        <<abstract>>
         +check()
     }
 
-    interface ExamDataStructure {
-        +addExam(exam: Exam)
-        +createIterator(): Iterator<Exam>
+    class OpenExam {
+        +check()
+    }
+    class MixedExam {
+        +check()
+    }
+    class ScrambledExam {
+        +check()
     }
 
-    class LinkedListExamDataStructure {
-        -exams: List<Exam>
-        +addExam(exam: Exam)
-        +createIterator(): Iterator<Exam>
-    }
+    Exam <|-- OpenExam
+    Exam <|-- MixedExam
+    Exam <|-- ScrambledExam
 
-    class ArrayListExamDataStructure {
-        -exams: List<Exam>
-        +addExam(exam: Exam)
-        +createIterator(): Iterator<Exam>
-    }
-
-    class ExamContainer {
-        -dataStructure: ExamDataStructure
-        +ExamContainer(dataStructure: ExamDataStructure)
+    class ExamStorageStrategy {
+        <<interface>>
         +addExam(exam: Exam)
         +iterator(): Iterator<Exam>
     }
 
-    ExamContainer "1" --> "1" ExamDataStructure : uses (Bridge)
-    ExamDataStructure <|.. LinkedListExamDataStructure
-    ExamDataStructure <|.. ArrayListExamDataStructure
-    ExamContainer ..|> Iterable : implements
-    Iterable <|-- Iterator : creates
+    class LinkedListExamStorageStrategy {
+        -exams: List<Exam>
+        +addExam(exam: Exam)
+        +iterator(): Iterator<Exam>
+    }
 
-    class OpenExam
-    class MixedExam
-    class ScrambledExam
-    Exam <|-- OpenExam
-    Exam <|-- MixedExam
-    Exam <|-- ScrambledExam
+    class ArrayListExamStorageStrategy {
+        -exams: List<Exam>
+        +addExam(exam: Exam)
+        +iterator(): Iterator<Exam>
+    }
+
+    ExamStorageStrategy <|.. LinkedListExamStorageStrategy
+    ExamStorageStrategy <|.. ArrayListExamStorageStrategy
+
+    class ExamContainer {
+        -storageStrategy: ExamStorageStrategy
+        +ExamContainer(strategy: ExamStorageStrategy)
+        +addExam(exam: Exam)
+        +iterator(): Iterator<Exam>
+    }
+
+    ExamContainer "1" *-- "1" ExamStorageStrategy : uses >
+    ExamContainer ..|> Iterable
+
 ```
 
-**קוד המחלקות:**
+**קוד עבור המחלקות:**
 
 ```java
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ArrayList;
 
-// Assuming Exam and its subclasses (OpenExam, MixedExam, ScrambledExam) are defined as in 3A
-// For completeness, defining them here again:
-
-abstract class Exam {
-    String title;
-
-    public Exam(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
+// 1. Exam Hierarchy (simplified from Part A for check() method)
+public abstract class Exam {
     public abstract void check();
 }
 
-class OpenExam extends Exam {
-    public OpenExam(String title) {
-        super(title);
-    }
-
+public class OpenExam extends Exam {
     @Override
     public void check() {
-        System.out.println("Checking OpenExam: " + title);
+        System.out.println("Checking OpenExam");
     }
 }
 
-class MixedExam extends Exam {
-    public MixedExam(String title) {
-        super(title);
-    }
-
+public class MixedExam extends Exam {
     @Override
     public void check() {
-        System.out.println("Checking MixedExam: " + title);
+        System.out.println("Checking MixedExam");
     }
 }
 
-class ScrambledExam extends Exam {
-    public ScrambledExam(String title) {
-        super(title);
-    }
-
+public class ScrambledExam extends Exam {
     @Override
     public void check() {
-        System.out.println("Checking ScrambledExam: " + title);
+        System.out.println("Checking ScrambledExam");
     }
 }
 
-// Implementor Interface for Bridge Pattern
-interface ExamDataStructure {
+// 2. Strategy Interface for Exam Storage
+public interface ExamStorageStrategy {
     void addExam(Exam exam);
-    Iterator<Exam> createIterator();
+    Iterator<Exam> iterator();
 }
 
-// Concrete Implementor 1: LinkedList
-class LinkedListExamDataStructure implements ExamDataStructure {
+// 3. Concrete Strategy: LinkedList implementation
+public class LinkedListExamStorageStrategy implements ExamStorageStrategy {
     private List<Exam> exams = new LinkedList<>();
 
     @Override
@@ -147,13 +134,13 @@ class LinkedListExamDataStructure implements ExamDataStructure {
     }
 
     @Override
-    public Iterator<Exam> createIterator() {
+    public Iterator<Exam> iterator() {
         return exams.iterator();
     }
 }
 
-// Concrete Implementor 2: ArrayList (for demonstration of flexibility)
-class ArrayListExamDataStructure implements ExamDataStructure {
+// 4. Concrete Strategy: ArrayList implementation (example of another strategy)
+public class ArrayListExamStorageStrategy implements ExamStorageStrategy {
     private List<Exam> exams = new ArrayList<>();
 
     @Override
@@ -162,56 +149,58 @@ class ArrayListExamDataStructure implements ExamDataStructure {
     }
 
     @Override
-    public Iterator<Exam> createIterator() {
+    public Iterator<Exam> iterator() {
         return exams.iterator();
     }
 }
 
-// Abstraction for Bridge Pattern, also implements Iterable for Iterator Pattern
-class ExamContainer implements Iterable<Exam> {
-    private ExamDataStructure dataStructure;
+// 5. Context Class: ExamContainer (implements Iterable for Iterator Pattern)
+public class ExamContainer implements Iterable<Exam> {
+    private ExamStorageStrategy storageStrategy;
 
-    public ExamContainer(ExamDataStructure dataStructure) {
-        this.dataStructure = dataStructure;
+    public ExamContainer(ExamStorageStrategy strategy) {
+        this.storageStrategy = strategy;
     }
 
     public void addExam(Exam exam) {
-        dataStructure.addExam(exam);
+        storageStrategy.addExam(exam);
     }
 
+    // Allows iteration using for-each loop
     @Override
     public Iterator<Exam> iterator() {
-        return dataStructure.createIterator();
+        return storageStrategy.iterator();
     }
-}
 
-// Main class to demonstrate usage
-public class Main {
-
-    // Client code as provided in the question
+    // Method from the problem description
     public static void checkAllExams(ExamContainer examContainer) {
         for (Exam exam : examContainer) {
             exam.check();
         }
     }
 
+    // Main method to demonstrate
     public static void main(String[] args) {
-        // Initialize ExamContainer with LinkedList implementation
-        System.out.println("Initializing with LinkedListExamDataStructure:");
-        ExamContainer container = new ExamContainer(new LinkedListExamDataStructure());
+        // Initialize ExamContainer with LinkedList strategy
+        System.out.println("Initializing ExamContainer with LinkedList strategy...");
+        ExamContainer container = new ExamContainer(new LinkedListExamStorageStrategy());
 
         // Add three exams of different types
-        container.addExam(new OpenExam("Midterm 1"));
-        container.addExam(new MixedExam("Final Exam"));
-        container.addExam(new ScrambledExam("Quiz 3"));
+        System.out.println("Adding three exams...");
+        container.addExam(new OpenExam());
+        container.addExam(new MixedExam());
+        container.addExam(new ScrambledExam());
 
-        // Client code checks all exams without knowing the underlying data structure
+        // Demonstrate checking all exams using the provided method
+        System.out.println("\nChecking all exams in the container:");
         checkAllExams(container);
 
-        System.out.println("\nInitializing with ArrayListExamDataStructure (demonstrating flexibility):");
-        ExamContainer anotherContainer = new ExamContainer(new ArrayListExamDataStructure());
-        anotherContainer.addExam(new OpenExam("Pop Quiz"));
-        anotherContainer.addExam(new MixedExam("Semester Project"));
+        // Example of changing strategy at runtime (if needed)
+        System.out.println("\nChanging to ArrayList strategy and adding more exams...");
+        ExamContainer anotherContainer = new ExamContainer(new ArrayListExamStorageStrategy());
+        anotherContainer.addExam(new OpenExam());
+        anotherContainer.addExam(new ScrambledExam());
+        System.out.println("Checking exams in the new container:");
         checkAllExams(anotherContainer);
     }
 }
