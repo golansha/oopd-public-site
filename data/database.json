@@ -1,125 +1,165 @@
 [
   {
     "id": "exam_2025_B_B_MultipleChoice_q10",
-    "title": "הפרת SRP במחלקת `Invoice`",
+    "title": "LSP Check",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון `SRP`?",
-    "options": [
-      "א. פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`",
-      "ב. פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`",
-      "ג. פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`",
-      "ד. פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`"
+    "topics": [
+      "SOLID - LSP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעקרון `SRP` (Single Responsibility Principle) קובע שלמחלקה צריכה להיות אחריות אחת ויחידה. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום כולל, בדיקה אם ריקה). בדיקת חברות במועדון (`checkClubMembership()`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פעולה זו מפרה את `SRP`.",
+    "skills": [
+      "SOLID Principles",
+      "Polymorphism"
+    ],
+    "question_text": "מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`?\nהנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.",
+    "options": [
+      "א. הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.",
+      "ב. יש שתי תשובות אחרות נכונות.",
+      "ג. וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.",
+      "ד. הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי."
+    ],
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעיקרון LSP קובע שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. תהליך הבדיקה כולל וידוא שההתנהגות של המחלקה היורשת (כמו `HttpClient`) תואמת את הציפיות מהמחלקה הבסיסית (כמו `NetworkConnection`). הנחה שהירושה תקינה רק בגלל הגדרה סמנטית בעולם הדומיין (HTTP הוא סוג של חיבור רשת) אינה מספיקה לבדיקת LSP; יש צורך בבדיקות התנהגותיות קונקרטיות כדי לוודא שההחלפה אכן עובדת בפועל ללא תקלות.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q10/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q11",
-    "title": "בדיקת LSP",
+    "title": "Generics Copy Method",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "מחלקת `NetworkConnection` מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת `HttpConnection` יורשת ממחלקת `NetworkConnection` ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול `HTTP`. מה מהדברים הבאים `אינו` מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`? הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות `HTTP` מוגדר כסוג של חיבור רשת.",
-    "options": [
-      "א. וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.",
-      "ב. יש שתי תשובות אחרות נכונות.",
-      "ג. הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי."
+    "topics": [
+      "Generic - Streams"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nעקרון `LSP` (Liskov Substitution Principle) עוסק בכך שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. האפשרות הראשונה, \"וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח\", מתארת תנאי או דרישה שצריכה להתקיים עבור `LSP`, אך היא אינה מתארת `תהליך בדיקה` בפועל. לעומת זאת, האפשרות השנייה, \"הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient`\", מתארת בבירור תהליך בדיקה אקטיבי של `LSP`.",
+    "skills": [
+      "Java Generics",
+      "Type Safety"
+    ],
+    "question_text": "נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`\n```java\npublic static <T> void copy(dest, src){\n    for (int i=0; i<src.size(); i++)\n        dest.set(i,src.get(i));\n}\n```\nמהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
+    "options": [
+      "א. `public static <T> void copy (List<? super T> dest, List<? extends T> src)`",
+      "ב. `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`",
+      "ג. `public static <T> void copy (List<? super T> dest, List<? super T> src)`",
+      "ד. `public static <T> void copy (List<? extends T> dest, List<? super T> src)`"
+    ],
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהחתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של עקרון PECS (Producer-`extends`, Consumer-`super`). הרשימה `src` היא 'מפיקה' (producer) של אובייקטים, ולכן אנו יכולים לקרוא ממנה אובייקטים שהם `T` או תת-טיפוס של `T` (`? extends T`). הרשימה `dest` היא 'צרכנית' (consumer) של אובייקטים, ולכן אנו יכולים להכניס אליה אובייקטים שהם `T` או על-טיפוס של `T` (`? super T`).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q11/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q12",
-    "title": "חתימת פונקציית `copy` עם Generics",
+    "title": "Package Design Principles",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`\n`public static <T> void copy(dest, src){ for (int i=0; i<src.size(); i++) dest.set(i,src.get(i)); }`\nמהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
-    "options": [
-      "א. `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`",
-      "ב. `public static <T> void copy (List<? super T> dest, List<? super T> src)`",
-      "ג. `public static <T> void copy (List<? super T> dest, List<? extends T> src)`",
-      "ד. `public static <T> void copy (List<? extends T> dest, List<? super T> src)`"
+    "topics": [
+      "Package design - Cohesion",
+      "Package design - Coupling"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעבור פונקציית `copy` שמעתיקה אלמנטים מ-`src` ל-`dest`, יש להשתמש ב-`PECS` (Producer Extends, Consumer Super). `src` היא 'מפיקה' (Producer) של אלמנטים, ולכן צריכה להיות `List<? extends T>`. `dest` היא 'צורכת' (Consumer) של אלמנטים, ולכן צריכה להיות `List<? super T>`. החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`.",
+    "skills": [
+      "Package Design",
+      "Software Architecture"
+    ],
+    "question_text": "בחברת 'אפליקציות בע\"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:",
+    "options": [
+      "א. קיימת הפרה של עיקרון CRP",
+      "ב. עיקרון CRP ו-CCP מופרים",
+      "ג. קיימת הפרה של עיקרון CCP",
+      "ד. אף עיקרון לא מופר"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעיקרון ה-Common Closure Principle (CCP) קובע כי מחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. אם יש סיבה אחת לשינוי שמשפיעה על *כל* המחלקות באפליקציה, והן כולן נכללות בחבילה אחת גדולה, זה תואם את CCP. לעומת זאת, עיקרון ה-Common Reuse Principle (CRP) קובע כי מחלקות שאינן משתמשות זו בזו לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, ושחרור חבילה גדולה שכוללת הכל גורם להם להיות תלויים בקוד שהם לא צריכים, אז CRP מופר. לכן, קיימת הפרה של עיקרון CRP.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q12/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q13",
-    "title": "עקרונות ניהול חבילות ו-`'אפליקציות בע\"מ'`",
+    "title": "Dependency Injection Definition",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "בחברת 'אפליקציות בע\"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:",
-    "options": [
-      "א. עיקרון `CRP` ו-`CCP` מופרים",
-      "ב. אף עיקרון לא מופר",
-      "ג. קיימת הפרה של עיקרון `CCP`",
-      "ד. קיימת הפרה של עיקרון `CRP`"
+    "topics": [
+      "Frameworks - Dependency injection"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהתיאור מצביע על הפרה של עקרון `CRP` (Common Reuse Principle). `CRP` קובע כי מחלקות שמשתמשות יחד צריכות להיות באותה חבילה, ומחלקות שאינן משתמשות יחד לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, אך החברה משחררת חבילה גדולה שכוללת הכל, זה אומר שהלקוחות נאלצים לקבל תלות במחלקות שהם לא משתמשים בהן, מה שמפר את `CRP`. עקרון `CCP` (Common Closure Principle) קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. העובדה שיש 'סיבה אחת לשינוי שמשפיעה על כל המחלקות' דווקא תומכת ב-`CCP`.",
+    "skills": [
+      "Dependency Injection",
+      "Software Design"
+    ],
+    "question_text": "Dependency Injection - \"הזרקת תלויות\"\nסמן מהמשפטים הבאים את הנכון ביותר:",
+    "options": [
+      "א. Dependency Injection הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.",
+      "ב. כדי להזריק תלויות באמצעות Dependency Injection, השדות המוזרקים חייבים להיות מוגדרות כממשקים.",
+      "ג. אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.",
+      "ד. ישנן שתי תשובות אחרות נכונות."
+    ],
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהמשפט הראשון מתאר בצורה מדויקת את Dependency Injection: זוהי טכניקה שבה אובייקטים מקבלים את התלויות שלהם (שדות, פרמטרים) מבחוץ, במקום ליצור אותן בעצמם. זה מקדם צימוד רפוי (loose coupling) וקלות בבדיקות. שדות מוזרקים לא חייבים להיות ממשקים (אף שזה מומלץ), וניתן לפתור דו-משמעות בהזרקה של ממשקים באמצעות קונפיגורציה או שימוש באנוטציות כמו `@Named`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q13/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q14",
-    "title": "הגדרת Dependency Injection",
+    "title": "WMS Design Patterns",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "`Dependency Injection` - \"הזרקת תלויות\" סמן מהמשפטים הבאים את הנכון ביותר:",
-    "options": [
-      "א. ישנן שתי תשובות אחרות נכונות.",
-      "ב. אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.",
-      "ג. כדי להזריק תלויות באמצעות `Dependency Injection`, השדות המוזרקים חייבים להיות מוגדרות כממשקים.",
-      "ד. `Dependency Injection` הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם."
+    "topics": [
+      "WMS - Observer",
+      "WMS - Bridge",
+      "UML - תרשים מחלקות"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\n`Dependency Injection` היא טכניקה שבה אובייקט מקבל את התלויות שלו מבחוץ במקום ליצור אותן בעצמו. ההגדרה הראשונה מתארת זאת בצורה מדויקת: זוהי שיטה לאתחול אובייקטים על ידי 'הזרקת' התלויות שלהם (בדרך כלל דרך קונסטרוקטור, setter או שדה). שדות מוזרקים לא חייבים להיות ממשקים (אף כי זהו שימוש נפוץ ומומלץ), ואין דו-משמעות אם משתמשים בממשקים, שכן ה-`DI` קונטיינר יודע איזו מימוש ספציפי להזריק.",
+    "skills": [
+      "Design Patterns",
+      "UML Analysis",
+      "Weather Monitoring System"
+    ],
+    "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.\n![Image](./questions/exam_2025_B_B_MultipleChoice_q14/image_13_1.png)\nמהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
+    "options": [
+      "א. Proxy-ו Observer",
+      "ב. Bridge-ו Observer",
+      "ג. Adapter-ו Observer",
+      "ד. Bridge- AlarmClock"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקה `Y` (ה-Subject) מכילה רשימה של אובייקטים מסוג `X` (ה-Observers) ומתקשרת איתם באמצעות שיטות `add`, `remove`, ו-`notifyX`. המחלקה `MonitoringScreen` היא `X` (Observer) והיא נרשמת ל-`MS_TemperatureX` (Subject) כדי לקבל עדכונים.\n2.  **Bridge Pattern:** המחלקה `TemperatureSensor` (האבסטרקציה) משתמשת בממשק `X` (האימפלמנטור) כדי לבצע את פעולת ה-`update`. זה מאפשר לשנות את הדרך שבה הנתונים מעודכנים (למשל, להחליף את `X` במימוש אחר) מבלי לשנות את `TemperatureSensor`.",
     "assets": {
-      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md",
+      "images": [
+        "./questions/exam_2025_B_B_MultipleChoice_q14/image_13_1.png"
+      ]
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q15",
-    "title": "זיהוי תבניות עיצוב בתרשים",
+    "title": "Template Method Implementation",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.\n![Image](./questions/exam_2025_B_B_MultipleChoice_q15/image_13_1.png)\nמהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
-    "options": [
-      "א. `Bridge`-ו `AlarmClock`",
-      "ב. `Adapter`-ו `Observer`",
-      "ג. `Proxy`-ו `Observer`",
-      "ד. `Bridge`-ו `Observer`"
+    "topics": [
+      "WMS - Template method",
+      "Design patterns - General"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקות `MonitoringScreen` ו-`MS_TemperatureX` הן `Observers` (או `Concrete Observers`) המקבלות עדכונים מ-`TemperatureSensor` (ה-`Subject`). המחלקה `Y` היא כנראה `Subject` או `Observer` כללי יותר. `X` הוא ממשק ה-`Observer`.\n2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` היא `Adapter` שמקבלת `MonitoringScreen` בקונסטרוקטור שלה ומממשת את ממשק `X` (ה-`Observer`). היא מתאימה את הממשק של `MonitoringScreen` לממשק הנדרש על ידי `X` (ה-`Observer`).\nלכן, התבניות הן `Adapter` ו-`Observer`.",
+    "skills": [
+      "Design Patterns",
+      "Inheritance",
+      "Polymorphism"
+    ],
+    "question_text": "כיצד יש לממש את תבנית העיצוב `template method`?",
+    "options": [
+      "א. להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.",
+      "ב. לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.",
+      "ג. ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.",
+      "ד. ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nתבנית ה-Template Method מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, אך מאפשרת למחלקות יורשות לשנות שלבים מסוימים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי קריאה לפונקציות מופשטות (או 'ווים' - hook methods) מתוך פונקציית ה-template method במחלקת הבסיס, כאשר המימוש הספציפי של פונקציות אלו ניתן במחלקות היורשות.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q15/question.md",
       "images": [
@@ -129,21 +169,30 @@
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q16",
-    "title": "מימוש תבנית `Template Method`",
+    "title": "WMS HiLoDataImp Dependencies",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "כיצד יש לממש את תבנית העיצוב `template method`?",
-    "options": [
-      "א. ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.",
-      "ב. ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
-      "ג. לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.",
-      "ד. להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס."
+    "topics": [
+      "WMS - Proxy",
+      "WMS - AlarmClock",
+      "WMS - Persistence",
+      "WMS - Observer"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nתבנית `Template Method` מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, ומשאירה את השלבים הספציפיים למימוש על ידי מחלקות יורשות. הדרך הנכונה לממש זאת היא ליצור פונקציה (ה-`template method`) במחלקת הבסיס שקוראת לפונקציות מופשטות (או וירטואליות) אחרות, אשר ממומשות באופן שונה במחלקות היורשות. כך, השלד נשאר קבוע, אך הפרטים משתנים.",
+    "skills": [
+      "System Architecture",
+      "Dependency Analysis",
+      "Weather Monitoring System"
+    ],
+    "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
+    "options": [
+      "א. AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy",
+      "ב. Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy",
+      "ג. Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, PersistantImp",
+      "ד. Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר לשימוש הישיר ביותר ב-`HiLoDataImp`, משקף את זרימת הנתונים והתלויות במערכת ניטור מזג האוויר. ה-`Nimbus1_0Clock` הוא המקור לאירועי זמן. ה-`AlarmClock` מגיב לשעון ומפעיל את ה-`TemperatureSensor`. ה-`TemperatureSensor` קורא נתונים ומעדכן את ה-`Nimbus1_0Temperature`. ה-`TemperatureHiLo` הוא ה-Observer שמקבל את הנתונים מה-`Nimbus1_0Temperature` ומעדכן את ה-`HiLoDataImp` דרך ה-`HiLoProxy` (שמטפל ב-Persistence). לכן, הסדר הוא: `Nimbus1_0Clock` -> `AlarmClock` -> `TemperatureSensor` -> `Nimbus1_0Temperature` -> `TemperatureHiLo` -> `HiLoProxy` (שמכיל את `HiLoDataImp`).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q16/question.md"
     }
@@ -159,8 +208,8 @@
     "skills": [],
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
-      "א. `AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`",
-      "ב. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `PersistantImp`",
+      "א. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `PersistantImp`",
+      "ב. `AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`",
       "ג. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `HiLoProxy`",
       "ד. `Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`"
     ],
@@ -170,43 +219,84 @@
     }
   },
   {
-    "id": "exam_2025_B_B_MultipleChoice_q5",
-    "title": "קשר בין `Human` ל-`Heart`",
+    "id": "exam_2025_B_B_MultipleChoice_q4",
+    "title": "UML Relationship",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
+    "topics": [
+      "UML - תרשים מחלקות"
+    ],
+    "skills": [
+      "UML Concepts",
+      "Object-Oriented Design"
+    ],
     "question_text": "מה הקשר העקרוני בין המחלקה `Human` (אדם) למחלקה `Heart` (לב)",
     "options": [
-      "א. Composition",
-      "ב. Association",
+      "א. Dependency",
+      "ב. Composition",
       "ג. Aggregation",
-      "ד. Dependency"
+      "ד. Association"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition) מכיוון שלב הוא חלק בלתי נפרד מאדם, ואינו יכול להתקיים באופן עצמאי מחוץ להקשר של האדם. אם האדם נהרס, הלב נהרס יחד איתו. זוהי צורה חזקה של אגרגציה, שבה החלק אינו יכול להתקיים ללא השלם.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition). קומפוזיציה היא סוג חזק של אגרגציה, המציין קשר של 'חלק-שלם' שבו החלק (לב) אינו יכול להתקיים ללא השלם (אדם). כאשר האדם נהרס, גם הלב נהרס (במובן של הקשר הספציפי הזה).",
     "assets": {
-      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q5/question.md"
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q4/question.md"
+    }
+  },
+  {
+    "id": "exam_2025_B_B_MultipleChoice_q5",
+    "title": "Statechart Diagram Error",
+    "year": 2025,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "topics": [
+      "UML - תרשים Statechart"
+    ],
+    "skills": [
+      "UML Analysis",
+      "State Machine Diagrams"
+    ],
+    "question_text": "נתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_9_1.png)\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_9_2.png)\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_10_1.png)\nאיפה הטעות?",
+    "options": [
+      "א. מיקום 3",
+      "ב. מיקום 1",
+      "ג. מיקום 2",
+      "ד. מיקום 4"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהטעות נמצאת במיקום 4. הפעולה `print(num = 2)` צריכה להיות חלק מהפעולה `isAboutToWin()` ולא פעולה נפרדת לאחר מכן. בדרך כלל, פעולות בתוך מצב או מעבר מבוצעות כחלק מהאירוע או התנאי, או כפעולת כניסה/יציאה מהמצב. הצבת `print(num = 2)` כפעולה נפרדת לאחר `isAboutToWin()` אינה תואמת את התחביר הסטנדרטי של תרשימי מצבים.",
+    "assets": {
+      "markdown": "./questions/exam_2025_B_B_MultipleChoice_q5/question.md",
+      "images": [
+        "./questions/exam_2025_B_B_MultipleChoice_q5/image_10_1.png",
+        "./questions/exam_2025_B_B_MultipleChoice_q5/image_9_1.png",
+        "./questions/exam_2025_B_B_MultipleChoice_q5/image_9_2.png"
+      ]
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q6",
-    "title": "זיהוי טעות בתרשים רצף",
+    "title": "SOLID Principle for Interfaces",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "נתונים תרשימי המצבים עבור מקרה הבוחן 'הצב והארנב' שנלמד בכיתה.\n![Image](image_9_1.png)\nנתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד\n![Image](./questions/exam_2025_B_B_MultipleChoice_q6/image_10_1.jpeg)\nאיפה הטעות?",
-    "options": [
-      "א. מיקום 1",
-      "ב. מיקום 2",
-      "ג. מיקום 4",
-      "ד. מיקום 3"
+    "topics": [
+      "SOLID - ISP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהטעות נמצאת במיקום 4. הפעולה `isAboutToWin()` צריכה להיות לפני `tm(300)` ולא אחריו, שכן היא קובעת אם המצב הבא הוא ניצחון או המשך ריצה רגילה, והטיימר קשור למשך הריצה. בסדר פעולות הגיוני, יש לבדוק את התנאי לפני שמפעילים טיימר או פעולה שתלויה בתוצאת הבדיקה.",
+    "skills": [
+      "SOLID Principles",
+      "Interface Design"
+    ],
+    "question_text": "יישום של איזה מהעקרונות SOLID הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
+    "options": [
+      "א. DIP",
+      "ב. LSP",
+      "ג. ISP",
+      "ד. SRP"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעיקרון ה-Interface Segregation Principle (ISP) קובע כי לקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום ISP מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר, מה שמוסיף ממשקים למערכת אך לא בהכרח משנה את מספר הפונקציות המופשטות הכולל, אלא מפיץ אותן בצורה יעילה יותר.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q6/question.md",
       "images": [
@@ -216,114 +306,125 @@
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q7",
-    "title": "עקרון SOLID והוספת ממשקים",
+    "title": "SRP Benefits",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "יישום של איזה מהעקרונות `SOLID` הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
-    "options": [
-      "א. DIP",
-      "ב. LSP",
-      "ג. ISP",
-      "ד. SRP"
+    "topics": [
+      "SOLID - SRP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעקרון `ISP` (Interface Segregation Principle) קובע כי לקוחות לא צריכים להיות תלויים בממשקים שהם אינם משתמשים בהם. יישום `ISP` מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר. זה אכן מוסיף ממשקים למערכת, אך אינו בהכרח משנה את מספר הפונקציות המופשטות הכולל, אלא רק מארגן אותן מחדש בממשקים שונים.",
+    "skills": [
+      "SOLID Principles",
+      "Software Design"
+    ],
+    "question_text": "מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?",
+    "options": [
+      "א. הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.",
+      "ב. ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.",
+      "ג. הקוד נהיה יעיל יותר ודורש פחות משאבים.",
+      "ד. הקוד נהיה קל יותר לתחזוקה."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעיקרון האחריות היחידה (SRP) מתמקד בהפרדת דאגות (separation of concerns) ובכך משפר תחזוקתיות, קריאות וקלות למידה, ומאפשר עבודה מקבילה. עם זאת, הוא אינו מבטיח שהקוד יהיה 'יעיל יותר' במובן של ביצועים או שימוש בפחות משאבים. לעיתים קרובות, פיצול מחלקות יכול אף להוסיף תקורה קטנה.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q7/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q8",
-    "title": "יתרונות עקרון SRP",
+    "title": "Bridge Pattern and DIP",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "מהו `אינו` יתרון של יישום עיקרון האחריות היחידה (`SRP`) בתכנון מחלקות בתוכנה?",
-    "options": [
-      "א. הקוד נהיה יעיל יותר ודורש פחות משאבים.",
-      "ב. הקוד נהיה קל יותר לתחזוקה.",
-      "ג. הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.",
-      "ד. ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל."
+    "topics": [
+      "Design patterns - General",
+      "SOLID - DIP"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nעקרון `SRP` (Single Responsibility Principle) מתמקד בהפרדת אחריויות כדי לשפר תחזוקה, קריאות ופיתוח מקבילי. הוא אינו מבטיח שהקוד יהיה יעיל יותר מבחינת ביצועים או שידרוש פחות משאבי חומרה/זיכרון. יעילות קוד תלויה באלגוריתמים ובמימוש הספציפי, לא ישירות בעקרון `SRP`.",
+    "skills": [
+      "Design Patterns",
+      "SOLID Principles"
+    ],
+    "question_text": "סמן את התשובה הנכונה ביותר\nתבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP",
+    "options": [
+      "א. תבנית העיצוב `Bridge` משמשת לפתרון בעיית ISP",
+      "ב. תבנית העיצוב `Bridge` משמשת לפתרון בעיית SRP",
+      "ג. תבנית העיצוב `Bridge` משמשת לפתרון בעיית LSP",
+      "ד. תבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nתבנית ה-Bridge מאפשרת להפריד בין אבסטרקציה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), שכן הוא מאפשר למודולים ברמה גבוהה להיות תלויים באבסטרקציות (הממשק של ה-Bridge) ולא במימושים קונקרטיים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q8/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_MultipleChoice_q9",
-    "title": "תבנית Bridge ובעיות SOLID",
+    "title": "SRP in Invoice Class",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Multiple Choice",
-    "topics": [],
-    "skills": [],
-    "question_text": "תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`",
-    "options": [
-      "א. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `LSP`",
-      "ב. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `ISP`",
-      "ג. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`",
-      "ד. תבנית העיצוב `Bridge` משמשת לפתרון בעיית `SRP`"
+    "topics": [
+      "SOLID - SRP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nתבנית `Bridge` מאפשרת להפריד הפשטה ממימוש, כך שניתן לשנות אותם באופן בלתי תלוי. היא תומכת בעקרון `DIP` (Dependency Inversion Principle) בכך שהיא מאפשרת להפשטה להיות תלויה בממשק (המגשר) ולא במימוש קונקרטי, ובכך הופכת את התלות לכיוון ההפוך או מנתקת אותה.",
+    "skills": [
+      "SOLID Principles",
+      "Class Design"
+    ],
+    "question_text": "נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?",
+    "options": [
+      "א. פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`",
+      "ב. פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`",
+      "ג. פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`",
+      "ד. פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`"
+    ],
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת להשתנות. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום, בדיקת ריקות). בדיקת חברות במועדון (`checkClubMembership`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פונקציה זו מפרה את SRP.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q9/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_Open_q1",
-    "title": "פונקציה למציאת עשרת השחקנים בעלי הניקוד הגבוה ביותר",
+    "title": "High Score List",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Open",
     "topics": [
-      "Java Streams",
-      "Object-Oriented Programming",
-      "Data Processing"
+      "Generic - Streams"
     ],
     "skills": [
-      "Stream API usage",
-      "functional programming",
-      "data aggregation",
-      "filtering",
-      "sorting"
+      "Java Streams",
+      "Data Processing",
+      "Object-Oriented Programming"
     ],
-    "question_text": "במערכת נתונה המייצגת משחק, יש מחלקה בשם `Player` שמכילה את הפונקציות הבאות: `getScore`: מחזירה את כמות הנקודות של השחקן `getName`: מחזירה את שם השחקן במהלך המשחק, בכל פעם שאחד השחקנים מקבל נקודות, נוצר מופע חדש של השחקן עם מספר הנקודות המעודכן. המופעים מתווספים לרשימה ובכל שניה מופעל תהליך שמעדכן את מספר הנקודות של כל שחקן על המסך. קצב המשחק גבוה מאד ולכן ייתכן שברשימה יהיו כמה מופעים עבור אותו השחקן ורק המופע עם המספר המקסימלי של נקודות הוא המופע המעודכן. בהנתן רשימת המופעים, `players`, כתוב פונקציה שמחזירה את רשימת שמות עשרת השחקנים (ללא כפילויות) שצברו את מירב הנקודות? אין להשתמש בפונקציות עזר. יש להשתמש ב `Java Streams` בלבד (אין להשתמש בלולאות או בפונקציית `ForEach`). `Public static getHighScoreList(List<Player> players){`",
+    "question_text": "במערכת נתונה המייצגת משחק, יש מחלקה בשם `Player` שמכילה את הפונקציות הבאות:\n`getScore`: מחזירה את כמות הנקודות של השחקן\n`getName`: מחזירה את שם השחקן\nבמהלך המשחק, בכל פעם שאחד השחקנים מקבל נקודות, נוצר מופע חדש של השחקן עם מספר הנקודות המעודכן. המופעים מתווספים לרשימה ובכל שניה מופעל תהליך שמעדכן את מספר הנקודות של כל שחקן על המסך. קצב המשחק גבוה מאד ולכן ייתכן שברשימה יהיו כמה מופעים עבור אותו השחקן ורק המופע עם המספר המקסימלי של נקודות הוא המופע המעודכן.\nבהנתן רשימת המופעים, `players`, כתוב פונקציה שמחזירה את רשימת שמות עשרת השחקנים (ללא כפילויות) שצברו את מירב הנקודות?\nאין להשתמש בפונקציות עזר. יש להשתמש ב Java Streams בלבד (אין להשתמש בלולאות או בפונקציית `ForEach`).\n\n`Public static getHighScoreList(List<Player> players){`",
     "options": [],
-    "answer_text": "הפתרון דורש שימוש ב-`Java Streams` כדי לקבץ את השחקנים לפי שמם, למצוא את הניקוד המקסימלי לכל שחקן, למיין את השחקנים לפי הניקוד בסדר יורד, להגביל לעשרת השחקנים המובילים ולבסוף לאסוף את שמותיהם לרשימה.\n\n```java\nimport java.util.Comparator;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.stream.Collectors;\n\n// Assume Player class exists with getName() and getScore() methods\nclass Player {\n    private String name;\n    private int score;\n\n    public Player(String name, int score) {\n        this.name = name;\n        this.score = score;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public int getScore() {\n        return score;\n    }\n\n    @Override\n    public String toString() {\n        return \"Player{\" +\n               \"name='\" + name + '\\'' +\n               \", score=\" + score +\n               '}';\n    }\n}\n\npublic class GameAnalyzer {\n\n    public static List<String> getHighScoreList(List<Player> players) {\n        return players.stream()\n                // Group players by name and for each name, find the player with the max score\n                .collect(Collectors.groupingBy(\n                        Player::getName,\n                        Collectors.collectingAndThen(\n                                Collectors.maxBy(Comparator.comparingInt(Player::getScore)),\n                                opt -> opt.orElse(null) // Handle case where a name might have no players (shouldn't happen with groupingBy)\n                        )\n                ))\n                .values().stream() // Get the unique players (with max scores) from the map values\n                .filter(java.util.Objects::nonNull) // Filter out any nulls if orElse(null) was hit\n                .sorted(Comparator.comparingInt(Player::getScore).reversed()) // Sort by score descending\n                .limit(10) // Take the top 10\n                .map(Player::getName) // Map to player names\n                .collect(Collectors.toList()); // Collect into a list\n    }\n\n    public static void main(String[] args) {\n        List<Player> players = List.of(\n                new Player(\"Alice\", 100),\n                new Player(\"Bob\", 150),\n                new Player(\"Alice\", 120), // Alice's max score is 120\n                new Player(\"Charlie\", 80),\n                new Player(\"Bob\", 130),\n                new Player(\"David\", 200),\n                new Player(\"Eve\", 110),\n                new Player(\"Frank\", 170),\n                new Player(\"Grace\", 90),\n                new Player(\"Heidi\", 160),\n                new Player(\"Ivan\", 190),\n                new Player(\"Judy\", 140),\n                new Player(\"Karen\", 210),\n                new Player(\"Liam\", 70)\n        );\n\n        List<String> topPlayers = getHighScoreList(players);\n        System.out.println(\"Top 10 Players by Score: \" + topPlayers);\n        // Expected output (order might vary for same scores, but names should be correct):\n        // [Karen, David, Ivan, Frank, Heidi, Bob, Judy, Alice, Eve, Grace]\n    }\n}\n```",
+    "answer_text": "```java\nimport java.util.Comparator;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.stream.Collectors;\n\npublic class Player {\n    private String name;\n    private int score;\n\n    public Player(String name, int score) {\n        this.name = name;\n        this.score = score;\n    }\n\n    public int getScore() {\n        return score;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public static List<String> getHighScoreList(List<Player> players) {\n        return players.stream()\n                .collect(Collectors.groupingBy(\n                        Player::getName,\n                        Collectors.collectingAndThen(\n                                Collectors.maxBy(Comparator.comparingInt(Player::getScore)),\n                                opt -> opt.map(Player::getScore).orElse(0)\n                        )\n                ))\n                .entrySet().stream()\n                .sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder()))\n                .limit(10)\n                .map(Map.Entry::getKey)\n                .collect(Collectors.toList());\n    }\n}\n```\n\n**Explanation:**\n1.  `players.stream()`: Creates a stream from the input list of `Player` objects.\n2.  `collect(Collectors.groupingBy(Player::getName, ...))`: Groups players by their name. For each group (each unique player name), it applies a downstream collector.\n3.  `Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingInt(Player::getScore)), opt -> opt.map(Player::getScore).orElse(0))`: This is the downstream collector. It first finds the `Player` object with the maximum score for each name using `maxBy` and `comparingInt(Player::getScore)`. Then, `collectingAndThen` extracts the score from the optional `Player` (or 0 if no player is found, though in this context, there will always be at least one).\n    This results in a `Map<String, Integer>` where the key is the player's name and the value is their highest score.\n4.  `.entrySet().stream()`: Converts the map into a stream of `Map.Entry` objects.\n5.  `.sorted(Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder()))`: Sorts the entries by their score (value) in descending order.\n6.  `.limit(10)`: Takes only the top 10 entries.\n7.  `.map(Map.Entry::getKey)`: Extracts the player's name (key) from each of the top 10 entries.\n8.  `.collect(Collectors.toList())`: Collects the names into a `List<String>`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_Open_q1/question.md"
     }
   },
   {
     "id": "exam_2025_B_B_Open_q2",
-    "title": "ניתוח ותיקון הפרת עקרון בעיצוב חבילות",
+    "title": "Package Design Principle Violation",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Open",
     "topics": [
-      "SOLID Principles",
-      "Package Design",
-      "Dependency Management",
-      "UML Diagrams"
+      "UML - תרשים מחלקות",
+      "Package design - Coupling",
+      "SOLID - DIP"
     ],
     "skills": [
-      "Identifying design principle violations",
-      "refactoring",
-      "UML diagramming"
+      "UML Analysis",
+      "Package Design Principles",
+      "Refactoring"
     ],
     "question_text": "(2 נקודות) איזה עיקרון בעיצוב חבילות מופר בתרשים שלפניך?\n(5 נקודות) כיצד ניתן לתקן זאת ללא העברה של מחלקות מחבילה לחבילה? שרטט תרשים חדש. אין צורך לשרטט מחדש חלקים בתרשים שלא השתנו. הסבר כיצד השינוי פותר את ההפרה.\n![Image](./questions/exam_2025_B_B_Open_q2/image_4_1.png)",
     "options": [],
-    "answer_text": "העיקרון המופר בתרשים הוא **Acyclic Dependencies Principle (ADP)**. עקרון זה קובע כי גרף התלויות בין חבילות חייב להיות חסר מעגלים (DAG). בתרשים, קיימת תלות מעגלית בין החבילות:\n*   `P1` תלוי ב-`P3` (דרך `C` התלוי ב-`D`).\n*   `P3` תלוי ב-`P2` (דרך `D` התלוי ב-`K`).\n*   `P2` תלוי ב-`P1` (דרך `K` התלוי ב-`C`).\n\nהמעגל הוא: `P1` -> `P3` -> `P2` -> `P1`.\n\n**תיקון ההפרה:**\nכדי לשבור את המעגל ללא העברת מחלקות בין חבילות, נשתמש בעקרון **Dependency Inversion Principle (DIP)**. נהפוך את התלות מ-`P2` ל-`P1` על ידי הכנסת ממשק לחבילה `P2`.\n\n**שלבי התיקון:**\n1.  **זיהוי התלות המעגלית:** התלות `P2.K` -> `P1.C` היא חלק מהמעגל. נרצה להפוך אותה.\n2.  **הכנסת ממשק:** ניצור ממשק חדש, למשל `IC`, בתוך חבילה `P2`. ממשק זה יגדיר את הפונקציונליות ש-`P2.K` מצפה מ-`P1.C`.\n3.  **יישום הממשק:** המחלקה `P1.C` תממש את הממשק `P2.IC`.\n4.  **היפוך התלות:** המחלקה `P2.K` תהיה תלויה כעת בממשק `P2.IC` במקום במחלקה הקונקרטית `P1.C`.\n\n**הסבר כיצד השינוי פותר את ההפרה:**\nלאחר השינוי, `P2.K` תלוי בממשק `P2.IC` שנמצא באותה חבילה (`P2`). המחלקה `P1.C` תממש את `P2.IC`, מה שיוצר תלות של `P1` ב-`P2` (בממשק). התלות המקורית `P2` -> `P1` נשברה. כעת, התלויות הן:\n*   `P1` -> `P3` (דרך `C` התלוי ב-`D`)\n*   `P3` -> `P2` (דרך `D` התלוי ב-`K`)\n*   `P1` -> `P2` (דרך `C` המממש את `P2.IC`)\n\nאין יותר מעגל תלויות. גרף התלויות הפך ל-DAG.\n\n**תרשים חדש:**\n![Image](./questions/exam_2025_B_B_Open_q2/image_4_1.png)\n(הערה: מכיוון שלא ניתן לערוך את התמונה, התרשים החדש יהיה זהה ויש לדמיין את השינויים הבאים:\n1.  הוספת ממשק `IC` בתוך חבילה `P2`.\n2.  החץ מ-`P2.K` ל-`P1.C` משתנה לחץ מ-`P2.K` ל-`P2.IC`.\n3.  הוספת חץ המציין מימוש מ-`P1.C` ל-`P2.IC`.)",
+    "answer_text": "**א. העיקרון המופר:**\nעיקרון ה-Acyclic Dependencies Principle (ADP) מופר. עיקרון זה קובע כי גרף התלויות בין חבילות צריך להיות חסר מעגלים (DAG). בתרשים, יש תלות מעגלית בין חבילות P1, P2 ו-P3:\nP1 -> P2 (דרך A->H)\nP2 -> P3 (דרך J->D)\nP3 -> P1 (דרך D->C)\n\n**ב. תיקון התרשים:**\nכדי לתקן את ההפרה ללא העברת מחלקות, ניתן להשתמש בעקרון ה-Dependency Inversion Principle (DIP). נהפוך את התלות מ-P3 ל-P1 על ידי יצירת ממשק בחבילה P1, ו-P3 תהיה תלויה בממשק זה במקום ישירות במחלקה C מ-P1.\n\n**שלבי התיקון:**\n1.  **יצירת ממשק:** בחבילה P1, ניצור ממשק חדש, לדוגמה `IP1Service`.\n2.  **הטמעת הממשק:** מחלקה `C` בחבילה P1 תטמיע את הממשק `IP1Service`.\n3.  **היפוך תלות:** מחלקה `D` בחבילה P3 תהיה תלויה בממשק `IP1Service` (שנמצא ב-P1) במקום ישירות במחלקה `C`.\n\n**תרשים מתוקן (השינויים מסומנים):**\n\n```mermaid\nclassDiagram\n    direction LR\n\n    package P1 {\n        class A\n        class B\n        interface IP1Service\n        class C {\n            <<implements>>\n        }\n        C ..|> IP1Service\n        A --> H\n    }\n\n    package P2 {\n        class H\n        class I\n        class J\n        class K\n        H --> I\n        H --> J\n        J --> D\n    }\n\n    package P3 {\n        class D\n        class E\n        class F\n        class G\n        D --> IP1Service\n        D --> E\n        F --> G\n    }\n\n    P1 <.. P2 : uses\n    P2 <.. P3 : uses\n    P3 <.. P1 : uses (via interface)\n\n    A -- B\n    C -- B\n    H -- I\n    H -- J\n    J -- K\n    D -- E\n    F -- G\n\n```\n\n**הסבר כיצד השינוי פותר את ההפרה:**\nהתיקון שובר את התלות המעגלית. במקום ש-P3 תהיה תלויה ישירות ב-P1 (דרך D->C), P3 תלויה כעת בממשק `IP1Service` שנמצא גם הוא ב-P1. מכיוון שממשקים הם בדרך כלל יציבים יותר ואינם משתנים בתדירות גבוהה כמו מימושים, זה יוצר תלות בכיוון אחד (P3 תלויה ב-P1 דרך הממשק, אך P1 אינה תלויה ב-P3). בכך, גרף התלויות הופך ל-DAG, וה-ADP נשמר.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_Open_q2/question.md",
       "images": [
@@ -333,24 +434,24 @@
   },
   {
     "id": "exam_2025_B_B_Open_q3",
-    "title": "ניהול בחינות - תבניות עיצוב",
+    "title": "Exam Operations",
     "year": 2025,
     "semester": "B",
     "moed": "B",
     "type": "Open",
     "topics": [
-      "Design Patterns (Visitor)",
-      "Object-Oriented Design",
-      "Extensibility"
+      "Design patterns - General",
+      "SOLID - OCP",
+      "UML - תרשים מחלקות"
     ],
     "skills": [
-      "Applying design patterns",
-      "UML class diagramming",
-      "Java code structure"
+      "Design Patterns",
+      "Object-Oriented Design",
+      "UML Modeling"
     ],
-    "question_text": "במערכת לניהול בחינות ישנה מחלקה מופשטת `Exam` המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: `MixedExam`, `OpenExam`, `ScrambledExam` וכן הלאה. סעיף א (10 נקודות) נתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של `Exam`. להלן שתי פעולות לדוגמא : * פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב- `MixedExam`-וב `ScrambledExam` * פעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב `OpenExam`-וב `ScrambledExam` חשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות. הערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד. השתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.",
+    "question_text": "במערכת לניהול בחינות ישנה מחלקה מופשטת `Exam` המייצגת בחינה. ישנם מספר תתי סוגים שונים של בחינות: `MixedExam`, `OpenExam`, `ScrambledExam` וכן הלאה.\n\n**סעיף א (10 נקודות)**\nנתבקשנו להוסיף למערכת תמיכה בהוספה עתידית של פעולות שניתן להפעיל על מופעים של בחינות, אך אינן תחת האחריות הישירה של `Exam`. להלן שתי פעולות לדוגמא :\n*   פעולה שבודקת האם יש חשד להעתקות במחברות של בחינה. הפעולה תומכת ב-`MixedExam`-וב `ScrambledExam`\n*   פעולה שמבצעת בדיקות סטטיסטיות לא שגרתיות על מופע של בחינה מסומת. הפעולה תומכת ב-`OpenExam`-וב `ScrambledExam`\nחשוב להדגיש כי עבור סוגים שונים של בחינות יש דרך שונה לבצע את הפעולות.\n\nהערה: מערכת ניהול בדיקת הבחינות הולכת ומתפתחת משנה לשנה, ויש צפי להוספת סוגי בחינות חדשות בעתיד.\n\nהשתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את תוכן הפעולות עצמן, אלא רק את התבנית שמאפשרת להפעיל אותן.\n\n**סעיף ב (10 נקודות)**\nבמכללה מסוימת, המשתמשת במערכת הנייל, רוצים מדי פעם לשמור מופעי בחינות במבנה נתונים. אחד השימושים האפשריים במבני הנתונים הוא למשל לשמור את כל מופעי הבחינות שהתקיימו בסמסטר מסוים במחלקת מחשבים.\nנתונות הדרישות הבאות :\n*   הקליינט יוכל להוסיף בחינות למבנה הנתונים.\n*   לא להיות מוגבלים למבנה נתונים ספציפי. דהיינו, יהיה ניתן להחליף את מבנה הנתונים בלי שיהיה צורך לשנות את הקוד של הקליינט שניגש לנתונים.\n*   הקליינט יוכל לעבור על כל מופעי הבחינות, בלי להיות תלוי כלל במבנה הנתונים הספציפי שבו השתמשו.\nהניחו כי למחלקה `Exam` יש פונקציה מופשטת `check`. נרצה שהקוד הבא יעבוד בצורה תקינה :\n```java\npublic void checkAllExams(ExamContainer examContainer){\n    for (Exam exam: examContainer){\n        exam.check();\n    }\n}\n```\nיש לתכנן את המחלקה `ExamContainer` כך שמבנה הנתונים הפנימי שלה יהיה ניתן להחלפה ללא צורך לקמפל מחדש את הקוד שלה. ניתן להשתמש במחלקות המוגדרות באופן מובנה בשפת Java.\n\nהשתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. ממש פונקציה ראשית שבה מאתחלים מופע של `ExamContainer` המתבסס על רשימה מקושרת (`LinkedList`) ומוסיפים למבנה הנתונים שלושה מופעים של בחינה (מסוגים לבחירתך).",
     "options": [],
-    "answer_text": "הבעיה המתוארת, שבה יש היררכיית אובייקטים קיימת (`Exam` ותתי-המחלקות שלו) וצורך להוסיף פעולות חדשות על אובייקטים אלה מבלי לשנות את ההיררכיה הקיימת, היא מקרה קלאסי לשימוש ב**תבנית העיצוב Visitor (מבקר)**.\n\n**שם תבנית העיצוב:** Visitor Pattern\n\n**הסבר:**\nתבנית ה-Visitor מאפשרת להגדיר פעולה חדשה על אלמנטים של היררכיית אובייקטים מבלי לשנות את המחלקות של האלמנטים עצמם. במקום זאת, הפעולה מוגדרת במחלקת Visitor נפרדת. כל אלמנט בהיררכיה 'מקבל' את ה-Visitor, וה-Visitor מבצע את הפעולה הספציפית עבור סוג האלמנט.\n\n**תרשים מחלקות (UML):**\n\n```mermaid\nclassDiagram\n    direction LR\n\n    class Exam {\n        <<abstract>>\n        +accept(visitor: ExamVisitor)\n    }\n\n    class OpenExam {\n        +accept(visitor: ExamVisitor)\n    }\n    class MixedExam {\n        +accept(visitor: ExamVisitor)\n    }\n    class ScrambledExam {\n        +accept(visitor: ExamVisitor)\n    }\n\n    Exam <|-- OpenExam\n    Exam <|-- MixedExam\n    Exam <|-- ScrambledExam\n\n    class ExamVisitor {\n        <<interface>>\n        +visit(openExam: OpenExam)\n        +visit(mixedExam: MixedExam)\n        +visit(scrambledExam: ScrambledExam)\n    }\n\n    class CheatingDetectionVisitor {\n        +visit(openExam: OpenExam)\n        +visit(mixedExam: MixedExam)\n        +visit(scrambledExam: ScrambledExam)\n    }\n    class StatisticalAnalysisVisitor {\n        +visit(openExam: OpenExam)\n        +visit(mixedExam: MixedExam)\n        +visit(scrambledExam: ScrambledExam)\n    }\n\n    ExamVisitor <|.. CheatingDetectionVisitor\n    ExamVisitor <|.. StatisticalAnalysisVisitor\n\n    Exam \"1\" --> \"1\" ExamVisitor : uses >\n\n```\n\n**קוד עבור המחלקות:**\n\n```java\n// 1. Element Abstract Class\npublic abstract class Exam {\n    public abstract void accept(ExamVisitor visitor);\n}\n\n// 2. Concrete Elements\npublic class OpenExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class MixedExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ScrambledExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\n// 3. Visitor Interface\npublic interface ExamVisitor {\n    void visit(OpenExam openExam);\n    void visit(MixedExam mixedExam);\n    void visit(ScrambledExam scrambledExam);\n}\n\n// 4. Concrete Visitors\npublic class CheatingDetectionVisitor implements ExamVisitor {\n    @Override\n    public void visit(OpenExam openExam) {\n        // פעולה זו אינה נתמכת עבור OpenExam, או מימוש ברירת מחדל\n        System.out.println(\"Cheating detection not applicable for OpenExam\");\n    }\n\n    @Override\n    public void visit(MixedExam mixedExam) {\n        // מימוש בדיקת העתקות עבור MixedExam\n        System.out.println(\"Performing cheating detection for MixedExam\");\n    }\n\n    @Override\n    public void visit(ScrambledExam scrambledExam) {\n        // מימוש בדיקת העתקות עבור ScrambledExam\n        System.out.println(\"Performing cheating detection for ScrambledExam\");\n    }\n}\n\npublic class StatisticalAnalysisVisitor implements ExamVisitor {\n    @Override\n    public void visit(OpenExam openExam) {\n        // מימוש בדיקות סטטיסטיות עבור OpenExam\n        System.out.println(\"Performing statistical analysis for OpenExam\");\n    }\n\n    @Override\n    public void visit(MixedExam mixedExam) {\n        // פעולה זו אינה נתמכת עבור MixedExam, או מימוש ברירת מחדל\n        System.out.println(\"Statistical analysis not applicable for MixedExam\");\n    }\n\n    @Override\n    public void visit(ScrambledExam scrambledExam) {\n        // מימוש בדיקות סטטיסטיות עבור ScrambledExam\n        System.out.println(\"Performing statistical analysis for ScrambledExam\");\n    }\n}\n\n// דוגמת שימוש (לא נדרש בשאלה, אך להמחשה)\npublic class Main {\n    public static void main(String[] args) {\n        List<Exam> exams = List.of(\n                new OpenExam(),\n                new MixedExam(),\n                new ScrambledExam()\n        );\n\n        ExamVisitor cheatingDetector = new CheatingDetectionVisitor();\n        ExamVisitor statsAnalyzer = new StatisticalAnalysisVisitor();\n\n        System.out.println(\"--- Running Cheating Detection ---\");\n        for (Exam exam : exams) {\n            exam.accept(cheatingDetector);\n        }\n\n        System.out.println(\"\\n--- Running Statistical Analysis ---\");\n        for (Exam exam : exams) {\n            exam.accept(statsAnalyzer);\n        }\n    }\n}\n```",
+    "answer_text": "**סעיף א: תבנית Visitor**\n\n**שם תבנית העיצוב:** Visitor Pattern\n\n**הסבר:** תבנית ה-Visitor מאפשרת להוסיף פעולות חדשות למבנה אובייקטים (כמו היררכיית `Exam`) מבלי לשנות את המחלקות של האובייקטים עצמם. זה עונה על הדרישה להוסיף פעולות שאינן תחת אחריות `Exam` ולתמוך בהוספת סוגי בחינות חדשים בעתיד (Open/Closed Principle).\n\n**תרשים מחלקות (UML):**\n```mermaid\nclassDiagram\n    direction LR\n\n    class Exam <<abstract>> {\n        +accept(visitor:ExamVisitor)\n    }\n    class OpenExam {\n        +accept(visitor:ExamVisitor)\n    }\n    class MixedExam {\n        +accept(visitor:ExamVisitor)\n    }\n    class ScrambledExam {\n        +accept(visitor:ExamVisitor)\n    }\n\n    interface ExamVisitor {\n        +visit(exam:OpenExam)\n        +visit(exam:MixedExam)\n        +visit(exam:ScrambledExam)\n    }\n\n    class PlagiarismChecker {\n        +visit(exam:MixedExam)\n        +visit(exam:ScrambledExam)\n    }\n    class StatisticalAnalyzer {\n        +visit(exam:OpenExam)\n        +visit(exam:ScrambledExam)\n    }\n\n    Exam <|-- OpenExam\n    Exam <|-- MixedExam\n    Exam <|-- ScrambledExam\n\n    ExamVisitor <|.. PlagiarismChecker\n    ExamVisitor <|.. StatisticalAnalyzer\n\n    Exam \"1\" --> \"1\" ExamVisitor : uses\n    OpenExam \"1\" --> \"1\" ExamVisitor : uses\n    MixedExam \"1\" --> \"1\" ExamVisitor : uses\n    ScrambledExam \"1\" --> \"1\" ExamVisitor : uses\n\n```\n\n**קוד עבור המחלקות:**\n\n```java\n// Exam.java\npublic abstract class Exam {\n    public abstract void accept(ExamVisitor visitor);\n    public abstract void check(); // Existing abstract method\n}\n\n// OpenExam.java\npublic class OpenExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking Open Exam\");\n    }\n}\n\n// MixedExam.java\npublic class MixedExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking Mixed Exam\");\n    }\n}\n\n// ScrambledExam.java\npublic class ScrambledExam extends Exam {\n    @Override\n    public void accept(ExamVisitor visitor) {\n        visitor.visit(this);\n    }\n\n    @Override\n    public void check() {\n        System.out.println(\"Checking Scrambled Exam\");\n    }\n}\n\n// ExamVisitor.java (Interface)\npublic interface ExamVisitor {\n    void visit(OpenExam exam);\n    void visit(MixedExam exam);\n    void visit(ScrambledExam exam);\n}\n\n// PlagiarismChecker.java\npublic class PlagiarismChecker implements ExamVisitor {\n    @Override\n    public void visit(OpenExam exam) {\n        // Not supported for OpenExam as per problem description\n    }\n\n    @Override\n    public void visit(MixedExam exam) {\n        System.out.println(\"Checking Mixed Exam for plagiarism.\");\n    }\n\n    @Override\n    public void visit(ScrambledExam exam) {\n        System.out.println(\"Checking Scrambled Exam for plagiarism.\");\n    }\n}\n\n// StatisticalAnalyzer.java\npublic class StatisticalAnalyzer implements ExamVisitor {\n    @Override\n    public void visit(OpenExam exam) {\n        System.out.println(\"Performing statistical analysis on Open Exam.\");\n    }\n\n    @Override\n    public void visit(MixedExam exam) {\n        // Not supported for MixedExam as per problem description\n    }\n\n    @Override\n    public void visit(ScrambledExam exam) {\n        System.out.println(\"Performing statistical analysis on Scrambled Exam.\");\n    }\n}\n```\n\n**סעיף ב: תבנית Iterator ו-Strategy**\n\n**שמות תבניות העיצוב:** Iterator Pattern, Strategy Pattern\n\n**הסבר:**\n*   **Iterator Pattern:** מאפשר גישה סדרתית לאלמנטים של אוסף (כמו מבנה נתונים של בחינות) מבלי לחשוף את הייצוג הפנימי שלו. זה עונה על הדרישה שהקליינט יוכל לעבור על כל מופעי הבחינות בלי להיות תלוי במבנה הנתונים הספציפי.\n*   **Strategy Pattern:** מאפשר להגדיר משפחה של אלגוריתמים, לעטוף כל אחד מהם במחלקה נפרדת, ולגרום להם להיות ניתנים להחלפה. במקרה זה, ה-`ExamContainer` יכול להשתמש באסטרטגיה שונה לייצוג מבנה הנתונים הפנימי (למשל, `LinkedListStrategy`, `ArrayListStrategy`), מה שמאפשר להחליף את מבנה הנתונים הפנימי ללא שינוי בקוד הקליינט.\n\n**תרשים מחלקות (UML):**\n```mermaid\nclassDiagram\n    direction LR\n\n    interface ExamContainerStrategy {\n        +addExam(exam:Exam)\n        +getExams():Iterator<Exam>\n    }\n\n    class LinkedListStrategy {\n        +addExam(exam:Exam)\n        +getExams():Iterator<Exam>\n    }\n\n    class ArrayListStrategy {\n        +addExam(exam:Exam)\n        +getExams():Iterator<Exam>\n    }\n\n    class ExamContainer {\n        -strategy:ExamContainerStrategy\n        +ExamContainer(strategy:ExamContainerStrategy)\n        +addExam(exam:Exam)\n        +iterator():Iterator<Exam>\n    }\n\n    interface Iterator<Exam> {\n        +hasNext():boolean\n        +next():Exam\n    }\n\n    ExamContainer \"1\" --> \"1\" ExamContainerStrategy : uses\n    ExamContainerStrategy <|.. LinkedListStrategy\n    ExamContainerStrategy <|.. ArrayListStrategy\n    ExamContainer \"1\" --> \"1\" Iterator : creates\n\n    class Exam {\n        +check()\n    }\n\n    Iterator \"1\" --> \"*\" Exam : iterates over\n\n```\n\n**קוד עבור המחלקות:**\n\n```java\nimport java.util.ArrayList;\nimport java.util.Iterator;\nimport java.util.LinkedList;\nimport java.util.List;\n\n// Exam.java (from part A, with check() method)\npublic abstract class Exam {\n    public abstract void check();\n}\n\n// OpenExam, MixedExam, ScrambledExam (concrete Exam types from part A)\n// ... (definitions as in part A)\n\n// ExamContainerStrategy.java\npublic interface ExamContainerStrategy {\n    void addExam(Exam exam);\n    Iterator<Exam> getExamsIterator();\n}\n\n// LinkedListStrategy.java\npublic class LinkedListStrategy implements ExamContainerStrategy {\n    private List<Exam> exams = new LinkedList<>();\n\n    @Override\n    public void addExam(Exam exam) {\n        exams.add(exam);\n    }\n\n    @Override\n    public Iterator<Exam> getExamsIterator() {\n        return exams.iterator();\n    }\n}\n\n// ArrayListStrategy.java\npublic class ArrayListStrategy implements ExamContainerStrategy {\n    private List<Exam> exams = new ArrayList<>();\n\n    @Override\n    public void addExam(Exam exam) {\n        exams.add(exam);\n    }\n\n    @Override\n    public Iterator<Exam> getExamsIterator() {\n        return exams.iterator();\n    }\n}\n\n// ExamContainer.java\npublic class ExamContainer implements Iterable<Exam> {\n    private ExamContainerStrategy strategy;\n\n    public ExamContainer(ExamContainerStrategy strategy) {\n        this.strategy = strategy;\n    }\n\n    public void addExam(Exam exam) {\n        strategy.addExam(exam);\n    }\n\n    @Override\n    public Iterator<Exam> iterator() {\n        return strategy.getExamsIterator();\n    }\n}\n\n// Main.java (for initialization and demonstration)\npublic class Main {\n    public static void main(String[] args) {\n        // Initialize ExamContainer with LinkedListStrategy\n        ExamContainer examContainer = new ExamContainer(new LinkedListStrategy());\n\n        // Add three exams of different types\n        examContainer.addExam(new OpenExam());\n        examContainer.addExam(new MixedExam());\n        examContainer.addExam(new ScrambledExam());\n\n        // The client code from the question, which now works correctly\n        checkAllExams(examContainer);\n\n        System.out.println(\"\\nSwitching to ArrayListStrategy:\");\n        // Demonstrate changing strategy (e.g., for a new container)\n        ExamContainer anotherExamContainer = new ExamContainer(new ArrayListStrategy());\n        anotherExamContainer.addExam(new OpenExam());\n        anotherExamContainer.addExam(new OpenExam());\n        checkAllExams(anotherExamContainer);\n    }\n\n    public static void checkAllExams(ExamContainer examContainer) {\n        for (Exam exam : examContainer) {\n            exam.check();\n        }\n    }\n}\n```",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_Open_q3/question.md"
     }

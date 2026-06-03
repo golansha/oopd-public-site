@@ -1,22 +1,29 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q16
-title: מימוש תבנית `Template Method`
+title: WMS HiLoDataImp Dependencies
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- WMS - Proxy
+- WMS - AlarmClock
+- WMS - Persistence
+- WMS - Observer
+skills:
+- System Architecture
+- Dependency Analysis
+- Weather Monitoring System
 ---
 
 ## Question
-כיצד יש לממש את תבנית העיצוב `template method`?
+במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.
 
 ### Options
-- ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.
-- לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.
-- להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.
-- ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.
+- Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy
+- Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, PersistantImp
+- Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy
+- AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy
 
 ## Answer
-תבנית `Template Method` מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, ומשאירה את השלבים הספציפיים למימוש על ידי מחלקות יורשות. הדרך הנכונה לממש זאת היא ליצור פונקציה (ה-`template method`) במחלקת הבסיס שקוראת לפונקציות מופשטות (או וירטואליות) אחרות, אשר ממומשות באופן שונה במחלקות היורשות. כך, השלד נשאר קבוע, אך הפרטים משתנים.
+הסדר הנכון של המחלקות, מהעקיף ביותר לשימוש הישיר ביותר ב-`HiLoDataImp`, משקף את זרימת הנתונים והתלויות במערכת ניטור מזג האוויר. ה-`Nimbus1_0Clock` הוא המקור לאירועי זמן. ה-`AlarmClock` מגיב לשעון ומפעיל את ה-`TemperatureSensor`. ה-`TemperatureSensor` קורא נתונים ומעדכן את ה-`Nimbus1_0Temperature`. ה-`TemperatureHiLo` הוא ה-Observer שמקבל את הנתונים מה-`Nimbus1_0Temperature` ומעדכן את ה-`HiLoDataImp` דרך ה-`HiLoProxy` (שמטפל ב-Persistence). לכן, הסדר הוא: `Nimbus1_0Clock` -> `AlarmClock` -> `TemperatureSensor` -> `Nimbus1_0Temperature` -> `TemperatureHiLo` -> `HiLoProxy` (שמכיל את `HiLoDataImp`).

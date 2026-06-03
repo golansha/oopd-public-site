@@ -1,21 +1,32 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q11
-title: בדיקת LSP
+title: Generics Copy Method
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- Generic - Streams
+skills:
+- Java Generics
+- Type Safety
 ---
 
 ## Question
-מחלקת `NetworkConnection` מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת `HttpConnection` יורשת ממחלקת `NetworkConnection` ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול `HTTP`. מה מהדברים הבאים `אינו` מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`? הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות `HTTP` מוגדר כסוג של חיבור רשת.
+נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`
+```java
+public static <T> void copy(dest, src){
+    for (int i=0; i<src.size(); i++)
+        dest.set(i,src.get(i));
+}
+```
+מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?
 
 ### Options
-- וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.
-- הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי.
-- יש שתי תשובות אחרות נכונות.
+- `public static <T> void copy (List<? super T> dest, List<? extends T> src)`
+- `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`
+- `public static <T> void copy (List<? super T> dest, List<? super T> src)`
+- `public static <T> void copy (List<? extends T> dest, List<? super T> src)`
 
 ## Answer
-עקרון `LSP` (Liskov Substitution Principle) עוסק בכך שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. האפשרות הראשונה, "וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח", מתארת תנאי או דרישה שצריכה להתקיים עבור `LSP`, אך היא אינה מתארת `תהליך בדיקה` בפועל. לעומת זאת, האפשרות השנייה, "הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient`", מתארת בבירור תהליך בדיקה אקטיבי של `LSP`.
+החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של עקרון PECS (Producer-`extends`, Consumer-`super`). הרשימה `src` היא 'מפיקה' (producer) של אובייקטים, ולכן אנו יכולים לקרוא ממנה אובייקטים שהם `T` או תת-טיפוס של `T` (`? extends T`). הרשימה `dest` היא 'צרכנית' (consumer) של אובייקטים, ולכן אנו יכולים להכניס אליה אובייקטים שהם `T` או על-טיפוס של `T` (`? super T`).

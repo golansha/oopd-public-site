@@ -1,27 +1,27 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q15
-title: זיהוי תבניות עיצוב בתרשים
+title: Template Method Implementation
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- WMS - Template method
+- Design patterns - General
+skills:
+- Design Patterns
+- Inheritance
+- Polymorphism
 ---
 
 ## Question
-להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.
-![Image](image_13_1.png)
-מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?
+כיצד יש לממש את תבנית העיצוב `template method`?
 
 ### Options
-- `Adapter`-ו `Observer`
-- `Bridge`-ו `Observer`
-- `Bridge`-ו `AlarmClock`
-- `Proxy`-ו `Observer`
+- ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.
+- לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.
+- להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.
+- ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.
 
 ## Answer
-התרשים מציג שתי תבניות עיצוב עיקריות:
-1.  **Observer Pattern:** המחלקות `MonitoringScreen` ו-`MS_TemperatureX` הן `Observers` (או `Concrete Observers`) המקבלות עדכונים מ-`TemperatureSensor` (ה-`Subject`). המחלקה `Y` היא כנראה `Subject` או `Observer` כללי יותר. `X` הוא ממשק ה-`Observer`.
-2.  **Adapter Pattern:** המחלקה `MS_TemperatureX` היא `Adapter` שמקבלת `MonitoringScreen` בקונסטרוקטור שלה ומממשת את ממשק `X` (ה-`Observer`). היא מתאימה את הממשק של `MonitoringScreen` לממשק הנדרש על ידי `X` (ה-`Observer`).
-לכן, התבניות הן `Adapter` ו-`Observer`.
+תבנית ה-Template Method מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, אך מאפשרת למחלקות יורשות לשנות שלבים מסוימים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי קריאה לפונקציות מופשטות (או 'ווים' - hook methods) מתוך פונקציית ה-template method במחלקת הבסיס, כאשר המימוש הספציפי של פונקציות אלו ניתן במחלקות היורשות.

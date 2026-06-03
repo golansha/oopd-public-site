@@ -1,22 +1,32 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q14
-title: הגדרת Dependency Injection
+title: WMS Design Patterns
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- WMS - Observer
+- WMS - Bridge
+- UML - תרשים מחלקות
+skills:
+- Design Patterns
+- UML Analysis
+- Weather Monitoring System
 ---
 
 ## Question
-`Dependency Injection` - "הזרקת תלויות" סמן מהמשפטים הבאים את הנכון ביותר:
+להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.
+![Image](image_13_1.png)
+מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?
 
 ### Options
-- `Dependency Injection` הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.
-- ישנן שתי תשובות אחרות נכונות.
-- כדי להזריק תלויות באמצעות `Dependency Injection`, השדות המוזרקים חייבים להיות מוגדרות כממשקים.
-- אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.
+- Bridge-ו Observer
+- Adapter-ו Observer
+- Bridge- AlarmClock
+- Proxy-ו Observer
 
 ## Answer
-`Dependency Injection` היא טכניקה שבה אובייקט מקבל את התלויות שלו מבחוץ במקום ליצור אותן בעצמו. ההגדרה הראשונה מתארת זאת בצורה מדויקת: זוהי שיטה לאתחול אובייקטים על ידי 'הזרקת' התלויות שלהם (בדרך כלל דרך קונסטרוקטור, setter או שדה). שדות מוזרקים לא חייבים להיות ממשקים (אף כי זהו שימוש נפוץ ומומלץ), ואין דו-משמעות אם משתמשים בממשקים, שכן ה-`DI` קונטיינר יודע איזו מימוש ספציפי להזריק.
+התרשים מציג שתי תבניות עיצוב עיקריות:
+1.  **Observer Pattern:** המחלקה `Y` (ה-Subject) מכילה רשימה של אובייקטים מסוג `X` (ה-Observers) ומתקשרת איתם באמצעות שיטות `add`, `remove`, ו-`notifyX`. המחלקה `MonitoringScreen` היא `X` (Observer) והיא נרשמת ל-`MS_TemperatureX` (Subject) כדי לקבל עדכונים.
+2.  **Bridge Pattern:** המחלקה `TemperatureSensor` (האבסטרקציה) משתמשת בממשק `X` (האימפלמנטור) כדי לבצע את פעולת ה-`update`. זה מאפשר לשנות את הדרך שבה הנתונים מעודכנים (למשל, להחליף את `X` במימוש אחר) מבלי לשנות את `TemperatureSensor`.

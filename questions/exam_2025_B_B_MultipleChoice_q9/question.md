@@ -1,22 +1,25 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q9
-title: תבנית Bridge ובעיות SOLID
+title: SRP in Invoice Class
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- SOLID - SRP
+skills:
+- SOLID Principles
+- Class Design
 ---
 
 ## Question
-תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`
+נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?
 
 ### Options
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `ISP`
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `LSP`
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `SRP`
+- פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`
+- פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`
+- פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`
+- פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`
 
 ## Answer
-תבנית `Bridge` מאפשרת להפריד הפשטה ממימוש, כך שניתן לשנות אותם באופן בלתי תלוי. היא תומכת בעקרון `DIP` (Dependency Inversion Principle) בכך שהיא מאפשרת להפשטה להיות תלויה בממשק (המגשר) ולא במימוש קונקרטי, ובכך הופכת את התלות לכיוון ההפוך או מנתקת אותה.
+עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת להשתנות. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום, בדיקת ריקות). בדיקת חברות במועדון (`checkClubMembership`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פונקציה זו מפרה את SRP.

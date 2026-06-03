@@ -1,29 +1,26 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q12
-title: חתימת פונקציית `copy` עם Generics
+title: Package Design Principles
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
-skills: []
+topics:
+- Package design - Cohesion
+- Package design - Coupling
+skills:
+- Package Design
+- Software Architecture
 ---
 
 ## Question
-נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`
-```java
-public static <T> void copy(dest, src) { 
-    for (int i=0; i<src.size(); i++) 
-        dest.set(i, src.get(i)); 
-}
-```
-מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?
+בחברת 'אפליקציות בע"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:
 
 ### Options
-- `public static <T> void copy (List<? super T> dest, List<? extends T> src)`
-- `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`
-- `public static <T> void copy (List<? super T> dest, List<? super T> src)`
-- `public static <T> void copy (List<? extends T> dest, List<? super T> src)`
+- קיימת הפרה של עיקרון CCP
+- קיימת הפרה של עיקרון CRP
+- עיקרון CRP ו-CCP מופרים
+- אף עיקרון לא מופר
 
 ## Answer
-עבור פונקציית `copy` שמעתיקה אלמנטים מ-`src` ל-`dest`, יש להשתמש ב-`PECS` (Producer Extends, Consumer Super). `src` היא 'מפיקה' (Producer) של אלמנטים, ולכן צריכה להיות `List<? extends T>`. `dest` היא 'צורכת' (Consumer) של אלמנטים, ולכן צריכה להיות `List<? super T>`. החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`.
+עיקרון ה-Common Closure Principle (CCP) קובע כי מחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. אם יש סיבה אחת לשינוי שמשפיעה על *כל* המחלקות באפליקציה, והן כולן נכללות בחבילה אחת גדולה, זה תואם את CCP. לעומת זאת, עיקרון ה-Common Reuse Principle (CRP) קובע כי מחלקות שאינן משתמשות זו בזו לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, ושחרור חבילה גדולה שכוללת הכל גורם להם להיות תלויים בקוד שהם לא צריכים, אז CRP מופר. לכן, קיימת הפרה של עיקרון CRP.
