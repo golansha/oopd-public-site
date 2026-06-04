@@ -22,7 +22,16 @@
             </div>
 
             <div id="markdownContent" class="text-lg leading-relaxed space-y-4"></div>
-
+            <div id="solutionContainer" class="mt-8 hidden">
+                <button id="toggleAnswerBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    הצג פתרון
+                </button>
+                
+                <div id="answerSection" class="hidden mt-6 p-6 bg-blue-50/50 border border-blue-100 rounded-lg shadow-inner">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">פתרון:</h3>
+                    <div id="answerContent" class="text-lg leading-relaxed space-y-4"></div>
+                </div>
+            </div>
             <div id="imageContainer" class="mt-8 hidden">
                 <img id="qImage" src="" alt="תרשים נלווה" class="max-w-full border rounded shadow-sm">
             </div>
