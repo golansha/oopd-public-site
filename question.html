@@ -77,12 +77,39 @@
                     constructedMarkdown += `\n`;
                 }
 
-                if (question.answer_text) {
-                    constructedMarkdown += `<hr class="my-6">\n### פתרון\n${question.answer_text}\n`;
-                }
-
+                // 1. ציור השאלה והאפשרויות (ללא הפתרון)
                 document.getElementById('markdownContent').innerHTML = marked.parse(constructedMarkdown);
 
+                // 2. טיפול בפתרון (אם קיים)
+                if (question.answer_text) {
+                    const solutionContainer = document.getElementById('solutionContainer');
+                    const answerSection = document.getElementById('answerSection');
+                    const toggleBtn = document.getElementById('toggleAnswerBtn');
+                    const answerContent = document.getElementById('answerContent');
+
+                    // מציג את אזור הכפתור
+                    solutionContainer.classList.remove('hidden');
+                    
+                    // מפענח את המארקדאון של הפתרון לתוך הדיב הנסתר
+                    answerContent.innerHTML = marked.parse(question.answer_text);
+
+                    // לוגיקת הלחיצה על הכפתור
+                    toggleBtn.addEventListener('click', () => {
+                        if (answerSection.classList.contains('hidden')) {
+                            answerSection.classList.remove('hidden');
+                            toggleBtn.innerText = 'הסתר פתרון';
+                            toggleBtn.classList.replace('bg-blue-600', 'bg-gray-600');
+                            toggleBtn.classList.replace('hover:bg-blue-700', 'hover:bg-gray-700');
+                            toggleBtn.classList.replace('focus:ring-blue-500', 'focus:ring-gray-500');
+                        } else {
+                            answerSection.classList.add('hidden');
+                            toggleBtn.innerText = 'הצג פתרון';
+                            toggleBtn.classList.replace('bg-gray-600', 'bg-blue-600');
+                            toggleBtn.classList.replace('hover:bg-gray-700', 'hover:bg-blue-700');
+                            toggleBtn.classList.replace('focus:ring-gray-500', 'focus:ring-blue-500');
+                        }
+                    });
+                }
             } catch (error) {
                 console.error("Error loading question:", error);
                 document.getElementById('qTitle').innerText = 'שגיאה בטעינת הנתונים';
