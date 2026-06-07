@@ -31,7 +31,14 @@
                     <option value="Multiple Choice">שאלות אמריקאיות</option>
                 </select>
             </div>
-
+            <div class="flex flex-col gap-1">
+                <label for="languageFilter" class="text-sm font-medium text-gray-600">שפה:</label>
+                <select id="languageFilter" class="border border-gray-300 rounded-md p-2 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-w-[150px]">
+                    <option value="all">הצג הכל</option>
+                    <option value="Hebrew">עברית</option>
+                    <option value="English">English</option>
+                </select>
+            </div>
             <div class="flex flex-col gap-1">
                 <label for="sortOrder" class="text-sm font-medium text-gray-600">סדר הצגה:</label>
                 <select id="sortOrder" class="border border-gray-300 rounded-md p-2 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-w-[150px]">
@@ -63,7 +70,7 @@
                 document.getElementById('categoryFilter').addEventListener('change', applyFiltersAndSort);
                 document.getElementById('typeFilter').addEventListener('change', applyFiltersAndSort);
                 document.getElementById('sortOrder').addEventListener('change', applyFiltersAndSort);
-
+                document.getElementById('languageFilter').addEventListener('change', applyFiltersAndSort);
             } catch (error) {
                 console.error("Error loading database:", error);
                 document.getElementById('loadingMsg').innerText = "שגיאה בטעינת מאגר השאלות.";
@@ -95,20 +102,23 @@
         function applyFiltersAndSort() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             const selectedType = document.getElementById('typeFilter').value;
+            const selectedLanguage = document.getElementById('languageFilter').value; // <-- קליטת השפה
             const sortOrder = document.getElementById('sortOrder').value;
 
             // 1. חיתוך (סינון)
             let filtered = allQuestions.filter(q => {
-                // בדיקת קטגוריה
                 const matchCategory = selectedCategory === "all" || 
                                       (q.topics && q.topics.some(topic => topic.startsWith(selectedCategory)));
                 
-                // בדיקת סוג שאלה
                 const matchType = selectedType === "all" || q.type === selectedType;
+                
+                // בדיקת שפה (אם חסר השדה במבחנים ישנים, נניח עברית כברירת מחדל כדי לא לשבור כלום)
+                const qLang = q.language || "Hebrew";
+                const matchLanguage = selectedLanguage === "all" || qLang === selectedLanguage;
 
-                return matchCategory && matchType;
+                return matchCategory && matchType && matchLanguage; // <-- הוספת השפה לתנאי
             });
-
+            
             // 2. מיון
             filtered.sort((a, b) => {
                 // השוואת שנים
