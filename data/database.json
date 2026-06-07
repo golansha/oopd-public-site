@@ -13,12 +13,12 @@
     "skills": [],
     "question_text": "נתון `aspect` שמפעיל `advice` עבור כל פונקציה שמקבלת `String` ו-`long` ומסומנת באנוטציה `Operate`.\nבאיזה אופן אפשר לכתוב את ה `pointcut` המתאים",
     "options": [
-      "א. @Pointcut(\"execution(* *.*(String, long))\") private void f(){ } @Pointcut(\"@annotation(Operate)\") private void g(){ } @Pointcut(\"f() && g()\") private void both() { }",
-      "ב. @Pointcut(\"execution(* *.*(String, long))\") private void f(){ } @Pointcut(\"@annotation(Operate)\") private void g(){} @Pointcut(\"f() || g()\") private void both() { }",
-      "ג. @Pointcut(\"execution(* *.*(String))\") private void f1(){ } @Pointcut(\"execution(* *.*(long))\") private void f2(){} @Pointcut(\"@annotation(Operate)\") private void g(){} @Pointcut(\"f1() || f2() || g()\") private void both(){ }",
+      "א. @Pointcut(\"execution(* *.*(String, long))\") private void f(){ } @Pointcut(\"@annotation(Operate)\") private void g(){} @Pointcut(\"f() || g()\") private void both() { }",
+      "ב. @Pointcut(\"execution(* *.*(String))\") private void f1(){ } @Pointcut(\"execution(* *.*(long))\") private void f2(){} @Pointcut(\"@annotation(Operate)\") private void g(){} @Pointcut(\"f1() || f2() || g()\") private void both(){ }",
+      "ג. @Pointcut(\"execution(* *.*(String, long))\") private void f(){ } @Pointcut(\"@annotation(Operate)\") private void g(){ } @Pointcut(\"f() && g()\") private void both() { }",
       "ד. @Pointcut(\"execution(* *.*(String))\") private void f1(){ } @Pointcut(\"execution(* *.*(long))\") private void f2(){} @Pointcut(\"@annotation(Operate)\") private void g(){} @Pointcut(\"f1() && f2() && g()\") private void both() { }"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא הראשונה. כדי להתאים לפונקציות שמקבלות `String` ו-`long` *וגם* מסומנות באנוטציה `Operate`, יש צורך לשלב שני `pointcuts` באמצעות אופרטור `&&` (AND):\n1.  `@Pointcut(\"execution(* *.*(String, long))\") private void f(){ }` מגדיר `pointcut` שיתאים לכל פונקציה שמקבלת בדיוק `String` ואחריו `long`.\n2.  `@Pointcut(\"@annotation(Operate)\") private void g(){ }` מגדיר `pointcut` שיתאים לכל פונקציה המסומנת באנוטציה `Operate`.\n3.  `@Pointcut(\"f() && g()\") private void both() { }` משלב את שני ה-`pointcuts` כך שיתאימו רק לפונקציות שמקיימות את שני התנאים יחד.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא הראשונה. כדי להתאים לפונקציות שמקבלות `String` ו-`long` *וגם* מסומנות באנוטציה `Operate`, יש צורך לשלב שני `pointcuts` באמצעות אופרטור `&&` (AND):\n1.  `@Pointcut(\"execution(* *.*(String, long))\") private void f(){ }` מגדיר `pointcut` שיתאים לכל פונקציה שמקבלת בדיוק `String` ואחריו `long`.\n2.  `@Pointcut(\"@annotation(Operate)\") private void g(){ }` מגדיר `pointcut` שיתאים לכל פונקציה המסומנת באנוטציה `Operate`.\n3.  `@Pointcut(\"f() && g()\") private void both() { }` משלב את שני ה-`pointcuts` כך שיתאימו רק לפונקציות שמקיימות את שני התנאים יחד.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q10/question.md"
     }
@@ -40,11 +40,11 @@
     "question_text": "שאלה זו מתייחסת לתרשימים 13.3.2, המופיעים בתחילת הבחינה. תרשים 3.2 מבטא את שינוי עיצובי שערכנו בתרשים 3.2: כידוע, בפרויקט מערכת ניטור מזג האוויר מעורבים מהנדסי תוכנה וגם מהנדסי חומרה. בפרט מהנדסי החומרה אמורים לפתח את המחלקות `Nimbus1_0TemperatureSensor` ו-`Nimbus1_0_C_API`. כמה מחלקות/ממשקים (פרט לאלה שהם מפתחים בעצמם) אמורים מהנדסי החומרה להכיר על מנת שהקוד שלהם יתקמפל לפני ואחרי השינוי.\n![Image](./questions/exam_2024_B_A_MultipleChoice_q11/image_4_1.png)\n![Image](./questions/exam_2024_B_A_MultipleChoice_q11/image_4_2.png)",
     "options": [
       "א. לפני ואחרי השינוי צריך להכיר 3 מחלקות/ממשקים",
-      "ב. לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 1",
+      "ב. לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 2",
       "ג. לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 1",
-      "ד. לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 2"
+      "ד. לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 1"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 1\".\n\n**לפני השינוי (תרשים 3.1):**\nמהנדסי החומרה מפתחים את `Nimbus1_0Temperature` ואת `Nimbus1_0_C_API`. במצב זה, `Nimbus1_0Temperature` (המימוש החומרתי) ככל הנראה מקושר ישירות ל-`TemperatureSensor` (ההפשטה התוכנתית). בנוסף, `TemperatureSensor` מקושר ל-`Observable`, ו-`TemperatureAlarmListener` מקושר ל-`TemperatureSensor`. לכן, כדי שהקוד של מהנדסי החומרה יתקמפל וישתלב במערכת, הם צריכים להכיר את כלל המרכיבים המעורבים בתהליך קריאת הטמפרטורה: `TemperatureAlarmListener`, `TemperatureSensor`, `Observable`, `Nimbus1_0Temperature`, ו-`Nimbus1_0_C_API`. אם נתעלם מאלה שהם מפתחים בעצמם (`Nimbus1_0Temperature` ו-`Nimbus1_0_C_API`), הם עדיין צריכים להכיר את `TemperatureAlarmListener`, `TemperatureSensor`, ו-`Observable` (3). עם זאת, אם נפרש את השאלה ככמה *סה\"כ* מחלקות/ממשקים רלוונטיים הם צריכים להיות מודעים אליהם במערכת הכוללת, המספר הוא 5.\n\n**אחרי השינוי (תרשים 3.2):**\nהשינוי מציג את תבנית ה-Bridge על ידי הוספת הממשק `TemperatureImp`. כעת, `TemperatureSensor` (ההפשטה) תלויה ב-`TemperatureImp` (ההפשטה של המימוש), ו-`Nimbus1_0Temperature` (המימוש החומרתי) מממשת את `TemperatureImp`. כתוצאה מכך, מהנדסי החומרה, בעת פיתוח `Nimbus1_0Temperature`, צריכים להכיר רק את הממשק `TemperatureImp` (כדי לממש אותו). `Nimbus1_0_C_API` עדיין מפותח על ידם. לכן, התלות החיצונית היחידה עבור `Nimbus1_0Temperature` היא ב-`TemperatureImp` (1).",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהאפשרות הנכונה היא \"לפני השינוי צריך להכיר 5 מחלקות/ממשקים, ואחרי השינוי צריך להכיר 1\".\n\n**לפני השינוי (תרשים 3.1):**\nמהנדסי החומרה מפתחים את `Nimbus1_0Temperature` ואת `Nimbus1_0_C_API`. במצב זה, `Nimbus1_0Temperature` (המימוש החומרתי) ככל הנראה מקושר ישירות ל-`TemperatureSensor` (ההפשטה התוכנתית). בנוסף, `TemperatureSensor` מקושר ל-`Observable`, ו-`TemperatureAlarmListener` מקושר ל-`TemperatureSensor`. לכן, כדי שהקוד של מהנדסי החומרה יתקמפל וישתלב במערכת, הם צריכים להכיר את כלל המרכיבים המעורבים בתהליך קריאת הטמפרטורה: `TemperatureAlarmListener`, `TemperatureSensor`, `Observable`, `Nimbus1_0Temperature`, ו-`Nimbus1_0_C_API`. אם נתעלם מאלה שהם מפתחים בעצמם (`Nimbus1_0Temperature` ו-`Nimbus1_0_C_API`), הם עדיין צריכים להכיר את `TemperatureAlarmListener`, `TemperatureSensor`, ו-`Observable` (3). עם זאת, אם נפרש את השאלה ככמה *סה\"כ* מחלקות/ממשקים רלוונטיים הם צריכים להיות מודעים אליהם במערכת הכוללת, המספר הוא 5.\n\n**אחרי השינוי (תרשים 3.2):**\nהשינוי מציג את תבנית ה-Bridge על ידי הוספת הממשק `TemperatureImp`. כעת, `TemperatureSensor` (ההפשטה) תלויה ב-`TemperatureImp` (ההפשטה של המימוש), ו-`Nimbus1_0Temperature` (המימוש החומרתי) מממשת את `TemperatureImp`. כתוצאה מכך, מהנדסי החומרה, בעת פיתוח `Nimbus1_0Temperature`, צריכים להכיר רק את הממשק `TemperatureImp` (כדי לממש אותו). `Nimbus1_0_C_API` עדיין מפותח על ידם. לכן, התלות החיצונית היחידה עבור `Nimbus1_0Temperature` היא ב-`TemperatureImp` (1).",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q11/question.md",
       "images": [
@@ -67,12 +67,12 @@
     "skills": [],
     "question_text": "סדר את תבניות העיצוב על פי מורכבות מבנה האובייקטים שהן מייצגות (משמאל לימין, מהמורכב לפשוט)",
     "options": [
-      "א. Composite, Decorator, Proxy",
-      "ב. Decorator, Proxy, Composite",
-      "ג. Composite, Proxy, Decorator",
-      "ד. Decorator, Composite, Proxy"
+      "א. Decorator, Composite, Proxy",
+      "ב. Composite, Proxy, Decorator",
+      "ג. Composite, Decorator, Proxy",
+      "ד. Decorator, Proxy, Composite"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא \"Composite, Decorator, Proxy\". סדר המורכבות של תבניות אלו, מהמורכבת לפשוטה, הוא:\n1.  **Composite (מבנה מורכב):** מאפשר לטפל באובייקטים בודדים ובקומפוזיציות של אובייקטים באופן אחיד. הוא כולל ממשק משותף, אובייקטי עלה (Leaf) ואובייקטים מורכבים (Composite) שיכולים להכיל ילדים, מה שיוצר מבנה רקורסיבי.\n2.  **Decorator (עטיפה עם הרחבה):** מוסיף אחריות חדשות לאובייקט באופן דינמי. הוא כולל רכיב (Component), רכיב קונקרטי, Decorator אבסטרקטי ו-Decorators קונקרטיים. הוא עוטף אובייקטים קיימים כדי להוסיף להם פונקציונליות.\n3.  **Proxy (עטיפה עם בקרת גישה):** מספק תחליף או מציין מיקום לאובייקט אחר כדי לשלוט בגישה אליו. הוא כולל ממשק Subject, Real Subject ו-Proxy. הוא עטיפה פשוטה יותר מ-Decorator, המשמשת בעיקר לבקרת גישה, טעינה עצלה וכדומה.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"Composite, Decorator, Proxy\". סדר המורכבות של תבניות אלו, מהמורכבת לפשוטה, הוא:\n1.  **Composite (מבנה מורכב):** מאפשר לטפל באובייקטים בודדים ובקומפוזיציות של אובייקטים באופן אחיד. הוא כולל ממשק משותף, אובייקטי עלה (Leaf) ואובייקטים מורכבים (Composite) שיכולים להכיל ילדים, מה שיוצר מבנה רקורסיבי.\n2.  **Decorator (עטיפה עם הרחבה):** מוסיף אחריות חדשות לאובייקט באופן דינמי. הוא כולל רכיב (Component), רכיב קונקרטי, Decorator אבסטרקטי ו-Decorators קונקרטיים. הוא עוטף אובייקטים קיימים כדי להוסיף להם פונקציונליות.\n3.  **Proxy (עטיפה עם בקרת גישה):** מספק תחליף או מציין מיקום לאובייקט אחר כדי לשלוט בגישה אליו. הוא כולל ממשק Subject, Real Subject ו-Proxy. הוא עטיפה פשוטה יותר מ-Decorator, המשמשת בעיקר לבקרת גישה, טעינה עצלה וכדומה.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q12/question.md"
     }
@@ -92,12 +92,12 @@
     "skills": [],
     "question_text": "במקרה בוחן מזג האויר שהוצג בכיתה, השתמשו ב `stationToolkit` כדי לאתחל את המערכת\nלפניך היגדים שונים סמן את הנכון ביותר :",
     "options": [
-      "א. `stationToolkit` ממומש כ `singleton`, כדי שבכל גירסה של המערכת ייוצרו רק אובייקטים השייכים לאותה גירסת מערכת.",
-      "ב. תפקיד ה `stationToolkit` לשמש כממשק בתבנית `AbstactFactory` המגדיר פעולות ליצירת מחלקות שונות (לדוג' יצירת חיישנים, יצירת שעון וכו') המתאימות לגירסת המערכת הנוכחית.",
-      "ג. את `stationToolkit` תממשנה מחלקות שונות כמספר הגירסאות של המערכת, אולם בזמן ריצה ייוצר אובייקט רק מאחת מהן.",
-      "ד. כל התשובות נכונות."
+      "א. את `stationToolkit` תממשנה מחלקות שונות כמספר הגירסאות של המערכת, אולם בזמן ריצה ייוצר אובייקט רק מאחת מהן.",
+      "ב. כל התשובות נכונות.",
+      "ג. תפקיד ה `stationToolkit` לשמש כממשק בתבנית `AbstactFactory` המגדיר פעולות ליצירת מחלקות שונות (לדוג' יצירת חיישנים, יצירת שעון וכו') המתאימות לגירסת המערכת הנוכחית.",
+      "ד. `stationToolkit` ממומש כ `singleton`, כדי שבכל גירסה של המערכת ייוצרו רק אובייקטים השייכים לאותה גירסת מערכת."
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהאפשרות הנכונה היא \"תפקיד ה `stationToolkit` לשמש כממשק בתבנית `AbstactFactory` המגדיר פעולות ליצירת מחלקות שונות (לדוג' יצירת חיישנים, יצירת שעון וכו') המתאימות לגירסת המערכת הנוכחית.\". ה-`stationToolkit` במערכת ניטור מזג האוויר משמש בדרך כלל כ-Abstract Factory. תבנית זו מאפשרת ליצור משפחות של אובייקטים קשורים (כמו חיישנים, שעונים, וכו') מבלי לציין את המחלקות הקונקרטיות שלהם, ובכך מאפשרת למערכת להיות גמישה ולהחליף בין גרסאות שונות של רכיבים בקלות.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"תפקיד ה `stationToolkit` לשמש כממשק בתבנית `AbstactFactory` המגדיר פעולות ליצירת מחלקות שונות (לדוג' יצירת חיישנים, יצירת שעון וכו') המתאימות לגירסת המערכת הנוכחית.\". ה-`stationToolkit` במערכת ניטור מזג האוויר משמש בדרך כלל כ-Abstract Factory. תבנית זו מאפשרת ליצור משפחות של אובייקטים קשורים (כמו חיישנים, שעונים, וכו') מבלי לציין את המחלקות הקונקרטיות שלהם, ובכך מאפשרת למערכת להיות גמישה ולהחליף בין גרסאות שונות של רכיבים בקלות.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q13/question.md"
     }
@@ -118,12 +118,12 @@
     "skills": [],
     "question_text": "שאלה זו מתייחסת לתרשימים 12 המופיעים בתחילת הבחינה.\nבהתייחס לתרשימים הנתונים בלבד, מיהם הגורמים האחראים להפעלת המתודה `currentReading` (מופיע בתרשים א, במחלקה `HiLoData`), מהגורם העקיף ביותר ועד הגורם הישיר ביותר?\nתזכורת : המתודה `currentReading` בודקת האם ערך טמפרטורה נתון, גבוה מערך הטמפרטורה המקסימלי (או נמוך מהמינימלי) הידוע עד כה ביממה הנוכחית, ומעדכנת ערכים בהתאם.\n![Image](./questions/exam_2024_B_A_MultipleChoice_q14/image_3_1.png)\n![Image](./questions/exam_2024_B_A_MultipleChoice_q14/image_3_2.png)",
     "options": [
-      "א. TemperaturSensor, Nimbus1_0Clock, AlarmClock, TemperatureHiLo",
-      "ב. TemperaturSensor, TemperatureHiLo, Nimbus1_0Clock, AlarmClock",
-      "ג. Nimbus1_0Clock, AlarmClock, TemperaturSensor, TemperatureHiLo",
+      "א. Nimbus1_0Clock, AlarmClock, TemperaturSensor, TemperatureHiLo",
+      "ב. TemperaturSensor, Nimbus1_0Clock, AlarmClock, TemperatureHiLo",
+      "ג. TemperaturSensor, TemperatureHiLo, Nimbus1_0Clock, AlarmClock",
       "ד. Nimbus1_0Clock, AlarmClock, TemperatureHiLo, TemperaturSensor"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"Nimbus1_0Clock, AlarmClock, TemperaturSensor, TemperatureHiLo\". ננתח את שרשרת האחריות מהגורם העקיף ביותר ועד הישיר ביותר להפעלת `currentReading`:\n1.  **`Nimbus1_0Clock`:** זהו השעון הראשי (Singleton) שמפעיל את מחזור ה'טיק' (tic) באופן קבוע.\n2.  **`AlarmClock`:** ה-`Nimbus1_0Clock` מפעיל את ה-`AlarmClock` (דרך `tic()` או `wakeEveryDay`). ה-`AlarmClock` אחראי לנהל את ה-`AlarmListener`ים הרשומים אליו.\n3.  **`TemperatureSensor`:** ה-`TemperatureSensor` הוא ככל הנראה `AlarmListener` (או `Observer`) שנרשם ל-`AlarmClock`. כאשר ה-`AlarmClock` מפעיל את ה-`AlarmListener`ים שלו, ה-`TemperatureSensor` מקבל עדכון.\n4.  **`TemperatureHiLo`:** ה-`TemperatureSensor` משתמש ב-`TemperatureHiLo` (דרך שדה `itsHiLoData` או קשר אחר) כדי לעבד את נתוני הטמפרטורה. ה-`TemperatureHiLo` הוא זה שבסופו של דבר קורא למתודה `currentReading` על אובייקט `HiLoData` כדי לעדכן את נתוני השיא והשפל.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא \"Nimbus1_0Clock, AlarmClock, TemperaturSensor, TemperatureHiLo\". ננתח את שרשרת האחריות מהגורם העקיף ביותר ועד הישיר ביותר להפעלת `currentReading`:\n1.  **`Nimbus1_0Clock`:** זהו השעון הראשי (Singleton) שמפעיל את מחזור ה'טיק' (tic) באופן קבוע.\n2.  **`AlarmClock`:** ה-`Nimbus1_0Clock` מפעיל את ה-`AlarmClock` (דרך `tic()` או `wakeEveryDay`). ה-`AlarmClock` אחראי לנהל את ה-`AlarmListener`ים הרשומים אליו.\n3.  **`TemperatureSensor`:** ה-`TemperatureSensor` הוא ככל הנראה `AlarmListener` (או `Observer`) שנרשם ל-`AlarmClock`. כאשר ה-`AlarmClock` מפעיל את ה-`AlarmListener`ים שלו, ה-`TemperatureSensor` מקבל עדכון.\n4.  **`TemperatureHiLo`:** ה-`TemperatureSensor` משתמש ב-`TemperatureHiLo` (דרך שדה `itsHiLoData` או קשר אחר) כדי לעבד את נתוני הטמפרטורה. ה-`TemperatureHiLo` הוא זה שבסופו של דבר קורא למתודה `currentReading` על אובייקט `HiLoData` כדי לעדכן את נתוני השיא והשפל.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q14/question.md",
       "images": [
@@ -146,12 +146,12 @@
     "skills": [],
     "question_text": "נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`.\n```java\npublic class Collections {\n    public static <T> void copy\n    (List<? super T> dest, List<? extends T> src) {\n        for (int i=0; i<src.size(); i++)\n            dest.set(i,src.get(i));\n    }\n}\n```\nנתונה גם היררכיית מחלקות מובנות ב Java : ![Image](./questions/exam_2024_B_A_MultipleChoice_q15/image_16_1.png)\nנתונות ההפניות הבאות לרשימות שונות :\n`List<Object> objects = new ArrayList<Object>();`\n`List<Integer> integers = new ArrayList<Integer>();`\n`List<Double> doubles = new ArrayList<Double>();`\nהניחו שבכל ההפניות שבשמן מופיעה המילה `input` הכניסו כבר לרשימה אובייקטים מסוגים שחוקי להכניסם באותה רשימה.\nנתונות שלוש הקריאות השונות הבאות לפונקציה `copy` :\n`MyCollection.<Object>copy(objects, integers);`\n`MyCollection.<Double>copy(doubles, doubles);`\n`MyCollection.<Integer>copy(objects, integers);`\nכמה מתוך שלוש הקריאות הנייל לפונקציה `copy`, הן חוקיות (דהיינו, יעברו קומפילציה בהצלחה)?",
     "options": [
-      "א. 0",
-      "ב. 3",
-      "ג. 2",
-      "ד. 1"
+      "א. 2",
+      "ב. 0",
+      "ג. 1",
+      "ד. 3"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהאפשרות הנכונה היא \"3\". ננתח כל קריאה לפונקציה `copy(List<? super T> dest, List<? extends T> src)`:\n\n1.  **`MyCollection.<Object>copy(objects, integers);`**\n    *   `T` מוגדר כ-`Object`.\n    *   `dest`: `objects` הוא `List<Object>`. `Object` הוא סופר-טיפוס של `Object` (או `Object` עצמו). `List<? super Object>` מתאים ל-`List<Object>`. **תקין.**\n    *   `src`: `integers` הוא `List<Integer>`. `Integer` מרחיב את `Object`. `List<? extends Object>` מתאים ל-`List<Integer>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\n2.  **`MyCollection.<Double>copy(doubles, doubles);`**\n    *   `T` מוגדר כ-`Double`.\n    *   `dest`: `doubles` הוא `List<Double>`. `Double` הוא סופר-טיפוס של `Double` (או `Double` עצמו). `List<? super Double>` מתאים ל-`List<Double>`. **תקין.**\n    *   `src`: `doubles` הוא `List<Double>`. `Double` מרחיב את `Double`. `List<? extends Double>` מתאים ל-`List<Double>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\n3.  **`MyCollection.<Integer>copy(objects, integers);`**\n    *   `T` מוגדר כ-`Integer`.\n    *   `dest`: `objects` הוא `List<Object>`. `Object` הוא סופר-טיפוס של `Integer`. `List<? super Integer>` מתאים ל-`List<Object>`. **תקין.**\n    *   `src`: `integers` הוא `List<Integer>`. `Integer` מרחיב את `Integer`. `List<? extends Integer>` מתאים ל-`List<Integer>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\nכל שלוש הקריאות חוקיות ויעברו קומפילציה בהצלחה.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהאפשרות הנכונה היא \"3\". ננתח כל קריאה לפונקציה `copy(List<? super T> dest, List<? extends T> src)`:\n\n1.  **`MyCollection.<Object>copy(objects, integers);`**\n    *   `T` מוגדר כ-`Object`.\n    *   `dest`: `objects` הוא `List<Object>`. `Object` הוא סופר-טיפוס של `Object` (או `Object` עצמו). `List<? super Object>` מתאים ל-`List<Object>`. **תקין.**\n    *   `src`: `integers` הוא `List<Integer>`. `Integer` מרחיב את `Object`. `List<? extends Object>` מתאים ל-`List<Integer>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\n2.  **`MyCollection.<Double>copy(doubles, doubles);`**\n    *   `T` מוגדר כ-`Double`.\n    *   `dest`: `doubles` הוא `List<Double>`. `Double` הוא סופר-טיפוס של `Double` (או `Double` עצמו). `List<? super Double>` מתאים ל-`List<Double>`. **תקין.**\n    *   `src`: `doubles` הוא `List<Double>`. `Double` מרחיב את `Double`. `List<? extends Double>` מתאים ל-`List<Double>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\n3.  **`MyCollection.<Integer>copy(objects, integers);`**\n    *   `T` מוגדר כ-`Integer`.\n    *   `dest`: `objects` הוא `List<Object>`. `Object` הוא סופר-טיפוס של `Integer`. `List<? super Integer>` מתאים ל-`List<Object>`. **תקין.**\n    *   `src`: `integers` הוא `List<Integer>`. `Integer` מרחיב את `Integer`. `List<? extends Integer>` מתאים ל-`List<Integer>`. **תקין.**\n    *   **קריאה זו חוקית.**\n\nכל שלוש הקריאות חוקיות ויעברו קומפילציה בהצלחה.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q15/question.md",
       "images": [
@@ -173,12 +173,12 @@
     "skills": [],
     "question_text": "במערכת להצגה גרפית של צורות ישנו ממשק עבור צורה `IShape` אשר לו `x` מימושים עבור צורות הנדסיות שונות. בממשק ישנה פונקציה בשם `()display` אשר כל מי שמממש את הממשק מממש את הפונקציה בה הוא מציג את הצורה על המסך. ברצוננו להוסיף את האפשרות לבצע הנפשות לכל צורה. הנפשה יכולה להיות : עמעום, הגדלת הצורה, סיבוב הצורה וכדומה. ישנן `y` הנפשות.\nמהי תבנית העיצוב המתאימה ביותר לממש את המערכת הזו?",
     "options": [
-      "א. Visitor",
-      "ב. Composite",
-      "ג. Decorator",
-      "ד. Iterator"
+      "א. Iterator",
+      "ב. Decorator",
+      "ג. Visitor",
+      "ד. Composite"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"Decorator\". תבנית ה-Decorator מאפשרת להוסיף פונקציונליות חדשה לאובייקט באופן דינמי, מבלי לשנות את המבנה הבסיסי שלו. במקרה זה, אנו רוצים להוסיף יכולות הנפשה (עמעום, הגדלה, סיבוב) לצורות קיימות (שמממשות `IShape`) מבלי לשנות את מחלקות הצורות עצמן. ה-Decorator יאפשר לעטוף כל צורה ב-Decorator של הנפשה, ובכך להוסיף את ההתנהגות החדשה.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהאפשרות הנכונה היא \"Decorator\". תבנית ה-Decorator מאפשרת להוסיף פונקציונליות חדשה לאובייקט באופן דינמי, מבלי לשנות את המבנה הבסיסי שלו. במקרה זה, אנו רוצים להוסיף יכולות הנפשה (עמעום, הגדלה, סיבוב) לצורות קיימות (שמממשות `IShape`) מבלי לשנות את מחלקות הצורות עצמן. ה-Decorator יאפשר לעטוף כל צורה ב-Decorator של הנפשה, ובכך להוסיף את ההתנהגות החדשה.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q16/question.md"
     }
@@ -198,12 +198,12 @@
     "skills": [],
     "question_text": "נתונים שני ממשקים `IB` `IA` ומחלקה `C`.\nאיזו מהשורות הבאות יכולה לעבור קומפילציה?\n![Image](./questions/exam_2024_B_A_MultipleChoice_q4/image_12_1.png)",
     "options": [
-      "א. IA extends IB",
-      "ב. שאר התשובות אינן נכונות",
-      "ג. IA implements IB",
-      "ד. C extends IA"
+      "א. IA implements IB",
+      "ב. IA extends IB",
+      "ג. C extends IA",
+      "ד. שאר התשובות אינן נכונות"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא `IA extends IB`. במודל UML, ממשק יכול להרחיב (extends) ממשק אחר. `IA` ו-`IB` שניהם ממשקים, ולכן `IA extends IB` הוא יחס ירושה חוקי בין ממשקים. `implements` משמש למחלקה המממשת ממשק, ו-`extends` משמש למחלקה היורשת ממחלקה אחרת או לממשק היורש מממשק אחר.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהאפשרות הנכונה היא `IA extends IB`. במודל UML, ממשק יכול להרחיב (extends) ממשק אחר. `IA` ו-`IB` שניהם ממשקים, ולכן `IA extends IB` הוא יחס ירושה חוקי בין ממשקים. `implements` משמש למחלקה המממשת ממשק, ו-`extends` משמש למחלקה היורשת ממחלקה אחרת או לממשק היורש מממשק אחר.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q4/question.md",
       "images": [
@@ -226,12 +226,12 @@
     "skills": [],
     "question_text": "נתון התרשים הבא: ![Image](./questions/exam_2024_B_A_MultipleChoice_q5/image_12_1.png)\nהניחו ששמות השדות הם `itsA`, `itsB`, `itsC` בהתאם לטיפוס השדה.\nאיזה קוד ניתן להסיק מהתרשים שמתאים להיות כחלק מקוד הבנאי מחלקת C",
     "options": [
-      "א. itsA.setItsC(this)",
-      "ב. itsB.setItsC(this)",
+      "א. itsB.setItsC(this)",
+      "ב. itsA.setItsB(itsB)",
       "ג. itsB.setItsA(itsA)",
-      "ד. itsA.setItsB(itsB)"
+      "ד. itsA.setItsC(this)"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא `itsA.setItsC(this)`. מהתרשים עולה כי למחלקה `C` יש שדה `itsA` מטיפוס `A`, ולמחלקה `A` יש שדה `itsC` מטיפוס `C`. לכן, בתוך הבנאי של `C`, ניתן לגשת לשדה `itsA` (שהוא אובייקט מסוג `A`) ולשנות את השדה `itsC` שלו לאובייקט הנוכחי של `C` (באמצעות `this`).",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהאפשרות הנכונה היא `itsA.setItsC(this)`. מהתרשים עולה כי למחלקה `C` יש שדה `itsA` מטיפוס `A`, ולמחלקה `A` יש שדה `itsC` מטיפוס `C`. לכן, בתוך הבנאי של `C`, ניתן לגשת לשדה `itsA` (שהוא אובייקט מסוג `A`) ולשנות את השדה `itsC` שלו לאובייקט הנוכחי של `C` (באמצעות `this`).",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q5/question.md",
       "images": [
@@ -254,9 +254,9 @@
     "question_text": "בהינתן תרשים ה `statechart` הבא : ![Image](./questions/exam_2024_B_A_MultipleChoice_q6/image_13_1.png)\nנשלח את האירועים (משמאל לימין): `evA,evB,evC`.\nמי מיחסי הירושה הבאים יוביל לכך שיודפסו המספרים (משמאל לימין): 2,2,1",
     "options": [
       "א. evB יורש מ evA",
-      "ב. evC יורש מ evA",
-      "ג. evC יורש מ evA וגם evA יורש evB",
-      "ד. evB יורש מ evA וגם evC יורש מ evB"
+      "ב. evC יורש מ evA וגם evA יורש evB",
+      "ג. evB יורש מ evA וגם evC יורש מ evB",
+      "ד. evC יורש מ evA"
     ],
     "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא `evB יורש מ evA`. ננתח את המעבר בין המצבים וההדפסות:\n1.  **מצב התחלתי:** `State1`.\n2.  **שליחת `evA`:** אם `evB` יורש מ-`evA`, אז שליחת `evA` תפעיל גם את המעבר של `evB`. ב-`State1`, המעבר `evB/print(2)` יופעל. יודפס 2. המערכת עוברת ל-`State2`.\n3.  **שליחת `evB`:** ב-`State2`, אין מעבר עבור `evB`. המערכת נשארת ב-`State2`.\n    *   **תיקון לפי הפתרון:** אם `evB` יורש מ-`evA`, אז כאשר `evA` נשלח, `evB` מופעל. יודפס 2. המצב עובר ל-`State2`. כאשר `evB` נשלח שוב, הוא מופעל. ב-`State2` אין מעבר עבור `evB`. אבל אם `evB` יורש מ-`evA`, והמעבר `evB/print(2)` קיים ב-`State1`, אז אם `evA` נשלח, `evB` מופעל, יודפס 2, ועובר ל-`State2`. אם `evB` נשלח שוב, ב-`State2` אין מעבר עבור `evB`. זה לא ייתן 2,2,1.\n    *   **ננסה שוב עם ההבנה ש-`evB` יורש מ-`evA`:**\n        *   **התחלה ב-`State1`**\n        *   **שליחת `evA`:** מכיוון ש-`evB` יורש מ-`evA`, האירוע `evB` מופעל. ב-`State1` יש מעבר `evB/print(2)`. יודפס **2**. המצב עובר ל-`State2`.\n        *   **שליחת `evB`:** ב-`State2` אין מעבר עבור `evB`. המצב נשאר ב-`State2`.\n        *   **שליחת `evC`:** ב-`State2` יש מעבר `evC/print(1)`. יודפס **1**. המצב עובר ל-`State1`.\n        *   **התוצאה:** 2,1. זה לא 2,2,1.\n\n    *   **נבדוק את האפשרות הראשונה שוב, בהנחה שהתרשים מציג את המעברים האפשריים מכל מצב:**\n        *   **התחלה ב-`State1`**\n        *   **שליחת `evA`:** אם `evB` יורש מ-`evA`, אז `evB` מופעל. ב-`State1` יש מעבר `evB/print(2)`. יודפס **2**. המצב עובר ל-`State2`.\n        *   **שליחת `evB`:** ב-`State2` אין מעבר ספציפי ל-`evB`. אך אם `evB` יורש מ-`evA`, ו-`evA` הוא אירוע כללי יותר, ייתכן שהמעבר `evB/print(2)` ב-`State1` הוא המעבר היחיד שמופעל על ידי `evB` או יורשיו. אם אין מעבר ב-`State2` עבור `evB`, אז המצב נשאר ב-`State2`.\n        *   **נחזור לתרשים:** המעבר `evB/print(2)` הוא מ-`State1` ל-`State2`. המעבר `evC/print(1)` הוא מ-`State2` ל-`State3`. המעבר `evC/print(2)` הוא מ-`State1` ל-`State1`. יש גם מעבר מ-`State3` ל-`State1` ללא אירוע.\n\n    *   **ננסה לפרש את התרשים כך:**\n        *   **התחלה ב-`State1`**\n        *   **שליחת `evA`:** אם `evB` יורש מ-`evA`, אז `evB` מופעל. ב-`State1` יש מעבר `evB/print(2)`. יודפס **2**. המצב עובר ל-`State2`.\n        *   **שליחת `evB`:** ב-`State2` אין מעבר ספציפי ל-`evB`. המצב נשאר ב-`State2`. (עדיין 2,1)\n\n    *   **אולי יש טעות בהבנת התרשים או השאלה.** אם נרצה 2,2,1, אז צריך ש-`evB` יופעל פעמיים ב-`State1` או שיהיה מעבר נוסף. \n    *   **נניח שהפתרון נכון וננסה להבין איך `evB יורש מ evA` מוביל ל-2,2,1:**\n        *   **Start in State1.**\n        *   **Send `evA`:** If `evB` inherits `evA`, then `evB` is triggered. From `State1`, `evB/print(2)` is executed. Output: **2**. Transition to `State2`.\n        *   **Send `evB`:** From `State2`, there is no direct `evB` transition. However, there is a transition from `State2` to `State3` on `evC/print(1)`. This doesn't help. There is also a transition from `State1` to `State1` on `evC/print(2)`. This also doesn't help.\n        *   The only way to get a second '2' is if `evB` is triggered again from `State1` or if there's another `print(2)` in `State2` or `State3` that `evB` triggers. This is not shown.\n        *   **Re-evaluating the diagram:** The diagram shows `evC/print(2)` on the self-loop of `State1`. `evB/print(2)` on the transition from `State1` to `State2`. `evC/print(1)` on the transition from `State2` to `State3`. There's an implicit transition from `State3` back to `State1` (empty arrow).\n        *   **Let's assume the events are processed sequentially and inheritance means a child event also triggers parent event transitions.**\n        *   **Start: State1.**\n        *   **Event `evA`:** If `evB` inherits `evA`, then `evB` is triggered. `State1` has `evB/print(2)` -> `State2`. Output: **2**. Current State: `State2`.\n        *   **Event `evB`:** `State2` has no `evB` transition. Current State: `State2`.\n        *   **Event `evC`:** `State2` has `evC/print(1)` -> `State3`. Output: **1**. Current State: `State3`.\n        *   **Result: 2,1.** This is still not 2,2,1.\n\n    *   **Let's consider the possibility that the question implies a different interpretation of event processing or inheritance in statecharts.** If `evA` triggers `evB`, and `evB` triggers `print(2)` and moves to `State2`. Then `evB` is sent again. If `State2` has an implicit `evB` transition that also prints 2 and stays in `State2` (not shown), then it would be 2,2. Then `evC` would print 1. This is highly speculative.\n\n    *   **Given the provided solution, I will assume the interpretation that leads to 2,2,1 is as follows:**\n        *   **Start in State1.**\n        *   **Send `evA`:** If `evB` inherits `evA`, then `evB` is triggered. `State1` has a transition `evB/print(2)` to `State2`. Output: **2**. Current state: `State2`.\n        *   **Send `evB`:** If `evB` is sent while in `State2`, and there's an implicit or inherited behavior that causes `print(2)` and a transition back to `State1` (or stays in `State2` and then `evC` moves to `State3`), this would be the second '2'. This is not explicitly shown in the diagram. However, if we assume that `evB` can also trigger `evA`'s behavior (if `evA` had a transition in `State2`), or if `evB` itself has a hidden transition in `State2` that prints 2. This is not standard.\n        *   **Let's assume the diagram is simplified and `evB` can be processed in `State2` to produce '2' and stay in `State2` (or move to `State1` and then `evC` moves to `State3`).**\n        *   **Send `evC`:** From `State2`, `evC/print(1)` moves to `State3`. Output: **1**. Current state: `State3`.\n        *   **Result: 2,2,1.**\n\n    *   **The most straightforward interpretation of `evB יורש מ evA` for the given diagram to produce 2,2,1 is:**\n        *   **Start in State1.**\n        *   **Send `evA`:** `evB` is triggered (due to inheritance). `State1` has `evB/print(2)` -> `State2`. Output: **2**. Current State: `State2`.\n        *   **Send `evB`:** `evB` is sent. If `State2` has an implicit or inherited transition for `evB` that results in `print(2)` and stays in `State2` (or moves to `State1` and then `evC` moves to `State3`). This is the most problematic part. Let's assume `evB` is processed in `State2` and somehow results in `print(2)` and stays in `State2`. Output: **2**. Current State: `State2`.\n        *   **Send `evC`:** `State2` has `evC/print(1)` -> `State3`. Output: **1**. Current State: `State3`.\n        *   **Result: 2,2,1.**\n\n    *   This explanation requires assumptions not explicitly in the diagram. However, given the multiple-choice nature, `evB יורש מ evA` is the only option that could potentially lead to the desired output if certain implicit behaviors are assumed.",
     "assets": {
@@ -280,9 +280,9 @@
     "skills": [],
     "question_text": "איזה מהשיפורים הבאים אינו מתקבל מקיום עקרון SRP",
     "options": [
-      "א. שיפור הארגון של הקוד",
-      "ב. התוכנה הופכת להיות פחות שבירה",
-      "ג. קל יותר לשנות את המערכת",
+      "א. התוכנה הופכת להיות פחות שבירה",
+      "ב. קל יותר לשנות את המערכת",
+      "ג. שיפור הארגון של הקוד",
       "ד. קל יותר לבדוק את המערכת"
     ],
     "answer_text": "**התשובה הנכונה היא: ד'**\n\nהאפשרות הנכונה היא \"קל יותר לבדוק את המערכת\". עקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת לשינוי. יישום SRP מוביל ישירות ל:\n*   **תוכנה פחות שבירה:** שינוי באחריות אחת לא ישפיע על אחריות אחרת.\n*   **שיפור ארגון הקוד:** מחלקות קטנות וממוקדות יותר.\n*   **קלות שינוי:** שינויים ממוקדים יותר במחלקות ספציפיות.\n\nבעוד ש-SRP יכול לתרום בעקיפין לקלות הבדיקה על ידי יצירת יחידות קוד קטנות וממוקדות יותר, זה אינו יתרון ישיר או עיקרי של העיקרון עצמו, בניגוד לשאר האפשרויות שהן תוצאות ישירות של יישום SRP.",
@@ -306,12 +306,12 @@
     "skills": [],
     "question_text": "נתון שרטוט המתאר בית וחדר מגורים. הניחו כי במהלך ניקוי חדר המגורים יש לכבות את הטלוויזיה\n![Image](./questions/exam_2024_B_A_MultipleChoice_q8/image_13_2.png)\nסמנו מהו המשפט הנכון",
     "options": [
-      "א. במודל קיימת בעיית DIP",
-      "ב. במודל קיימת בעיית ISP",
-      "ג. המודל תקין",
-      "ד. במודל קיימת בעיית LSP"
+      "א. המודל תקין",
+      "ב. במודל קיימת בעיית LSP",
+      "ג. במודל קיימת בעיית DIP",
+      "ד. במודל קיימת בעיית ISP"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הנכונה היא \"במודל קיימת בעיית DIP\". עקרון היפוך התלויות (DIP) קובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה. שניהם צריכים להיות תלויים בהפשטות. במקרה זה, המחלקה `House` (מודול ברמה גבוהה) תלויה ישירות במחלקה `LivingRoom` (מודול ברמה נמוכה) ובשיטת `toggleTV()` שלה. אם `House` צריכה לכבות את הטלוויזיה, היא צריכה לעשות זאת דרך הפשטה (למשל, ממשק `SwitchableDevice`) ולא דרך תלות ישירה במימוש ספציפי של חדר.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהאפשרות הנכונה היא \"במודל קיימת בעיית DIP\". עקרון היפוך התלויות (DIP) קובע שמודולים ברמה גבוהה לא צריכים להיות תלויים במודולים ברמה נמוכה. שניהם צריכים להיות תלויים בהפשטות. במקרה זה, המחלקה `House` (מודול ברמה גבוהה) תלויה ישירות במחלקה `LivingRoom` (מודול ברמה נמוכה) ובשיטת `toggleTV()` שלה. אם `House` צריכה לכבות את הטלוויזיה, היא צריכה לעשות זאת דרך הפשטה (למשל, ממשק `SwitchableDevice`) ולא דרך תלות ישירה במימוש ספציפי של חדר.",
     "assets": {
       "markdown": "./questions/exam_2024_B_A_MultipleChoice_q8/question.md",
       "images": [
@@ -414,6 +414,418 @@
     }
   },
   {
+    "id": "exam_2024_B_B_MultipleChoice_q10",
+    "title": "SOLID Principles in Army Management",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "SOLID - LSP",
+      "UML - תרשים מחלקות"
+    ],
+    "skills": [],
+    "question_text": "נתון מבנה המחלקות הבא עבור מערכת לניהול כוח אדם בצבא. מה ניתן לומר על עמידת העיצוב בעקרונות SOLID\n![Image](image_13_1.png)",
+    "options": [
+      "א. העיצוב מפר את עקרון ה DIP מאחר ויש לנו תלות בין שתי מחלקות יורשות. על מנת למנוע את ההפרה יש להגדיר את ההיררכיה הבאה: המפקד צריך לרשת מהחייל והחייל מהאדם.",
+      "ב. אף אחת מהתשובות האחרות אינה נכונה",
+      "ג. העיצוב מפר את עקרון LSP מאחר והמפקד והחייל מכילים פונקציות פומביות שלא הוגדרו במחלקה הבסיסית. העיצוב נכשל במבחן הזיוף.",
+      "ד. העיצוב מפר את עקרון ה SRP מאחר האדם עושה כמה דברים שונים."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nThe design violates the Liskov Substitution Principle (LSP). LSP states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application. Here, `Commander` and `Soldier` are subclasses of `Person`. If `Person` has methods like `eat()` and `drink()`, and `Commander` or `Soldier` introduce new public methods (`command()`, `fight()`) that are not applicable to a generic `Person`, or if they change the behavior of inherited methods in a way that breaks the `Person` contract, then LSP is violated. The option specifically mentions `Commander` and `Soldier` having public functions not defined in the base class, which is a common LSP violation.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q10/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q11",
+    "title": "ISP Impact",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "SOLID - ISP",
+      "Package design - Cohesion",
+      "Package design - Coupling"
+    ],
+    "skills": [],
+    "question_text": "כיצד משפיע עקרון הפרדת הממשקים (ISP) על פיתוח תוכנה?",
+    "options": [
+      "א. כל התשובות נכונות",
+      "ב. עקרון ISP מגדיל את מספר הממשקים.",
+      "ג. עקרון ISP מקדם יצירת ממשקים קטנים",
+      "ד. עקרון ISP מצמצם את התלויות בין מחלקות/ממשקים"
+    ],
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nThe Interface Segregation Principle (ISP) promotes creating small, client-specific interfaces rather than large, general-purpose ones. This leads to smaller interfaces and reduces dependencies between classes, as clients only depend on the methods they actually use. Therefore, it promotes creating small interfaces and reduces coupling. The option 'כל התשובות נכונות' (all answers are correct) is the best fit as ISP indeed promotes small interfaces and reduces coupling, even if it might increase the *number* of interfaces.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q11/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q12",
+    "title": "LSP Violation in CodeGenerator",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "SOLID - LSP"
+    ],
+    "skills": [],
+    "question_text": "הפונקציה `generate` במחלקת `CodeGenerator` של תוכנת ה `AI` החדשה \"ProgrammerAI\"י, מקבלת תיאור של אלגוריתם בתחום של עיבוד תמונה, ובתגובה מחזירה קוד שמממש את האלגוריתם בשפת ג'אווה.\nיצרנו תת מחלקה של `CodeGenerator`. איזה מימוש של פונקציית `generate` שלה מפר את - `Liskov Substitution Principle (LSP)`?",
+    "options": [
+      "א. מקבלת כפרמטר תיאור של אלגוריתם בתחום של עיבוד תמונה או טקסט, ומחזירה קוד שמממש את האלגוריתם בשפת ג'אווה.",
+      "ב. מקבלת כפרמטר תיאור של אלגוריתם בתחום של עיבוד תמונה או טקסט, ומחזירה קוד שמממש את האלגוריתם בשפת ג'אווה או פייתון (לפי מה שנראה לתוכנה מתאים יותר)",
+      "ג. מקבלת כפרמטר תיאור של אלגוריתם בתחום של עיבוד תמונה, ומחזירה קוד שמממש את האלגוריתם בשפת ג'אווה או פייתון (לפי מה שנראה לתוכנה מתאים יותר)",
+      "ד. שתים מהתשובות האחרות נכונות."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nThe Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application. If the original `generate` method expects a description of an image processing algorithm and returns Java code, a subclass method that accepts *either* image processing *or text* algorithms, or returns *either* Java *or Python* code, violates LSP. This is because the subclass is changing the expected input types (widening) or output types (widening) in a way that a client expecting the superclass behavior might not handle correctly. The options that broaden the input (image or text) or output (Java or Python) types are violations. Since two options describe this, the correct answer is 'שתים מהתשובות האחרות נכונות.' (Two of the other answers are correct).",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q12/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q13",
+    "title": "Dishwasher Statechart Analysis",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "UML - תרשים Statechart"
+    ],
+    "skills": [],
+    "question_text": "שאלה זו מתייחסת לתרשימים 1.1-1.4 המופיעים בתחילת הבחינה.\nמה נכון לגבי פעולת המדיח לפי התרשימים?\n![Image](./questions/exam_2024_B_B_MultipleChoice_q13/image_3_1.png)\n![Image](./questions/exam_2024_B_B_MultipleChoice_q13/image_4_1.png)\n![Image](./questions/exam_2024_B_B_MultipleChoice_q13/image_4_2.png)",
+    "options": [
+      "א. כאשר מתקבל אירוע של פתיחת דלת `evOpen` בבקר, תתי המערכות `Jet, Heater, Tank` מפסיקות את פעולתן",
+      "ב. כאשר מתקבל אירוע של פתיחת דלת `evOpen` בבקר, תת המערכת `Tank` לא מפסיקה את פעולתה ואילו תתי המערכות `Jet Heater` מפסיקות את פעולתן",
+      "ג. כאשר מתקבל אירוע של פתיחת דלת `evOpen` בבקר, תת המערכת `Tank` מפסיקה את פעולתה ואילו תתי המערכות `JetHeater` אינן מפסיקות את פעולתן",
+      "ד. כאשר מתקבל אירוע של פתיחת דלת `evOpen` בבקר, תתי המערכות `Jet, Heater, Tank` אינן מפסיקות את פעולתן"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nLooking at the Statechart of Dishwasher (תרשים 1.1), an `evOpen` event transitions from `active` to `doorClosed` state. This implies that all sub-states within `active` (like `running` and `service`) are exited. The `running` state contains `filling`, `rinsing`, `washing`, `draining`, and `drying`, which involve `Tank`, `Jet`, and `Heater`. Exiting `running` means these operations stop. The `Tank` statechart (תרשים 1.2) shows `evEmpty` and `evTankDrain` events, but no direct `evOpen` transition. However, the `Dishwasher` statechart is the higher level. When `active` is exited, all its sub-components' activities cease. Therefore, all sub-systems (`Jet`, `Heater`, `Tank`) stop their operations.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q13/question.md",
+      "images": [
+        "./questions/exam_2024_B_B_MultipleChoice_q13/image_3_1.png",
+        "./questions/exam_2024_B_B_MultipleChoice_q13/image_4_1.png",
+        "./questions/exam_2024_B_B_MultipleChoice_q13/image_4_2.png"
+      ]
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q14",
+    "title": "Dependency Injection for Camera",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Frameworks - Dependency injection"
+    ],
+    "skills": [],
+    "question_text": "נניח את העיצוב הבא:\n![Image](./questions/exam_2024_B_B_MultipleChoice_q14/image_14_1.png)\nנרצה לאתחל מופע ממחלקת `AcmeCamera` באמצעות מנגנון `dependency injection`. בחרו בתשובה הנכונה",
+    "options": [
+      "א. במחלקת `Camera` נסמן את השדה `itsImages` באנוטציה `Inject` נסמן את מחלקת `GrayImage` כ-`Alternative` ו-`RGBImage` כ-`Alternative` נייצר `producer` שערך ההחזרה שלו `Image` ובמימוש הפנימי שלו נחזיר `RGBImage` או `GrayImage`, לבחירתינו.",
+      "ב. במחלקת `Camera` נסמן את השדה `itsImages` באנוטציה `Inject`, נסמן את מחלקת `GrayImage` כ-`Alternative`, ו-`RGBImage` כ-`Alternative` נייצר `producer` אחד שערך ההחזרה שלו `<List<Image` שלתוכו נכניס מופע של `GrayImage` ו `producer` נוסף שערך ההחזרה שלו `<List<Image` שלתוכו נכניס מופע של `RGBImage`.",
+      "ג. .Images ובאנוטציה מותאמת אישית `Inject` באנוטציה `itsImages` נסמן את השדה `Camera` במחלקת נייצר `producer` שערך ההחזרה שלו `<List<Image` המסומן באנוטציה `Images`.",
+      "ד. במחלקת `Camera` נסמן את השדה `itsImages` באנוטציה `Inject`, נסמן את מחלקת `GrayImage` כ-`Default` ו-`RGB` כ-`Alternative`"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nTo inject a list of `Image` objects into `AcmeCamera`'s `itsImages` field using Dependency Injection, we need to: 1. Mark the `itsImages` field in `Camera` with `@Inject`. 2. Create a producer method that returns `List<Image>`. This producer method should be annotated with `@Produces` and potentially a custom qualifier (like `@Images` as suggested) if there are multiple `List<Image>` producers. The producer would then create and return a list containing instances of `GrayImage` and `RGBImage`. The first option correctly identifies the need for `@Inject` on `itsImages` and a producer for `List<Image>` with a custom qualifier.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q14/question.md",
+      "images": [
+        "./questions/exam_2024_B_B_MultipleChoice_q14/image_14_1.png"
+      ]
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q15",
+    "title": "Stream Intermediate Operations Count",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Generic - Streams"
+    ],
+    "skills": [],
+    "question_text": "נתון הקוד הבא:\n```java\nMap<String, Integer> wordsHistorgram = books.stream()\n.flatMap(b->b.stream())\n.map(s -> s.toLowerCase())\n.collect(groupingBy(identity()))\n.entrySet().stream()\n.collect(toMap(e->e.getKey(), e -> e.getValue().size())));\n```\nכמה פעולות ביניים של `Stream` יש בסך הכל בקוד הנ\"ל?",
+    "options": [
+      "א. 5",
+      "ב. 4",
+      "ג. 3",
+      "ד. 2"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nLet's break down the stream operations: 1. `books.stream()`: Source. 2. `.flatMap(b->b.stream())`: Intermediate operation. 3. `.map(s -> s.toLowerCase())`: Intermediate operation. 4. `.collect(groupingBy(identity()))`: Terminal operation (creates a `Map`). 5. `.entrySet().stream()`: Source (creates a new stream from the map's entry set). 6. `.collect(toMap(e->e.getKey(), e -> e.getValue().size()))`: Terminal operation. So, in the first stream pipeline, there are 2 intermediate operations (`flatMap` and `map`). In the second stream pipeline, there are no intermediate operations before the terminal `collect`. Therefore, the total number of intermediate operations is 2.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q15/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q16",
+    "title": "Visitor Pattern Post-Order Traversal",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General"
+    ],
+    "skills": [],
+    "question_text": "שאלה זו מתייחסת לתרשים 2 המופיע בתחילת הבחינה. ברצוננו להוסיף מבקר נוסף בשם `PrintPostOrder` אשר יוסיף את היכולת של הדפסת כל העץ בסדר `Post Order`. לשם כך ניצור מחלקה היורשת מ `PartVisitor` מה מבין האפשרויות הבאות הכי נכון?\n![Image](./questions/exam_2024_B_B_MultipleChoice_q16/image_4_3.png)",
+    "options": [
+      "א. : כדלהלן `PrintPostOrder` במחלקת `visit` נממש את מתודות ```java public void visit(Assembly a){ for(Part p: a.getItsParts()) p.visit(p); System.out.println(\"Assembly : \" + a.description); } public void visit(PiecePart p){ System.out.println(\"PiecePart: \" + p.description); } ```",
+      "ב. :כדלהלן `PrintPostOrder` במחלקת `visit` נממש את מתודות ```java public void visit(Assembly a){ System.out.println(\"Assembly : \" + a.description); } public void visit(PiecePart p){ System.out.println(\"PiecePart: \" + p.description); } ``` לא צריך לשנות את מימוש פונקציית `assembly accept`",
+      "ג. : כדלהלן `PrintPostOrder` במחלקת `visit` נממש את מתודות ```java public void visit(Assembly a){ System.out.println(\"Assembly : \" + a.description); } public void visit(PiecePart p){ System.out.println(\"PiecePart: \" + p.description); } ``` כמו כן נצטרך לשנות את מימוש פונקציית `accept` של `assembly` כדלהלן : ```java public void accept(PartVisitor v){ for(Part p: parts) p.accept(v); v.visit(this); } ```",
+      "ד. : כדלהלן `PrintPostOrder` במחלקת `visit` נממש את מתודות ```java public void visit(Assembly a){ for(Part p: a.getItsParts()) visit(p); System.out.println(\"Assembly : \" + a.description); } public void visit(PiecePart p){ System.out.println(\"PiecePart: \" + p.description); } ``` לא צריך לשנות את מימוש פונקציית `assembly accept`"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nFor a Post-Order traversal using the Visitor pattern, the `accept` method in the composite (`Assembly`) should first call `accept` on its children, and *then* call `visit` on itself. The `PiecePart`'s `accept` method simply calls `visit` on itself. The `visit` methods in `PrintPostOrder` will then perform the printing. The first option correctly shows the `Assembly`'s `accept` method calling `accept` on children first, then `v.visit(this)`, which is the definition of post-order traversal for a composite structure. The `visit` methods for `Assembly` and `PiecePart` would then just print their respective descriptions.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q16/question.md",
+      "images": [
+        "./questions/exam_2024_B_B_MultipleChoice_q16/image_4_3.png"
+      ]
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q17",
+    "title": "Decorator Pattern Implementation",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General"
+    ],
+    "skills": [],
+    "question_text": "הדיאגרמה הבאה מתארת מערכת לבנית סוכה, כאשר יש את המחלקה הבסיסית לבנית סוכה `SukkaImpl` , וישנן תוספות לסוכה הבסיסית שהן : `PaperChain`, `UshpizinPoster`, `BubbleLights`.\n![Image](./questions/exam_2024_B_B_MultipleChoice_q17/image_16_1.png)\n?`SukkahDecorator` אשר נמצאת במחלקה `decorate(); String` מה יהיה המימוש של המתודה",
+    "options": [
+      "א. הפונקציה מפעילה בכל פעם פונקציה `decorate` של אחד הבנים שלה",
+      "ב. אין לה מימוש, היא אבסטרקטית",
+      "ג. `super.decorate()`",
+      "ד. `itsSukkah.decorate()`"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nIn the Decorator pattern, the `SukkahDecorator` class holds a reference to the `Sukkah` it decorates (its `itsSukkah` field). The `decorate()` method of the decorator should delegate the call to the `decorate()` method of its wrapped component. Therefore, the implementation should be `itsSukkah.decorate()`. This allows the decorator to add its own behavior before or after calling the wrapped component's method, or simply pass through the call.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q17/question.md",
+      "images": [
+        "./questions/exam_2024_B_B_MultipleChoice_q17/image_16_1.png"
+      ]
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q6",
+    "title": "Bridge Pattern Misconceptions",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General",
+      "WMS - Bridge",
+      "SOLID - DIP",
+      "SOLID - ISP"
+    ],
+    "skills": [],
+    "question_text": "מי מבין המשפטים הבאים אינו נכון לגבי תבנית העיצוב Bridge",
+    "options": [
+      "א. מימוש תבנית העיצוב בפועל יכול להיות כך : נניח ומחלקה A ירשה ממחלקה אבסטרקטית AA. נגדיר ממשק AAImp, אותו תממש המחלקה AA, והמחלקה A תכיל מצביע ל AAImp.",
+      "ב. התבנית היא במהותה יישום של עיקרון ISP, כך שכל מחלקה הצורכת מידע מהחומרה תכיר רק את הפונקציות להן היא זקוקה.",
+      "ג. מימוש תבנית העיצוב בפועל יכול להיות כך: נניח ומחלקה A ירשה ממחלקה אבסטרקטית AA, נגדיר ממשק AAImp, אותו תממש המחלקה A, והמחלקה AA תכיל מצביע ל AAImp.",
+      "ד. התבנית היא במהותה יישום של טכניקת Dependncy Inversion לצורך הפרדה של רובד ההפשטה מרובד המימוש."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nThe Bridge pattern primarily implements the Dependency Inversion Principle (DIP) to decouple an abstraction from its implementation, allowing them to vary independently. It is not fundamentally an application of ISP, which focuses on client-specific interfaces.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q6/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q7",
+    "title": "Template Method Pattern",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General",
+      "WMS - Template method"
+    ],
+    "skills": [],
+    "question_text": "?template method",
+    "options": [
+      "א. פונקציה מופשטת שמוצהרת במחלקת הבסיס, הנקראת וממומשת במחלקות היורשות.",
+      "ב. פונקציה שממומשת במחלקת הבסיס וקוראת לפונקציה מופשטת שמוצהרת במחלקת הבסיס.",
+      "ג. פונקציה מופשטת שמוצהרת במחלקת הבסיס, הנקראת על ידי פונקציה שממומשת במחלקת הבסיס.",
+      "ד. פונקציה שממומשת במחלקות היורשות וקוראת לפונקציה שממומשת במחלקת הבסיס."
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nThe Template Method pattern defines the skeleton of an algorithm in a superclass but lets subclasses override specific steps of the algorithm without changing its structure. The correct option describes a method in the base class that calls an abstract method also declared in the base class, which is then implemented by subclasses.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q7/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q8",
+    "title": "Observer vs AlarmClock",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General",
+      "WMS - Observer",
+      "WMS - AlarmClock"
+    ],
+    "skills": [],
+    "question_text": "אם ננסה להקביל בין תבנית ה-observer לתבנית alarmClock מה יהיה נכון להגיד?",
+    "options": [
+      "א. .Observable במחלקת `update` מקבילה לפונקציה `alarmListener` במחלקה `wakeup` הפונקציה",
+      "ב. יש שתי תשובות אחרות נכונות.",
+      "ג. .TemperatureSensor במחלקת `check` מקבילה לפונקציה `alarmListener` במחלקת `tic` הפונקציה",
+      "ד. .Observable במחלקת `notifyObservers` מקבילה לפונקציה `AlarmClock` במחלקת `tic` הפונקציה"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nIn the Observer pattern, `notifyObservers` is called by the `Observable` to inform its `Observers` of a change. In the AlarmClock system, the `tic` method of `AlarmClock` is responsible for notifying `AlarmListeners` (observers) when the alarm goes off. Therefore, `notifyObservers` in `Observable` is analogous to `tic` in `AlarmClock`.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q8/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_MultipleChoice_q9",
+    "title": "Reflection and SOLID",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Multiple Choice",
+    "language": "Hebrew",
+    "topics": [
+      "SOLID - OCP",
+      "Frameworks - Dependency injection"
+    ],
+    "skills": [],
+    "question_text": "איזה עקרון יישמנו ב-weather monitoring system כאשר השתמשנו ב-reflection",
+    "options": [
+      "א. ISP",
+      "ב. OCP",
+      "ג. SRP",
+      "ד. LSP"
+    ],
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nUsing reflection in a weather monitoring system, especially for dynamically loading or instantiating components, aligns with the Open/Closed Principle (OCP). OCP states that software entities should be open for extension, but closed for modification. Reflection allows adding new functionality (extensions) without altering existing code (modifications).",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_MultipleChoice_q9/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_Open_q1",
+    "title": "ממשקים ומחלקות",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Open",
+    "language": "Hebrew",
+    "topics": [
+      "Package design - Cohesion",
+      "Package design - Coupling"
+    ],
+    "skills": [],
+    "question_text": "נתונים שני ממשקים `IB` `IA` ושלוש מחלקות `E D C`\nכתוב לצד כל סעיף, האם הוא תקין/לא תקין. על כל תשובה נכונה תתווסף חצי נקודה (0.5+). על כל תשובה לא נכונה תרד חצי נקודה (0.5-). סעיף שלא ייענה לא ישפיע על הציון (0). לדוגמא סטודנט שיענה נכון על חמישה סעיפים, ובנוסף יענה לא נכון על שלושה סעיפים יקבל סהייכ ציון של נקודה אחת על השאלה.\n1. `IA implements IB`\n2. `IA extends IB`\n3. `IA implements C`\n4. `IA extends C`\n5. `D extends IB`\n6. `D implements C`\n7. `C extends D`\n8. `C extends D implements IA, IB`\n9. `C implements IA, IB extends D`\n10. `C implements IA, IB extends D, E`",
+    "options": [],
+    "answer_text": "תשובה:\n2, 7, 8 תקינים. השאר לא תקינים.",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_Open_q1/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_Open_q2",
+    "title": "AOP Aspect Counting",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Open",
+    "language": "Hebrew",
+    "topics": [
+      "Frameworks - AOP"
+    ],
+    "skills": [],
+    "question_text": "ישנה פונקציה בשם `call_to_sod` (המוגדרת בחבילה `PkgA` ויש לה פרמטר יחיד מטיפוס `String`) שבתוך הקוד שלה קוראת מספר פעמים לפונקציה אחרת – הפונקציה `sod` (המוגדרת גם היא בחבילה הנ\"ל, ויש לה פרמטר יחיד מטיפוס `Integer`). רוצים שבסיום הפעלת הפונקציה `call_to_sod` יודפס על המסך מספר הפעמים (בסך הכל) שהפונקציה `sod` הופעלה.\nאסור לשנות/להוסיף דבר בתוך הפונקציות הנ\"ל או במחלקות שבהן הן מוגדרות, ולכן נכתוב Aspect.\nעליכם להשלים את כתיבת ה Aspect : יש להוסיף Pointcut אחד או יותר ו- Advice אחד או יותר.\nמותר להוסיף דברים נוספים במחלקת ה Aspect\n```java\nPublic Aspect Counting{\n}\n```",
+    "options": [],
+    "answer_text": "```java\nPublic Aspect Counting {\nint counter;\n@Pointcut(\"execution(* PkgA.*.call_to_sod(String))\")\nprivate void selectCallToSod() {\n}\n@Pointcut(\"execution(* PkgA.*.sod(Integer))\")\nprivate void selectSod() {\n}\n@Before(\"selectCallToSod()\")\npublic void beforeAdvice(JoinPoint jp) {\ncounter=0;\n}\n@After(\"selectCallToSod()\")\npublic void afterAdvice(JoinPoint jp) {\nSystem.out.println(counter);\n}\n@Before(\"selectSod()\")\npublic void beforeSod(JoinPoint jp) {\ncounter++;\n}\n}\n```\nניתן להשתמש גם ב Around\n```java\n@Around(\"selectCallToSod()\")\npublic void aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {\ncounter=0;\npjp.proceed(pjp.getArgs());\nSystem.out.println(counter);\n}\n```",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_Open_q2/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_Open_q3",
+    "title": "Generic Intersect Sets",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Open",
+    "language": "Hebrew",
+    "topics": [
+      "Generic - Streams",
+      "Package design - Cohesion"
+    ],
+    "skills": [],
+    "question_text": "כתוב פונקציה גנרית המקבלת שתי קבוצות קלט `set2` `set1` וקבוצת פלט `output`. הפונקציה תוסיף לקבוצת הפלט את כל האיברים שנמצאים בשתי קבוצות הקלט (חיתוך הקבוצות). אין להשתמש ב `Casting` או ב `instanceOf`. על הפונקציה לתמוך בהפעלה עם קבוצות מטיפוסים שונים שמתקיים עבורם תנאי מסויים.\nלדוגמא הקוד הבא יעבור קומפילציה עבור טיפוסים מתאימים `A B C`\n```java\nSet<A> aSet = new HashSet<>();\nSet<B> bSet = new HashSet<>();\nSet<C> cSet = new HashSet<>();\n\nintersect(a, b, c)\nintersect(b, a, c)\n```\nמה צריך להתקיים עבור הטיפוסים `A,B,C` על מנת שהפונקציה תעבור קומפילציה?\nהשלם את טיפוסי הפרמטרים ואת הקוד של הפונקציה כאן (ניתן להשתמש בפונקציה `Set contains` המקבלת איבר ומחזירה `true` אם הוא שייך לקבוצה):\n```java\npublic static <T> void intersect(\n set1,\n set2,\n output) {\n}\n```",
+    "options": [],
+    "answer_text": "תשובה :\n`A` ו `B` צריכים לרשת מ `C`\nתשובה :\n```java\npublic static <T> void intersect(Set<? extends T> set1,\n Set<? extends T> set2,\n Set<? super T> set3){\n for (T t: set1) {\n if (set2.contains(t)) {\n set3.add(t);\n }\n }\n}\n```",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_Open_q3/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_Open_q4",
+    "title": "Observer Pattern Initialization",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Open",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General",
+      "WMS - Observer",
+      "WMS - אתחול"
+    ],
+    "skills": [],
+    "question_text": "פורטל החדשות \"תבנית השבועיי מציע תכנים במגוון רחב של נושאים (Subject). המשתמשים (User) יכולים להרשם לקבלת עדכונים בנושאים שונים. בכל פעם שיש כתבה חדשה בנושא מסויים, כל המשתמשים שנרשמו אליו יקבלו עדכון. כל משתמש מבצע פעולה שונה לאחר קבלת עדכון. ניתן להניח כי קיים כבר מימוש לנושא Subject1 ולמשתמש User1 ואין צורך לממש אותם.\nעל מנת להקל על המשתמשים לבחור נושאים, הוקמו מועדוני חברים (Club). משתמש יכול להצטרף כחבר למועדון ואף ייתכן שמועדון אחד יצטרף כחבר למועדון אחר. מועדון יכול להירשם לתכנים עבור החברים שהצטרפו אליו. בכל פעם שהמועדון מקבל עדכון הוא מעדכן את החברים שהצטרפו אליו.\nעל מנת לפשט את תהליך הרישום, הפורטל הגדיר קטגוריות רישום (Category). קטגוריה יכולה להכיל מספר נושאים ואף ייתכן שקטגוריה אחת תכיל קטגוריה אחרת. רישום משתמש לקטגוריה תוביל להוספתו לקבלת עדכונים בכל הנושאים ששייכים אליה באופן ישיר או עקיף.\nנתון העיצוב המממש את הדרישות שתוארו לעיל :\n![Image](image_8_1.png)\nסעיף א (10 נקודות)\nכתוב את הקוד שמאתחל את המערכת הבאה :\n• קטגוריה בשם 'טכנולוגיה' שמכילה את הנושאים הבאים\nΟ קטגוריה בשם 'מחשבים' שמכילה את הנושאים הבאים\nנושא מטיפוס 'AI'\nנושא מטיפוס 'BI'\nס נושא מטיפוס 'רובוטיקה'\n• נושא מטיפוס 'תכנים לילדים'\n• מועדון משתמשים בשם Club1 שמכיל את המשתמשים הבאים\nΟ מועדון משתמשים מטיפוס Club2 שמכיל את המשתמשים הבאים\nמשתמש מטיפוס User1\nמשתמש מטיפוס User2\nמשתמש מטיפוס User3\nמועדון Club1 יירשם לנושא 'תכנים לילדים'\nמועדון Club2 יירשם לקטגוריה 'מחשבים'\nמשתמש User3 יירשם לקטגוריה 'טכנולוגיה'\nכאן יש לענות רק על שאלה 4א (אם כתבת בטעות את פתרון שאלה 4א במקום אחר, ציין זאת כאן במפורש)\nתשובה:",
+    "options": [],
+    "answer_text": "```java\npublic static void main(String[] args) {\nCategory computers = new Category();\nCategory technology = new Category();\n// Assuming Children is a Category for 'תכנים לילדים'\nCategory children = new Category(); \n\ncomputers.addICategory(new AI());\ncomputers.addICategory(new BI());\ntechnology.addICategory(new Robotics());\ntechnology.addICategory(computers);\n\nClub club1 = new Club();\nClub club2 = new Club();\n\nclub1.addObserver(club2);\nUser user1 = new User(); // Assuming User1, User2, User3 are instances of User\nUser user2 = new User();\nUser user3 = new User();\n\nclub2.addObserver(user1);\nclub2.addObserver(user2);\nclub1.addObserver(user3);\n\nchildren.addObserver(club1);\ncomputers.addObserver(club2);\ntechnology.addObserver(user3);\n}\n```",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_Open_q4/question.md"
+    }
+  },
+  {
+    "id": "exam_2024_B_B_Open_q5",
+    "title": "Strategy Pattern for News Retrieval",
+    "year": 2024,
+    "semester": "B",
+    "moed": "B",
+    "type": "Open",
+    "language": "Hebrew",
+    "topics": [
+      "Design patterns - General",
+      "WMS - Strategy"
+    ],
+    "skills": [],
+    "question_text": "סעיף ב (10 נקודות)\nיש דרכים שונות להשיג ידיעות שמהן מופקות החדשות בכל נושא. הניחו כי הפונקציה `getNews` מקבלת מחרוזת ומחזירה קבוצה של מחרוזות. לדוגמא יש אפשרות שהמימוש של `getNews` יהיה מבוסס על ביצוע ראיון (`interview`) ויש אפשרות אחרת שהמימוש יהיה מבוסס על קבלת ידיעות מסוכנות ידיעות בינלאומיות (`agency`). בחלק מהנושאים נרצה לממש התנהגות המבוססת על שתיים או יותר דרכים להשגת ידיעות. דוגמא אחת היא להפעיל שתי דרכים ואיחוד של התוצאות. דוגמא אחרת היא להפעיל את שתי הדרכים ולהשאיר רק מה שמופיע בתוצאה של הפעלת הדרך הראשונה אבל לא בתוצאה של הדרך השניה (כלומר חיסור התוצאות). ייתכנו דרכים נוספות להשיג ידיעות ואפשרויות שונות לייצר ידיעות בהתבסס על דרכים בסיסיות.\nהשתמש בתבניות עיצוב שנלמדו בכיתה על מנת לממש את המערכת המתוארת על פי הדרישות. צייר תרשים מחלקות המבוסס על תבניות עיצוב שלמדת שתומך בדרישות. כתוב את שם תבניות העיצוב שהשתמשת בהן. כתוב את הקוד עבור המחלקות שציירת. אין צורך לממש את הדרכים הקונקרטיות (ראיון וסוכנות), אך יש צורך לממש את הדרכים הנגזרות מהן (איחוד וחיסור שלהן)\nכאן יש לענות רק על שאלה 4ב (אם כתבת בטעות את פתרון שאלה 4ב במקום אחר, ציין זאת כאן במפורש)\nתשובה : תבנית עיצוב Strategy\n![Image](image_10_1.png)\n```java\npublic class Subject extends Observable{\nStrategy strategy;\npublic void setStrategy(Strategy strategy){\nthis.strategy = strategy;\n}\npublic Set<String> getNews(String s){\nreturn strategy.getNews(s);\n}\n}\npublic interface Strategy {\npublic abstract Set<String> getNews(String s);\n}\npublic class UnionStrategy implements Strategy{\nStrategy strategy1;\nStrategy strategy2;\npublic UnionStrategy(Strategy strategy1, Strategy strategy2) {\nthis.strategy1 = strategy1;\nthis.strategy2 = strategy2;\n}\n@Override\npublic Set<String> getNews(String s) {\nSet<String> set = new HashSet<>();\nset.addAll(strategy1.getNews(s));\nset.addAll(strategy2.getNews(s));\nreturn set;\n}\n}\npublic class SubtractionStrategy implements Strategy{\nStrategy strategy1;\nStrategy strategy2;\npublic SubtractionStrategy(Strategy strategy1, Strategy strategy2) {\nthis.strategy1 = strategy1;\nthis.strategy2 = strategy2;\n}\n@Override\npublic Set<String> getNews(String s) {\nSet<String> set1 = strategy1.getNews(s);\nSet<String> set2 = strategy2.getNews(s);\nreturn set1.stream()\n.filter(e -> set2.contains(e))\n.collect(Collectors.toSet());\n}\n}\n```",
+    "options": [],
+    "answer_text": "The Strategy pattern is used here. The `Subject` class has a `Strategy` object, which can be set dynamically. Different concrete `Strategy` implementations (like `Interview`, `Agency`, `UnionStrategy`, `SubtractionStrategy`) provide different ways to retrieve news. `UnionStrategy` combines results from two strategies, and `SubtractionStrategy` filters results based on another strategy. This allows the `Subject` to vary its news retrieval algorithm independently from clients that use it.\n\n```java\npublic class Subject extends Observable{\nStrategy strategy;\npublic void setStrategy(Strategy strategy){\nthis.strategy = strategy;\n}\npublic Set<String> getNews(String s){\nreturn strategy.getNews(s);\n}\n}\npublic interface Strategy {\npublic abstract Set<String> getNews(String s);\n}\npublic class UnionStrategy implements Strategy{\nStrategy strategy1;\nStrategy strategy2;\npublic UnionStrategy(Strategy strategy1, Strategy strategy2) {\nthis.strategy1 = strategy1;\nthis.strategy2 = strategy2;\n}\n@Override\npublic Set<String> getNews(String s) {\nSet<String> set = new HashSet<>();\nset.addAll(strategy1.getNews(s));\nset.addAll(strategy2.getNews(s));\nreturn set;\n}\n}\npublic class SubtractionStrategy implements Strategy{\nStrategy strategy1;\nStrategy strategy2;\npublic SubtractionStrategy(Strategy strategy1, Strategy strategy2) {\nthis.strategy1 = strategy1;\nthis.strategy2 = strategy2;\n}\n@Override\npublic Set<String> getNews(String s) {\nSet<String> set1 = strategy1.getNews(s);\nSet<String> set2 = strategy2.getNews(s);\nreturn set1.stream()\n.filter(e -> !set2.contains(e)) // Corrected to remove elements present in set2\n.collect(Collectors.toSet());\n}\n}\n```",
+    "assets": {
+      "markdown": "./questions/exam_2024_B_B_Open_q5/question.md"
+    }
+  },
+  {
     "id": "exam_2025_B_A_MultipleChoice_q10",
     "title": "Package Design Principles",
     "year": 2025,
@@ -431,12 +843,12 @@
     ],
     "question_text": "למדנו במסגרת הנושא עיצוב חבילות - (`Packages Design`) על העקרונות לעיצוב חבילות. מה נכון לפי אותם עקרונות? בחר את התשובה הנכונה.",
     "options": [
-      "א. עדיף להפריד בין מחלקות המשתנות לעתים קרובות לבין מחלקות שאינן מועדות לשינוי תדיר.",
-      "ב. עדיף לאחד מחלקות המשתנות מסיבות שונות באותה חבילה.",
-      "ג. עדיף שחבילות עם לוגיקה פשוטה יהיו תלויות בחבילות עם לוגיקה מורכבת.",
-      "ד. עדיף שחבילות מופשטות יהיו תלויות בחבילות לא מופשטות."
+      "א. עדיף שחבילות עם לוגיקה פשוטה יהיו תלויות בחבילות עם לוגיקה מורכבת.",
+      "ב. עדיף שחבילות מופשטות יהיו תלויות בחבילות לא מופשטות.",
+      "ג. עדיף לאחד מחלקות המשתנות מסיבות שונות באותה חבילה.",
+      "ד. עדיף להפריד בין מחלקות המשתנות לעתים קרובות לבין מחלקות שאינן מועדות לשינוי תדיר."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nעקרון ה-Common Closure Principle (CCP) בעיצוב חבילות קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. המשמעות היא שעדיף להפריד בין מחלקות שמשתנות לעיתים קרובות (או מסיבות שונות) לבין מחלקות שאינן מועדות לשינוי תדיר, או שמחלקות שמשתנות יחד צריכות להיות יחד. האפשרות הראשונה, \"עדיף להפריד בין מחלקות המשתנות לעתים קרובות לבין מחלקות שאינן מועדות לשינוי תדיר\", מתארת היבט של עקרון זה, שכן מחלקות שמשתנות יחד צריכות להיות יחד, ומחלקות שאינן משתנות יחד צריכות להיות נפרדות.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעקרון ה-Common Closure Principle (CCP) בעיצוב חבילות קובע שמחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. המשמעות היא שעדיף להפריד בין מחלקות שמשתנות לעיתים קרובות (או מסיבות שונות) לבין מחלקות שאינן מועדות לשינוי תדיר, או שמחלקות שמשתנות יחד צריכות להיות יחד. האפשרות הראשונה, \"עדיף להפריד בין מחלקות המשתנות לעתים קרובות לבין מחלקות שאינן מועדות לשינוי תדיר\", מתארת היבט של עקרון זה, שכן מחלקות שמשתנות יחד צריכות להיות יחד, ומחלקות שאינן משתנות יחד צריכות להיות נפרדות.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q10/question.md"
     }
@@ -458,12 +870,12 @@
     ],
     "question_text": "סמן את המשפט הנכון ביותר לגבי `Inversion Of Control` – היפוך שליטה :",
     "options": [
-      "א. יש שתי תשובות אחרות נכונות",
+      "א. משמעות העיקרון הוא: היפוך השליטה מהפרטים לכלל שמאחד אותם, במקום שתהליך יהיה תלוי בפרטים, הוא יהיה תלוי בהפשטה.",
       "ב. על ידי שימוש ב `annotations` אנו מספקים ל `framework` ייוויס\"י שמודיעים לו כיצד להפעיל את הקוד שלנו.",
-      "ג. משמעות העיקרון הוא: היפוך השליטה מהפרטים לכלל שמאחד אותם, במקום שתהליך יהיה תלוי בפרטים, הוא יהיה תלוי בהפשטה.",
-      "ד. משמעות העיקרון : במקום שהקוד שלנו יקרא לפונקציות של ספריות חיצוניות, `Framework` חיצוני קורא לקוד שלנו."
+      "ג. משמעות העיקרון : במקום שהקוד שלנו יקרא לפונקציות של ספריות חיצוניות, `Framework` חיצוני קורא לקוד שלנו.",
+      "ד. יש שתי תשובות אחרות נכונות"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהיפוך שליטה (Inversion of Control - IoC) הוא עקרון עיצוב שבו זרימת השליטה של תוכנית הפוכה בהשוואה לתכנות מסורתי. במקום שהקוד שלנו יקרא לספריות או רכיבים חיצוניים, ה-Framework או ה-Container הם אלה שקוראים לקוד שלנו (באמצעות קריאות חוזרות, אירועים, או הזרקת תלויות). האפשרות השנייה, \"משמעות העיקרון : במקום שהקוד שלנו יקרא לפונקציות של ספריות חיצוניות, `Framework` חיצוני קורא לקוד שלנו\", מתארת באופן מדויק את מהות ה-IoC. האפשרות השלישית מתארת כיצד IoC מיושם לעיתים קרובות (לדוגמה, באמצעות Dependency Injection), אך אינה ההגדרה הבסיסית של העיקרון עצמו. האפשרות הרביעית מתארת את עקרון ה-DIP (Dependency Inversion Principle), שהוא קשור אך אינו זהה ל-IoC.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהיפוך שליטה (Inversion of Control - IoC) הוא עקרון עיצוב שבו זרימת השליטה של תוכנית הפוכה בהשוואה לתכנות מסורתי. במקום שהקוד שלנו יקרא לספריות או רכיבים חיצוניים, ה-Framework או ה-Container הם אלה שקוראים לקוד שלנו (באמצעות קריאות חוזרות, אירועים, או הזרקת תלויות). האפשרות השנייה, \"משמעות העיקרון : במקום שהקוד שלנו יקרא לפונקציות של ספריות חיצוניות, `Framework` חיצוני קורא לקוד שלנו\", מתארת באופן מדויק את מהות ה-IoC. האפשרות השלישית מתארת כיצד IoC מיושם לעיתים קרובות (לדוגמה, באמצעות Dependency Injection), אך אינה ההגדרה הבסיסית של העיקרון עצמו. האפשרות הרביעית מתארת את עקרון ה-DIP (Dependency Inversion Principle), שהוא קשור אך אינו זהה ל-IoC.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q11/question.md"
     }
@@ -486,12 +898,12 @@
     ],
     "question_text": "להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר. ![Image](./questions/exam_2025_B_A_MultipleChoice_q12/image_11_1.png) הניחו שגם ב `Cafeteria` וגם ב `Restaurant` השדה `itsCoffeeMaker` מסומן באנוטציה `Inject@` בלבד. מה יקרה אם נריץ את הקוד הבא? שימו לב שאין קוד נוסף הקשור לאתחול המערכת. ```java public static void main(String[] args) { WeldContainer container = new Weld().initialize(); Restaurant restaurant = container.select(Restaurant.class).get(); Cafeteria cafeteria = container.select(Cafeteria.class).get(); } ```",
     "options": [
-      "א. שאר התשובות לא נכונות.",
-      "ב. מכיוון ששתי מחלקות מממשות את הממשק `CoffeMaker` אם לא נגדיר אחת מהן כ `Alternative`, התוכנית לא תעבור קומפילציה.",
+      "א. אם נגדיר את האנוטציה `Alternative@` מעל מחלקת `EspressoMaker`, ולא נגדיר אותה מעל `CappucinoMaker` (אך ייתכן שיש מעליה אנוטציות אחרות), בהכרח ייווצר מופע אחד של `CoffeeMaker`.",
+      "ב. שאר התשובות לא נכונות.",
       "ג. אם נגדיר את האנוטציה `Alternative@` מעל מחלקת `EspressoMaker`, ולא נגדיר אותה מעל `CappucinoMaker` (אך ייתכן שיש מעליה אנוטציות אחרות), בהכרח ייווצרו שני מופעים שונים של אותה תת מחלקה של `CoffeeMaker`.",
-      "ד. אם נגדיר את האנוטציה `Alternative@` מעל מחלקת `EspressoMaker`, ולא נגדיר אותה מעל `CappucinoMaker` (אך ייתכן שיש מעליה אנוטציות אחרות), בהכרח ייווצר מופע אחד של `CoffeeMaker`."
+      "ד. מכיוון ששתי מחלקות מממשות את הממשק `CoffeMaker` אם לא נגדיר אחת מהן כ `Alternative`, התוכנית לא תעבור קומפילציה."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nבסביבת CDI (כמו Weld), כאשר ישנם מספר מימושים (Implementations) של ממשק (כמו `EspressoMaker` ו-`CappuccinoMaker` עבור `CoffeeMaker`), והם אינם מסומנים באנוטציית `@Alternative` או `@Default` (או קביעת עדיפות אחרת), ה-Container לא יודע איזה מימוש להזריק. במצב כזה, ה-Container יזרוק שגיאת `AmbiguousResolutionException` בזמן ריצה, מכיוון שיש יותר ממועמד אחד להזרקה. לכן, התוכנית לא תעבור קומפילציה (במובן של כישלון בזמן הריצה של ה-Container), אלא תיכשל בזמן ריצה. האפשרות הרביעית קרובה, אך היא מדברת על קומפילציה, בעוד שהשגיאה היא בזמן ריצה. האפשרות השנייה מתארת את הפתרון הנכון לבעיה זו, שכן שימוש ב-`@Alternative` על מימוש אחד יגרום ל-Weld לבחור בו כברירת מחדל כאשר אין בחירה ספציפית אחרת, ובכך ייווצר מופע אחד של `CoffeeMaker`.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nבסביבת CDI (כמו Weld), כאשר ישנם מספר מימושים (Implementations) של ממשק (כמו `EspressoMaker` ו-`CappuccinoMaker` עבור `CoffeeMaker`), והם אינם מסומנים באנוטציית `@Alternative` או `@Default` (או קביעת עדיפות אחרת), ה-Container לא יודע איזה מימוש להזריק. במצב כזה, ה-Container יזרוק שגיאת `AmbiguousResolutionException` בזמן ריצה, מכיוון שיש יותר ממועמד אחד להזרקה. לכן, התוכנית לא תעבור קומפילציה (במובן של כישלון בזמן הריצה של ה-Container), אלא תיכשל בזמן ריצה. האפשרות הרביעית קרובה, אך היא מדברת על קומפילציה, בעוד שהשגיאה היא בזמן ריצה. האפשרות השנייה מתארת את הפתרון הנכון לבעיה זו, שכן שימוש ב-`@Alternative` על מימוש אחד יגרום ל-Weld לבחור בו כברירת מחדל כאשר אין בחירה ספציפית אחרת, ובכך ייווצר מופע אחד של `CoffeeMaker`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q12/question.md",
       "images": [
@@ -518,12 +930,12 @@
     ],
     "question_text": "נתון התרשים הבא מתוך תרשימי \"מערכת ניטור מזג האוויר\"י : ![Image](./questions/exam_2025_B_A_MultipleChoice_q13/image_12_1.png) ![Image](./questions/exam_2025_B_A_MultipleChoice_q13/image_12_2.png) מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?",
     "options": [
-      "א. `Bridge`-ו `Observer`",
-      "ב. `Adapter`-ו `Bridge`",
+      "א. `Proxy`-ו `Observer`",
+      "ב. `Bridge`-ו `Observer`",
       "ג. `Bridge`-ו `Proxy`",
-      "ד. `Proxy`-ו `Observer`"
+      "ד. `Adapter`-ו `Bridge`"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקה `ClockListener` (ממשק) והמחלקות המממשות אותה (`ClockImp`, `AlarmClock`) יחד עם המחלקה `Nimbus1_0Clock` (ה-Subject) המכילה רשימה של `ClockListener`ים ומודיעה להם על שינויים (`notifyClockListener()`). זהו יישום קלאסי של תבנית Observer, כאשר `Nimbus1_0Clock` הוא ה-Subject ו-`ClockListener` הוא ה-Observer.\n2.  **Bridge Pattern:** תבנית Bridge מפרידה בין הפשטה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. בתרשים, `AlarmClock` הוא חלק מההפשטה (הוא משתמש ב-`ClockListener` כדי להודיע), ו-`ClockImp` הוא מימוש ספציפי של `ClockListener`. `Nimbus1_0Clock` הוא ה-Abstraction, ו-`ClockListener` הוא ה-Implementor. זהו יישום של Bridge, המאפשר ל-`Nimbus1_0Clock` לעבוד עם כל מימוש של `ClockListener`.\n\nלכן, התבניות הבולטות הן `Bridge` ו-`Observer`.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקה `ClockListener` (ממשק) והמחלקות המממשות אותה (`ClockImp`, `AlarmClock`) יחד עם המחלקה `Nimbus1_0Clock` (ה-Subject) המכילה רשימה של `ClockListener`ים ומודיעה להם על שינויים (`notifyClockListener()`). זהו יישום קלאסי של תבנית Observer, כאשר `Nimbus1_0Clock` הוא ה-Subject ו-`ClockListener` הוא ה-Observer.\n2.  **Bridge Pattern:** תבנית Bridge מפרידה בין הפשטה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. בתרשים, `AlarmClock` הוא חלק מההפשטה (הוא משתמש ב-`ClockListener` כדי להודיע), ו-`ClockImp` הוא מימוש ספציפי של `ClockListener`. `Nimbus1_0Clock` הוא ה-Abstraction, ו-`ClockListener` הוא ה-Implementor. זהו יישום של Bridge, המאפשר ל-`Nimbus1_0Clock` לעבוד עם כל מימוש של `ClockListener`.\n\nלכן, התבניות הבולטות הן `Bridge` ו-`Observer`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q13/question.md",
       "images": [
@@ -552,12 +964,12 @@
     ],
     "question_text": "במהלך פיתוח מערכת ניטור מזג אוויר התווספה דרישה עסקית: לאפשר טעינה דינמית של רכיבי חומרה שונים (חיישנים, שעון) בהתאם להגדרות קובץ תצורה חיצוני, מבלי לקמפל מחדש את הקוד. כיצד ניתן לספק מענה מלא לדרישה זו, תוך שמירה על עקרונות `OCP` ו־`DIP`?",
     "options": [
-      "א. שילוב של `Reflection` לטעינה דינמית של מחלקות לפי שם, יחד עם `Abstract Factory` לניהול משפחות רכיבים.",
-      "ב. שימוש ב־`Singleton` עבור כל רכיב חומרה, עם `Factory Method` היוצר את המחלקות בהתבסס על תתי-טיפוסים.",
-      "ג. שילוב של `Template Method` לצורך בניית תהליך האתחול, עם `Composite` לניהול רכיבים מרובים, ו־`Proxy` להשהיית יצירתם.",
-      "ד. שימוש ב־`Bridge` כדי להפריד בין הרכיבים ללוגיקת הניטור, תוך שימוש ב־`Strategy` להחלפת מנגנון האתחול בזמן ריצה."
+      "א. שילוב של `Template Method` לצורך בניית תהליך האתחול, עם `Composite` לניהול רכיבים מרובים, ו־`Proxy` להשהיית יצירתם.",
+      "ב. שילוב של `Reflection` לטעינה דינמית של מחלקות לפי שם, יחד עם `Abstract Factory` לניהול משפחות רכיבים.",
+      "ג. שימוש ב־`Bridge` כדי להפריד בין הרכיבים ללוגיקת הניטור, תוך שימוש ב־`Strategy` להחלפת מנגנון האתחול בזמן ריצה.",
+      "ד. שימוש ב־`Singleton` עבור כל רכיב חומרה, עם `Factory Method` היוצר את המחלקות בהתבסס על תתי-טיפוסים."
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nכדי לעמוד בדרישה של טעינה דינמית של רכיבים מבלי לקמפל מחדש, תוך שמירה על עקרונות OCP (Open/Closed Principle) ו-DIP (Dependency Inversion Principle), יש צורך בפתרון המאפשר יצירת אובייקטים מטיפוסים לא ידועים מראש. \n\n*   **Reflection:** מאפשר לטעון מחלקות לפי שמן (מחרוזת) וליצור מופעים שלהן בזמן ריצה, ובכך עונה על דרישת הטעינה הדינמית ללא קומפילציה מחדש.\n*   **Abstract Factory:** תבנית זו מספקת ממשק ליצירת משפחות של אובייקטים קשורים או תלויים, מבלי לציין את המחלקות הקונקרטיות שלהם. זה מאפשר להחליף משפחות שלמות של רכיבים (לדוגמה, חיישנים מסוג A או חיישנים מסוג B) מבלי לשנות את הקוד המשתמש בהם, ובכך תומך ב-OCP וב-DIP (תלויות בהפשטות ולא במימושים קונקרטיים).\n\nשילוב של `Reflection` ו-`Abstract Factory` הוא הפתרון המתאים ביותר לדרישות אלו. `Reflection` מאפשר את הטעינה הדינמית, ו-`Abstract Factory` מספק את המבנה הגמיש ליצירת אובייקטים שונים תוך שמירה על עקרונות SOLID.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nכדי לעמוד בדרישה של טעינה דינמית של רכיבים מבלי לקמפל מחדש, תוך שמירה על עקרונות OCP (Open/Closed Principle) ו-DIP (Dependency Inversion Principle), יש צורך בפתרון המאפשר יצירת אובייקטים מטיפוסים לא ידועים מראש. \n\n*   **Reflection:** מאפשר לטעון מחלקות לפי שמן (מחרוזת) וליצור מופעים שלהן בזמן ריצה, ובכך עונה על דרישת הטעינה הדינמית ללא קומפילציה מחדש.\n*   **Abstract Factory:** תבנית זו מספקת ממשק ליצירת משפחות של אובייקטים קשורים או תלויים, מבלי לציין את המחלקות הקונקרטיות שלהם. זה מאפשר להחליף משפחות שלמות של רכיבים (לדוגמה, חיישנים מסוג A או חיישנים מסוג B) מבלי לשנות את הקוד המשתמש בהם, ובכך תומך ב-OCP וב-DIP (תלויות בהפשטות ולא במימושים קונקרטיים).\n\nשילוב של `Reflection` ו-`Abstract Factory` הוא הפתרון המתאים ביותר לדרישות אלו. `Reflection` מאפשר את הטעינה הדינמית, ו-`Abstract Factory` מספק את המבנה הגמיש ליצירת אובייקטים שונים תוך שמירה על עקרונות SOLID.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q14/question.md"
     }
@@ -581,12 +993,12 @@
     ],
     "question_text": "בתרשים זה הוצגה בעית `OCP` : האלגוריתם לחישוב ערכי מינימום/מקסימום תלוי בשיטת שמירת הנתונים לטווח ארוך. כדי לפתור בעיה זו החלטנו לשלב את תבנית העיצוב \"Proxy\"י בעיצוב, ובאמצעותה להפריד בין האלגוריתם לבין שיטת שמירת הנתונים. אולם, כידוע המטרה הקלאסית של תבנית העיצוב \"Proxy\"י היא למנוע גישה ישירה (או לאפשר גישה מבוקרת בלבד) למשאב. מהו המשאב שהוספת התבנית מונעת גישה ישירה אליו? מיהי המחלקה שהוספת התבנית מפרידה בינה לבין המשאב? ![Image](./questions/exam_2025_B_A_MultipleChoice_q15/image_13_1.png)",
     "options": [
-      "א. .`TemperatureHiLo` המשאב הוא האלגוריתם, המחלקה היא",
-      "ב. .`TemperatureHiLo` המחלקה היא ,`PersistentImp` המשאב הוא",
+      "א. .`HiLoData` המשאב הוא האלגוריתם, המחלקה היא",
+      "ב. .`TemperatureHiLo` המשאב הוא האלגוריתם, המחלקה היא",
       "ג. .`PersistentImp` המשאב הוא האלגוריתם, המחלקה היא",
-      "ד. .`HiLoData` המשאב הוא האלגוריתם, המחלקה היא"
+      "ד. .`TemperatureHiLo` המחלקה היא ,`PersistentImp` המשאב הוא"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nתבנית ה-Proxy משמשת כמעטפת (Wrapper) לאובייקט אחר (ה-Real Subject) כדי לספק גישה מבוקרת אליו. במקרה זה, הבעיה היא שהאלגוריתם לחישוב מינימום/מקסימום תלוי בשיטת שמירת הנתונים לטווח ארוך. ה-Proxy נועד להפריד בין האלגוריתם לבין שיטת שמירת הנתונים. מכאן שהמשאב שאליו ה-Proxy מונע גישה ישירה (או מתווך גישה) הוא מנגנון שמירת הנתונים לטווח ארוך. המחלקה `PersistentImp` היא זו שאחראית על שמירת הנתונים (Persistent Implementation). לכן, `PersistentImp` הוא המשאב, והמחלקה שמוסיפים כדי להפריד בינה לבין המשאב היא ה-Proxy עצמו, אשר יתווך את הגישה ל-`PersistentImp`. האפשרות השלישית, \"המשאב הוא `PersistentImp`, המחלקה היא `TemperatureHiLo`\", היא הנכונה. `TemperatureHiLo` היא המחלקה שמכילה את האלגוריתם ומשתמשת ב-Proxy כדי לגשת לנתונים, בעוד `PersistentImp` היא המשאב האמיתי של שמירת הנתונים.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nתבנית ה-Proxy משמשת כמעטפת (Wrapper) לאובייקט אחר (ה-Real Subject) כדי לספק גישה מבוקרת אליו. במקרה זה, הבעיה היא שהאלגוריתם לחישוב מינימום/מקסימום תלוי בשיטת שמירת הנתונים לטווח ארוך. ה-Proxy נועד להפריד בין האלגוריתם לבין שיטת שמירת הנתונים. מכאן שהמשאב שאליו ה-Proxy מונע גישה ישירה (או מתווך גישה) הוא מנגנון שמירת הנתונים לטווח ארוך. המחלקה `PersistentImp` היא זו שאחראית על שמירת הנתונים (Persistent Implementation). לכן, `PersistentImp` הוא המשאב, והמחלקה שמוסיפים כדי להפריד בינה לבין המשאב היא ה-Proxy עצמו, אשר יתווך את הגישה ל-`PersistentImp`. האפשרות השלישית, \"המשאב הוא `PersistentImp`, המחלקה היא `TemperatureHiLo`\", היא הנכונה. `TemperatureHiLo` היא המחלקה שמכילה את האלגוריתם ומשתמשת ב-Proxy כדי לגשת לנתונים, בעוד `PersistentImp` היא המשאב האמיתי של שמירת הנתונים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q15/question.md",
       "images": [
@@ -613,8 +1025,8 @@
     "options": [
       "א. 15",
       "ב. 9",
-      "ג. 6",
-      "ד. 12"
+      "ג. 12",
+      "ד. 6"
     ],
     "answer_text": "**התשובה הנכונה היא: א'**\n\nנחשב את מספר השילובים האפשריים:\n*   **מספר מימושי בסיס:** 3\n*   **מספר Decorators:** 2 (נקרא להם D1, D2)\n\n**תרחישים:**\n1.  **ללא Decorators:** יש 3 אפשרויות (מימוש בסיס 1, 2 או 3).\n2.  **עם Decorator אחד:**\n    *   D1 על כל אחד מ-3 מימושי הבסיס: 3 אפשרויות.\n    *   D2 על כל אחד מ-3 מימושי הבסיס: 3 אפשרויות.\n    *   סה\"כ: 3 + 3 = 6 אפשרויות.\n3.  **עם שני Decorators:** (סדר הדקורציות משנה, ואין הרכבה של אותו Decorator עם עצמו)\n    *   D1 ואז D2 על כל אחד מ-3 מימושי הבסיס: 3 אפשרויות (לדוגמה: D1(D2(Base1))).\n    *   D2 ואז D1 על כל אחד מ-3 מימושי הבסיס: 3 אפשרויות (לדוגמה: D2(D1(Base1))).\n    *   סה\"כ: 3 + 3 = 6 אפשרויות.\n\n**סה\"כ שילובים:** 3 (ללא) + 6 (עם אחד) + 6 (עם שניים) = 15 אפשרויות.\n\nלכן, התשובה הנכונה היא 15.",
     "assets": {
@@ -638,12 +1050,12 @@
     ],
     "question_text": "מה ההבדל בין מימוש קשר `Composite` למימוש קשר `Composition`?",
     "options": [
-      "א. אין הבדל בין `Composite` דו כיווני ל-`Composition` דו כיווני, אבל יש הבדל בין `Composite` חד כיווני ל-`Composition` חד כיווני.",
-      "ב. בקשר `Composite` יש בבנאי קוד המקשר בין המחלקות המוכלות וב-`Composition` לא.",
+      "א. בקשר `Composite` יש בבנאי קוד המקשר בין המחלקות המוכלות וב-`Composition` לא.",
+      "ב. בקשר `Composite` יש בבנאי קוד המקשר בין המחלקה המכילה למחלקות המוכלות וב-`Composition` לא.",
       "ג. אין הבדל בין `Composite` חד כיווני ל-`Composition` חד כיווני, אבל יש הבדל בין `Composite` דו כיווני ל-`Composition` דו כיווני.",
-      "ד. בקשר `Composite` יש בבנאי קוד המקשר בין המחלקה המכילה למחלקות המוכלות וב-`Composition` לא."
+      "ד. אין הבדל בין `Composite` דו כיווני ל-`Composition` דו כיווני, אבל יש הבדל בין `Composite` חד כיווני ל-`Composition` חד כיווני."
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהאפשרות הראשונה מתארת הבדל שאינו נכון. `Composition` ו-`Aggregation` הם סוגים של קשרי `Association` ב-UML, כאשר `Composition` הוא קשר חזק יותר המצביע על תלות קיום (חלק לא יכול להתקיים ללא השלם). `Composite` הוא תבנית עיצוב (Design Pattern) המאפשרת לטפל באובייקטים בודדים ובקומפוזיציות של אובייקטים באופן אחיד. ההבדל המהותי הוא ש`Composition` מתייחס לקשר מבני בין אובייקטים (חלק-שלם), בעוד ש`Composite` מתייחס לתבנית עיצוב המאפשרת לבנות עצים של אובייקטים ולטפל בהם באופן אחיד. האפשרויות האחרות מבלבלות בין המושגים או מציגות הבדלים שאינם קיימים.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהאפשרות הראשונה מתארת הבדל שאינו נכון. `Composition` ו-`Aggregation` הם סוגים של קשרי `Association` ב-UML, כאשר `Composition` הוא קשר חזק יותר המצביע על תלות קיום (חלק לא יכול להתקיים ללא השלם). `Composite` הוא תבנית עיצוב (Design Pattern) המאפשרת לטפל באובייקטים בודדים ובקומפוזיציות של אובייקטים באופן אחיד. ההבדל המהותי הוא ש`Composition` מתייחס לקשר מבני בין אובייקטים (חלק-שלם), בעוד ש`Composite` מתייחס לתבנית עיצוב המאפשרת לבנות עצים של אובייקטים ולטפל בהם באופן אחיד. האפשרויות האחרות מבלבלות בין המושגים או מציגות הבדלים שאינם קיימים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q4/question.md"
     }
@@ -666,10 +1078,10 @@
     ],
     "question_text": "נתון תרשים מצבים ותרשים רצף המתאר מופע של מחלקה. ![Image](image_8_1.png) כיצד ישפיע שינוי הביטוי `++cycles` ל `cycles++` על ההתנהגות המתוארת בתרשים הרצף?",
     "options": [
-      "א. יהיה שינוי בסדר הפעולות. לא יהיה שינוי בהדפסות.",
+      "א. לא יהיה שינוי בסדר הפעולות. יהיה שינוי בהדפסות.",
       "ב. יהיה שינוי בסדר הפעולות. יהיה שינוי בהדפסות.",
       "ג. לא יהיה שינוי בסדר הפעולות. לא יהיה שינוי בהדפסות.",
-      "ד. לא יהיה שינוי בסדר הפעולות. יהיה שינוי בהדפסות."
+      "ד. יהיה שינוי בסדר הפעולות. לא יהיה שינוי בהדפסות."
     ],
     "answer_text": "**התשובה הנכונה היא: ג'**\n\nהביטוי `cycles++` (פוסט-אינקרמנט) ו-`++cycles` (פרה-אינקרמנט) שניהם מגדילים את ערך המשתנה `cycles` באחד. ההבדל ביניהם הוא מתי הערך המוגדל נכנס לתוקף בביטוי שבו הם מופיעים. בתרשים המצבים, `cycles++` מופיע כפעולה על המעבר (`tm(2000)/cycles++; GEN(evGo)`). אם `cycles` אינו משמש כחלק מתנאי השמירה (guard) של המעבר, אלא רק כפעולה שמתבצעת לאחר שהתנאי (הטיימר `tm(2000)`) מתקיים, אז אין הבדל תפקודי בין `++cycles` ל-`cycles++` מבחינת סדר הפעולות או התוצאה של המעבר. מכיוון שאין הדפסה של `cycles` בתרשים הרצף, ואין שימוש בערך של `cycles` בתנאי שמשפיע על סדר הפעולות, שינוי זה לא ישפיע על סדר הפעולות ולא על ההדפסות המוצגות.",
     "assets": {
@@ -693,12 +1105,12 @@
     ],
     "question_text": "המחלקה הבאה אחראית לשליחת הודעות אימייל: ```java public class EmailSender { public void sendEmail(String message) } ``` `message`: `Precondition` היא הודעה באורך 1-500 תווים. `Postcondition`: ההודעה נשלחת תוך 10 שניות לכל היותר. נבחנות כעת מספר מחלקות שמיועדות לרשת את `EmailSender` ונתונים עבורן התנאים עבור הפונקציה `sendMail`. אילו מהן שומרת על עיקרון ליסקוב ויכולה לשמש כתת מחלקה חוקית של `EmailSender`?",
     "options": [
-      "א. `message`: `PreCondition` היא הודעה באורך 1-1000 תווים. `Postcondition`: אם ההודעה מכילה את המילה `Urgent` בהתחלה, היא נשלחת תוך 8 שניות לכל היותר. אחרת, ההודעה נשלחת תוך 16 שניות לכל היותר.",
-      "ב. `message`: `PreCondition` היא הודעה באורך 1-1000 תווים. `Postcondition`: אם ההודעה באורך 1-500 תווים, ההודעה נשלחת תוך 8 שניות לכל היותר. אחרת, ההודעה נשלחת תוך 16 שניות לכל היותר.",
-      "ג. `message`: `PreCondition` היא הודעה באורך 1-160 תווים. `Postcondition`: ההודעה נשלחת תוך 16 שניות לכל היותר ללא קשר לאורך ההודעה או לתוכנה.",
-      "ד. `message`: `PreCondition` היא הודעה באורך 10-500 תווים. `Postcondition`: ההודעה נשלחת תוך 8 שניות לכל היותר ללא קשר לאורך ההודעה או לתוכנה."
+      "א. `message`: `PreCondition` היא הודעה באורך 1-160 תווים. `Postcondition`: ההודעה נשלחת תוך 16 שניות לכל היותר ללא קשר לאורך ההודעה או לתוכנה.",
+      "ב. `message`: `PreCondition` היא הודעה באורך 1-1000 תווים. `Postcondition`: אם ההודעה מכילה את המילה `Urgent` בהתחלה, היא נשלחת תוך 8 שניות לכל היותר. אחרת, ההודעה נשלחת תוך 16 שניות לכל היותר.",
+      "ג. `message`: `PreCondition` היא הודעה באורך 10-500 תווים. `Postcondition`: ההודעה נשלחת תוך 8 שניות לכל היותר ללא קשר לאורך ההודעה או לתוכנה.",
+      "ד. `message`: `PreCondition` היא הודעה באורך 1-1000 תווים. `Postcondition`: אם ההודעה באורך 1-500 תווים, ההודעה נשלחת תוך 8 שניות לכל היותר. אחרת, ההודעה נשלחת תוך 16 שניות לכל היותר."
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nעל פי עקרון ליסקוב (LSP), תת-מחלקה חייבת להיות ניתנת להחלפה עם מחלקת האב שלה מבלי לשבור את תקינות התוכנית. המשמעות היא שתנאי קדם (Preconditions) בתת-מחלקה יכולים להיות חלשים יותר (או זהים) מאלה של מחלקת האב, ותנאי בתר (Postconditions) יכולים להיות חזקים יותר (או זהים) מאלה של מחלקת האב.\n\nננתח את האפשרויות:\n*   **אפשרות 1:** תנאי הקדם (1-1000 תווים) חלש יותר מזה של מחלקת האב (1-500 תווים), וזה תקין. תנאי הבתר (8 שניות ל-1-500 תווים, 16 שניות אחרת) חזק יותר (8 שניות במקום 10) או חלש יותר (16 שניות במקום 10). החלק של 16 שניות חלש יותר, ולכן זה מפר את LSP.\n*   **אפשרות 2:** תנאי הקדם (1-1000 תווים) חלש יותר, וזה תקין. תנאי הבתר (8 שניות ל-`Urgent`, 16 שניות אחרת) חזק יותר (8 שניות) או חלש יותר (16 שניות). החלק של 16 שניות חלש יותר, ולכן זה מפר את LSP.\n*   **אפשרות 3:** תנאי הקדם (10-500 תווים) חזק יותר מזה של מחלקת האב (1-500 תווים), וזה מפר את LSP. תת-מחלקה לא יכולה לדרוש יותר ממחלקת האב.\n*   **אפשרות 4:** תנאי הקדם (1-160 תווים) חזק יותר מזה של מחלקת האב (1-500 תווים), וזה מפר את LSP. תנאי הבתר (16 שניות) חלש יותר מזה של מחלקת האב (10 שניות), וזה גם מפר את LSP.\n\n**תיקון:** נראה שיש טעות בניסוח השאלה או באפשרויות, שכן אף אחת מהאפשרויות לא עומדת באופן מלא וחד משמעי בעקרון LSP. עם זאת, אם נתייחס לכלל שתנאי קדם יכולים להיות חלשים יותר ותנאי בתר חזקים יותר, נחפש את האפשרות שהכי קרובה או שניתן לפרש אותה כעומדת בדרישות. אם נניח שהכוונה היא שהתנאי החלש יותר הוא המאפשר יותר קלטים, והתנאי החזק יותר הוא המבטיח יותר תוצאות, אז אף אחת מהאפשרויות לא עומדת באופן מלא. עם זאת, אם נתייחס לאפשרות 1, תנאי הקדם חלש יותר (1-1000 תווים במקום 1-500), וזה תקין. תנאי הבתר הוא 8 שניות ל-1-500 תווים (חזק יותר מ-10 שניות) ו-16 שניות אחרת (חלש יותר מ-10 שניות). זה עדיין מפר. \n\nבהינתן האפשרויות, נראה שיש כאן ניסיון לבלבל. נחזור לעקרון: תנאי קדם חלשים יותר או שווים, תנאי בתר חזקים יותר או שווים. \n\nנבחן שוב את אפשרות 1: \n*   Precondition: 1-1000 (חלש יותר מ-1-500, תקין)\n*   Postcondition: אם 1-500 תווים -> 8 שניות (חזק יותר מ-10 שניות, תקין). אחרת -> 16 שניות (חלש יותר מ-10 שניות, לא תקין).\n\nנבחן שוב את אפשרות 2: \n*   Precondition: 1-1000 (חלש יותר מ-1-500, תקין)\n*   Postcondition: אם מכיל Urgent -> 8 שניות (חזק יותר מ-10 שניות, תקין). אחרת -> 16 שניות (חלש יותר מ-10 שניות, לא תקין).\n\nנבחן שוב את אפשרות 3: \n*   Precondition: 10-500 (חזק יותר מ-1-500, לא תקין)\n\nנבחן שוב את אפשרות 4: \n*   Precondition: 1-160 (חזק יותר מ-1-500, לא תקין)\n\nמכיוון שכל האפשרויות מפרות את LSP בדרך זו או אחרת, יש בעיה בשאלה. עם זאת, אם נצטרך לבחור את ה'טובה' ביותר, זו שתנאי הקדם שלה חלש יותר היא התחלה טובה. אפשרויות 1 ו-2 עומדות בתנאי הקדם. שתיהן מפרות את תנאי הבתר בחלק מהמקרים. אם נתייחס לתרחיש שבו ה-Postcondition *חייב* להיות חזק יותר או שווה בכל המקרים, אז אף אחת לא עובדת. \n\nאם נניח שהשאלה מתכוונת לתרחיש שבו ה-Postcondition *יכול* להיות חלש יותר במקרים מסוימים, או שהיא מחפשת את האפשרות שהכי פחות מפרה, זה הופך את זה למורכב. \n\nבדרך כלל, LSP דורש שכל קריאה לפונקציה של מחלקת אב תעבוד גם עם תת-מחלקה. אם תת-מחלקה דורשת תנאי קדם חזק יותר, היא לא תוכל לקבל את כל הקלטים שמחלקת האב מקבלת. אם תת-מחלקה מבטיחה תנאי בתר חלש יותר, היא לא תקיים את ההבטחות של מחלקת האב. \n\nנראה שהאפשרות הראשונה היא הפחות גרועה, שכן היא מרחיבה את טווח הקלט (תנאי קדם חלש יותר) ומשפרת את זמן השליחה עבור חלק מהמקרים (8 שניות במקום 10). החלק של 16 שניות הוא הבעייתי. אם נניח שהכוונה היא לשיפור ביצועים כללי, אז 8 שניות זה שיפור. אבל 16 שניות זה הרעה. \n\nבהיעדר אפשרות מושלמת, ובהתחשב בכך ששאלות כאלה נועדו לבדוק הבנה של הכללים, נראה שיש כאן בעיה בניסוח. עם זאת, אם נתמקד רק בתנאי הקדם, אפשרויות 1 ו-2 הן היחידות שמרפות אותו (כלומר, מאפשרות יותר קלטים), וזה תקין. תנאי הבתר הוא הבעייתי. אם נבחר את האפשרות שבה תנאי הקדם הוא החלש ביותר והכי פחות מגביל, זו תהיה אפשרות 1 או 2. נבחר את אפשרות 1 כברירת מחדל, בהנחה שהיא מייצגת את הכוונה הטובה ביותר, למרות הפגם ב-Postcondition.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעל פי עקרון ליסקוב (LSP), תת-מחלקה חייבת להיות ניתנת להחלפה עם מחלקת האב שלה מבלי לשבור את תקינות התוכנית. המשמעות היא שתנאי קדם (Preconditions) בתת-מחלקה יכולים להיות חלשים יותר (או זהים) מאלה של מחלקת האב, ותנאי בתר (Postconditions) יכולים להיות חזקים יותר (או זהים) מאלה של מחלקת האב.\n\nננתח את האפשרויות:\n*   **אפשרות 1:** תנאי הקדם (1-1000 תווים) חלש יותר מזה של מחלקת האב (1-500 תווים), וזה תקין. תנאי הבתר (8 שניות ל-1-500 תווים, 16 שניות אחרת) חזק יותר (8 שניות במקום 10) או חלש יותר (16 שניות במקום 10). החלק של 16 שניות חלש יותר, ולכן זה מפר את LSP.\n*   **אפשרות 2:** תנאי הקדם (1-1000 תווים) חלש יותר, וזה תקין. תנאי הבתר (8 שניות ל-`Urgent`, 16 שניות אחרת) חזק יותר (8 שניות) או חלש יותר (16 שניות). החלק של 16 שניות חלש יותר, ולכן זה מפר את LSP.\n*   **אפשרות 3:** תנאי הקדם (10-500 תווים) חזק יותר מזה של מחלקת האב (1-500 תווים), וזה מפר את LSP. תת-מחלקה לא יכולה לדרוש יותר ממחלקת האב.\n*   **אפשרות 4:** תנאי הקדם (1-160 תווים) חזק יותר מזה של מחלקת האב (1-500 תווים), וזה מפר את LSP. תנאי הבתר (16 שניות) חלש יותר מזה של מחלקת האב (10 שניות), וזה גם מפר את LSP.\n\n**תיקון:** נראה שיש טעות בניסוח השאלה או באפשרויות, שכן אף אחת מהאפשרויות לא עומדת באופן מלא וחד משמעי בעקרון LSP. עם זאת, אם נתייחס לכלל שתנאי קדם יכולים להיות חלשים יותר ותנאי בתר חזקים יותר, נחפש את האפשרות שהכי קרובה או שניתן לפרש אותה כעומדת בדרישות. אם נניח שהכוונה היא שהתנאי החלש יותר הוא המאפשר יותר קלטים, והתנאי החזק יותר הוא המבטיח יותר תוצאות, אז אף אחת מהאפשרויות לא עומדת באופן מלא. עם זאת, אם נתייחס לאפשרות 1, תנאי הקדם חלש יותר (1-1000 תווים במקום 1-500), וזה תקין. תנאי הבתר הוא 8 שניות ל-1-500 תווים (חזק יותר מ-10 שניות) ו-16 שניות אחרת (חלש יותר מ-10 שניות). זה עדיין מפר. \n\nבהינתן האפשרויות, נראה שיש כאן ניסיון לבלבל. נחזור לעקרון: תנאי קדם חלשים יותר או שווים, תנאי בתר חזקים יותר או שווים. \n\nנבחן שוב את אפשרות 1: \n*   Precondition: 1-1000 (חלש יותר מ-1-500, תקין)\n*   Postcondition: אם 1-500 תווים -> 8 שניות (חזק יותר מ-10 שניות, תקין). אחרת -> 16 שניות (חלש יותר מ-10 שניות, לא תקין).\n\nנבחן שוב את אפשרות 2: \n*   Precondition: 1-1000 (חלש יותר מ-1-500, תקין)\n*   Postcondition: אם מכיל Urgent -> 8 שניות (חזק יותר מ-10 שניות, תקין). אחרת -> 16 שניות (חלש יותר מ-10 שניות, לא תקין).\n\nנבחן שוב את אפשרות 3: \n*   Precondition: 10-500 (חזק יותר מ-1-500, לא תקין)\n\nנבחן שוב את אפשרות 4: \n*   Precondition: 1-160 (חזק יותר מ-1-500, לא תקין)\n\nמכיוון שכל האפשרויות מפרות את LSP בדרך זו או אחרת, יש בעיה בשאלה. עם זאת, אם נצטרך לבחור את ה'טובה' ביותר, זו שתנאי הקדם שלה חלש יותר היא התחלה טובה. אפשרויות 1 ו-2 עומדות בתנאי הקדם. שתיהן מפרות את תנאי הבתר בחלק מהמקרים. אם נתייחס לתרחיש שבו ה-Postcondition *חייב* להיות חזק יותר או שווה בכל המקרים, אז אף אחת לא עובדת. \n\nאם נניח שהשאלה מתכוונת לתרחיש שבו ה-Postcondition *יכול* להיות חלש יותר במקרים מסוימים, או שהיא מחפשת את האפשרות שהכי פחות מפרה, זה הופך את זה למורכב. \n\nבדרך כלל, LSP דורש שכל קריאה לפונקציה של מחלקת אב תעבוד גם עם תת-מחלקה. אם תת-מחלקה דורשת תנאי קדם חזק יותר, היא לא תוכל לקבל את כל הקלטים שמחלקת האב מקבלת. אם תת-מחלקה מבטיחה תנאי בתר חלש יותר, היא לא תקיים את ההבטחות של מחלקת האב. \n\nנראה שהאפשרות הראשונה היא הפחות גרועה, שכן היא מרחיבה את טווח הקלט (תנאי קדם חלש יותר) ומשפרת את זמן השליחה עבור חלק מהמקרים (8 שניות במקום 10). החלק של 16 שניות הוא הבעייתי. אם נניח שהכוונה היא לשיפור ביצועים כללי, אז 8 שניות זה שיפור. אבל 16 שניות זה הרעה. \n\nבהיעדר אפשרות מושלמת, ובהתחשב בכך ששאלות כאלה נועדו לבדוק הבנה של הכללים, נראה שיש כאן בעיה בניסוח. עם זאת, אם נתמקד רק בתנאי הקדם, אפשרויות 1 ו-2 הן היחידות שמרפות אותו (כלומר, מאפשרות יותר קלטים), וזה תקין. תנאי הבתר הוא הבעייתי. אם נבחר את האפשרות שבה תנאי הקדם הוא החלש ביותר והכי פחות מגביל, זו תהיה אפשרות 1 או 2. נבחר את אפשרות 1 כברירת מחדל, בהנחה שהיא מייצגת את הכוונה הטובה ביותר, למרות הפגם ב-Postcondition.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q6/question.md"
     }
@@ -748,12 +1160,12 @@
     ],
     "question_text": "במערכת לניהול צי רכבים, יש מחלקת אב `Vehicle` ומספר מחלקות יורשות כגון `Car, Truck` וי `Motorcycle`. קיימת מחלקה `FleetManager` שמכילה מערך של כלי רכב ומספקת פונקציה `activateNavigationForCars` רק על כלי הרכב מסוג `Car` שמפעילה את מערכת הניווט (`GPS`) ```java public void activateNavigationForCars() { for (Vehicle v: vehicles) { if (v instanceof Car) { ((Car) v).activateNavigationSystem(); } } } ``` איזה עיקרון `SOLID` מופר בפונקציה `activateNavigationForCars`?",
     "options": [
-      "א. `SRP` כי הפונקציה אחראית גם על סינון סוג הרכב וגם על הפעלת הניווט",
-      "ב. `LSP` כי מחלקות הירושה אינן מתנהגות בהתאם למחלקת האב",
-      "ג. `OCP` כי הוספת סוגי כלי רכב חדשים תצריך שינוי בקוד הפונקציה",
-      "ד. `DIP` כי הפונקציה תלויה במחלקת `Car` קונקרטית במקום בממשק או במחלקת אב"
+      "א. `OCP` כי הוספת סוגי כלי רכב חדשים תצריך שינוי בקוד הפונקציה",
+      "ב. `SRP` כי הפונקציה אחראית גם על סינון סוג הרכב וגם על הפעלת הניווט",
+      "ג. `DIP` כי הפונקציה תלויה במחלקת `Car` קונקרטית במקום בממשק או במחלקת אב",
+      "ד. `LSP` כי מחלקות הירושה אינן מתנהגות בהתאם למחלקת האב"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהפונקציה `activateNavigationForCars` מפרה את עקרון הפתיחות/סגירות (OCP - Open/Closed Principle). עקרון זה קובע שישויות תוכנה (מחלקות, מודולים, פונקציות) צריכות להיות פתוחות להרחבה, אך סגורות לשינוי. במקרה זה, אם נוסיף סוג חדש של רכב (לדוגמה, `Boat`) שגם לו יש מערכת ניווט, נצטרך לשנות את קוד הפונקציה `activateNavigationForCars` כדי להוסיף בדיקה נוספת (`if (v instanceof Boat)`), וזה מפר את OCP. בנוסף, היא מפרה גם את DIP (Dependency Inversion Principle) בכך שהיא תלויה במחלקה קונקרטית (`Car`) במקום בהפשטה. עם זאת, האפשרות השנייה מתארת את הפרת OCP באופן ישיר וברור.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהפונקציה `activateNavigationForCars` מפרה את עקרון הפתיחות/סגירות (OCP - Open/Closed Principle). עקרון זה קובע שישויות תוכנה (מחלקות, מודולים, פונקציות) צריכות להיות פתוחות להרחבה, אך סגורות לשינוי. במקרה זה, אם נוסיף סוג חדש של רכב (לדוגמה, `Boat`) שגם לו יש מערכת ניווט, נצטרך לשנות את קוד הפונקציה `activateNavigationForCars` כדי להוסיף בדיקה נוספת (`if (v instanceof Boat)`), וזה מפר את OCP. בנוסף, היא מפרה גם את DIP (Dependency Inversion Principle) בכך שהיא תלויה במחלקה קונקרטית (`Car`) במקום בהפשטה. עם זאת, האפשרות השנייה מתארת את הפרת OCP באופן ישיר וברור.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q8/question.md"
     }
@@ -775,12 +1187,12 @@
     ],
     "question_text": "נניח כי עליכם לכתוב פונקציית חיפוש גנרית שעובדת רק על אובייקטים שניתנים למיון(`Comparable`) וגם ניתנים לבקרה (`Auditable`) במערכת שלנו יש את המודול הבא: ```java class Auditable { void audit ; () } ``` מהי ההצהרה הנכונה עבור פונקצית החיפוש :",
     "options": [
-      "א. `public <T extends Auditable & Comparable<T>> void search(List<T> list, T element)`",
-      "ב. `public <T extends Comparable & Auditable> void search(List<T> list, T element)`",
-      "ג. `public <T extends Comparable<T> & Auditable> void search(List<T> list, T element)`",
-      "ד. `public <T extends Object & Comparable<T> & Auditable> void search(List<T> list, T element)`"
+      "א. `public <T extends Object & Comparable<T> & Auditable> void search(List<T> list, T element)`",
+      "ב. `public <T extends Auditable & Comparable<T>> void search(List<T> list, T element)`",
+      "ג. `public <T extends Comparable & Auditable> void search(List<T> list, T element)`",
+      "ד. `public <T extends Comparable<T> & Auditable> void search(List<T> list, T element)`"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nכאשר מגדירים גנריקה עם מספר גבולות (Multiple Bounds) ב-Java, יש להשתמש בתו `&`. בנוסף, אם אחד הגבולות הוא מחלקה (כמו `Auditable`) והשני הוא ממשק (כמו `Comparable`), המחלקה חייבת להופיע ראשונה ברשימת הגבולות. עם זאת, במקרה של שני ממשקים או ממשק ומחלקה, הסדר אינו משנה מבחינת קומפילציה, אך מקובל לשים את המחלקה ראשונה אם קיימת. האפשרות הנכונה היא `public <T extends Comparable<T> & Auditable> void search(List<T> list, T element)`. למרות ש-`Auditable` היא מחלקה ו-`Comparable` הוא ממשק, ב-Java ניתן לרשום את הממשק ראשון. חשוב ש-`Comparable` יהיה `Comparable<T>` כדי שההשוואה תהיה עם אותו טיפוס `T`.",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nכאשר מגדירים גנריקה עם מספר גבולות (Multiple Bounds) ב-Java, יש להשתמש בתו `&`. בנוסף, אם אחד הגבולות הוא מחלקה (כמו `Auditable`) והשני הוא ממשק (כמו `Comparable`), המחלקה חייבת להופיע ראשונה ברשימת הגבולות. עם זאת, במקרה של שני ממשקים או ממשק ומחלקה, הסדר אינו משנה מבחינת קומפילציה, אך מקובל לשים את המחלקה ראשונה אם קיימת. האפשרות הנכונה היא `public <T extends Comparable<T> & Auditable> void search(List<T> list, T element)`. למרות ש-`Auditable` היא מחלקה ו-`Comparable` הוא ממשק, ב-Java ניתן לרשום את הממשק ראשון. חשוב ש-`Comparable` יהיה `Comparable<T>` כדי שההשוואה תהיה עם אותו טיפוס `T`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_A_MultipleChoice_q9/question.md"
     }
@@ -878,12 +1290,12 @@
     ],
     "question_text": "מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`?\nהנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.",
     "options": [
-      "א. וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.",
-      "ב. הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.",
-      "ג. הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי.",
-      "ד. יש שתי תשובות אחרות נכונות."
+      "א. הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי.",
+      "ב. יש שתי תשובות אחרות נכונות.",
+      "ג. הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.",
+      "ד. וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח."
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nעיקרון LSP קובע שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. תהליך הבדיקה כולל וידוא שההתנהגות של המחלקה היורשת (כמו `HttpClient`) תואמת את הציפיות מהמחלקה הבסיסית (כמו `NetworkConnection`). הנחה שהירושה תקינה רק בגלל הגדרה סמנטית בעולם הדומיין (HTTP הוא סוג של חיבור רשת) אינה מספיקה לבדיקת LSP; יש צורך בבדיקות התנהגותיות קונקרטיות כדי לוודא שההחלפה אכן עובדת בפועל ללא תקלות.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעיקרון LSP קובע שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. תהליך הבדיקה כולל וידוא שההתנהגות של המחלקה היורשת (כמו `HttpClient`) תואמת את הציפיות מהמחלקה הבסיסית (כמו `NetworkConnection`). הנחה שהירושה תקינה רק בגלל הגדרה סמנטית בעולם הדומיין (HTTP הוא סוג של חיבור רשת) אינה מספיקה לבדיקת LSP; יש צורך בבדיקות התנהגותיות קונקרטיות כדי לוודא שההחלפה אכן עובדת בפועל ללא תקלות.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q10/question.md"
     }
@@ -904,12 +1316,12 @@
     ],
     "question_text": "נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`\n```java\npublic static <T> void copy(dest, src){\n    for (int i=0; i<src.size(); i++)\n        dest.set(i,src.get(i));\n}\n```\nמהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?",
     "options": [
-      "א. `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`",
-      "ב. `public static <T> void copy (List<? super T> dest, List<? extends T> src)`",
-      "ג. `public static <T> void copy (List<? extends T> dest, List<? super T> src)`",
-      "ד. `public static <T> void copy (List<? super T> dest, List<? super T> src)`"
+      "א. `public static <T> void copy (List<? super T> dest, List<? super T> src)`",
+      "ב. `public static <T> void copy (List<? extends T> dest, List<? super T> src)`",
+      "ג. `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`",
+      "ד. `public static <T> void copy (List<? super T> dest, List<? extends T> src)`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהחתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של עקרון PECS (Producer-`extends`, Consumer-`super`). הרשימה `src` היא 'מפיקה' (producer) של אובייקטים, ולכן אנו יכולים לקרוא ממנה אובייקטים שהם `T` או תת-טיפוס של `T` (`? extends T`). הרשימה `dest` היא 'צרכנית' (consumer) של אובייקטים, ולכן אנו יכולים להכניס אליה אובייקטים שהם `T` או על-טיפוס של `T` (`? super T`).",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהחתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של עקרון PECS (Producer-`extends`, Consumer-`super`). הרשימה `src` היא 'מפיקה' (producer) של אובייקטים, ולכן אנו יכולים לקרוא ממנה אובייקטים שהם `T` או תת-טיפוס של `T` (`? extends T`). הרשימה `dest` היא 'צרכנית' (consumer) של אובייקטים, ולכן אנו יכולים להכניס אליה אובייקטים שהם `T` או על-טיפוס של `T` (`? super T`).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q11/question.md"
     }
@@ -931,12 +1343,12 @@
     ],
     "question_text": "בחברת 'אפליקציות בע\"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:",
     "options": [
-      "א. אף עיקרון לא מופר",
-      "ב. קיימת הפרה של עיקרון CCP",
-      "ג. קיימת הפרה של עיקרון CRP",
-      "ד. עיקרון CRP ו-CCP מופרים"
+      "א. קיימת הפרה של עיקרון CCP",
+      "ב. קיימת הפרה של עיקרון CRP",
+      "ג. עיקרון CRP ו-CCP מופרים",
+      "ד. אף עיקרון לא מופר"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nעיקרון ה-Common Closure Principle (CCP) קובע כי מחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. אם יש סיבה אחת לשינוי שמשפיעה על *כל* המחלקות באפליקציה, והן כולן נכללות בחבילה אחת גדולה, זה תואם את CCP. לעומת זאת, עיקרון ה-Common Reuse Principle (CRP) קובע כי מחלקות שאינן משתמשות זו בזו לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, ושחרור חבילה גדולה שכוללת הכל גורם להם להיות תלויים בקוד שהם לא צריכים, אז CRP מופר. לכן, קיימת הפרה של עיקרון CRP.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעיקרון ה-Common Closure Principle (CCP) קובע כי מחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. אם יש סיבה אחת לשינוי שמשפיעה על *כל* המחלקות באפליקציה, והן כולן נכללות בחבילה אחת גדולה, זה תואם את CCP. לעומת זאת, עיקרון ה-Common Reuse Principle (CRP) קובע כי מחלקות שאינן משתמשות זו בזו לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, ושחרור חבילה גדולה שכוללת הכל גורם להם להיות תלויים בקוד שהם לא צריכים, אז CRP מופר. לכן, קיימת הפרה של עיקרון CRP.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q12/question.md"
     }
@@ -958,9 +1370,9 @@
     "question_text": "Dependency Injection - \"הזרקת תלויות\"\nסמן מהמשפטים הבאים את הנכון ביותר:",
     "options": [
       "א. כדי להזריק תלויות באמצעות Dependency Injection, השדות המוזרקים חייבים להיות מוגדרות כממשקים.",
-      "ב. אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.",
+      "ב. ישנן שתי תשובות אחרות נכונות.",
       "ג. Dependency Injection הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.",
-      "ד. ישנן שתי תשובות אחרות נכונות."
+      "ד. אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק."
     ],
     "answer_text": "**התשובה הנכונה היא: ג'**\n\nהמשפט הראשון מתאר בצורה מדויקת את Dependency Injection: זוהי טכניקה שבה אובייקטים מקבלים את התלויות שלהם (שדות, פרמטרים) מבחוץ, במקום ליצור אותן בעצמם. זה מקדם צימוד רפוי (loose coupling) וקלות בבדיקות. שדות מוזרקים לא חייבים להיות ממשקים (אף שזה מומלץ), וניתן לפתור דו-משמעות בהזרקה של ממשקים באמצעות קונפיגורציה או שימוש באנוטציות כמו `@Named`.",
     "assets": {
@@ -988,10 +1400,10 @@
     "options": [
       "א. Proxy-ו Observer",
       "ב. Adapter-ו Observer",
-      "ג. Bridge-ו Observer",
-      "ד. Bridge- AlarmClock"
+      "ג. Bridge- AlarmClock",
+      "ד. Bridge-ו Observer"
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקה `Y` (ה-Subject) מכילה רשימה של אובייקטים מסוג `X` (ה-Observers) ומתקשרת איתם באמצעות שיטות `add`, `remove`, ו-`notifyX`. המחלקה `MonitoringScreen` היא `X` (Observer) והיא נרשמת ל-`MS_TemperatureX` (Subject) כדי לקבל עדכונים.\n2.  **Bridge Pattern:** המחלקה `TemperatureSensor` (האבסטרקציה) משתמשת בממשק `X` (האימפלמנטור) כדי לבצע את פעולת ה-`update`. זה מאפשר לשנות את הדרך שבה הנתונים מעודכנים (למשל, להחליף את `X` במימוש אחר) מבלי לשנות את `TemperatureSensor`.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהתרשים מציג שתי תבניות עיצוב עיקריות:\n1.  **Observer Pattern:** המחלקה `Y` (ה-Subject) מכילה רשימה של אובייקטים מסוג `X` (ה-Observers) ומתקשרת איתם באמצעות שיטות `add`, `remove`, ו-`notifyX`. המחלקה `MonitoringScreen` היא `X` (Observer) והיא נרשמת ל-`MS_TemperatureX` (Subject) כדי לקבל עדכונים.\n2.  **Bridge Pattern:** המחלקה `TemperatureSensor` (האבסטרקציה) משתמשת בממשק `X` (האימפלמנטור) כדי לבצע את פעולת ה-`update`. זה מאפשר לשנות את הדרך שבה הנתונים מעודכנים (למשל, להחליף את `X` במימוש אחר) מבלי לשנות את `TemperatureSensor`.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q14/question.md",
       "images": [
@@ -1017,12 +1429,12 @@
     ],
     "question_text": "כיצד יש לממש את תבנית העיצוב `template method`?",
     "options": [
-      "א. לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.",
-      "ב. להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.",
-      "ג. ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.",
-      "ד. ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס."
+      "א. להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.",
+      "ב. לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.",
+      "ג. ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.",
+      "ד. ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס."
     ],
-    "answer_text": "**התשובה הנכונה היא: ג'**\n\nתבנית ה-Template Method מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, אך מאפשרת למחלקות יורשות לשנות שלבים מסוימים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי קריאה לפונקציות מופשטות (או 'ווים' - hook methods) מתוך פונקציית ה-template method במחלקת הבסיס, כאשר המימוש הספציפי של פונקציות אלו ניתן במחלקות היורשות.",
+    "answer_text": "**התשובה הנכונה היא: ד'**\n\nתבנית ה-Template Method מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, אך מאפשרת למחלקות יורשות לשנות שלבים מסוימים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי קריאה לפונקציות מופשטות (או 'ווים' - hook methods) מתוך פונקציית ה-template method במחלקת הבסיס, כאשר המימוש הספציפי של פונקציות אלו ניתן במחלקות היורשות.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q15/question.md",
       "images": [
@@ -1050,12 +1462,12 @@
     ],
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
-      "א. AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy",
-      "ב. Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, PersistantImp",
+      "א. Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy",
+      "ב. AlarmClock, Nimbus1_0Clock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy",
       "ג. Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, HiLoProxy",
-      "ד. Nimbus1_0Clock, AlarmClock, TemperatureSensor, Nimbus1_0Temperature, TemperatureHiLo, HiLoProxy"
+      "ד. Nimbus1_0Clock, AlarmClock, Nimbus1_0Temperature, TemperatureSensor, TemperatureHiLo, PersistantImp"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר לשימוש הישיר ביותר ב-`HiLoDataImp`, משקף את זרימת הנתונים והתלויות במערכת ניטור מזג האוויר. ה-`Nimbus1_0Clock` הוא המקור לאירועי זמן. ה-`AlarmClock` מגיב לשעון ומפעיל את ה-`TemperatureSensor`. ה-`TemperatureSensor` קורא נתונים ומעדכן את ה-`Nimbus1_0Temperature`. ה-`TemperatureHiLo` הוא ה-Observer שמקבל את הנתונים מה-`Nimbus1_0Temperature` ומעדכן את ה-`HiLoDataImp` דרך ה-`HiLoProxy` (שמטפל ב-Persistence). לכן, הסדר הוא: `Nimbus1_0Clock` -> `AlarmClock` -> `TemperatureSensor` -> `Nimbus1_0Temperature` -> `TemperatureHiLo` -> `HiLoProxy` (שמכיל את `HiLoDataImp`).",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר לשימוש הישיר ביותר ב-`HiLoDataImp`, משקף את זרימת הנתונים והתלויות במערכת ניטור מזג האוויר. ה-`Nimbus1_0Clock` הוא המקור לאירועי זמן. ה-`AlarmClock` מגיב לשעון ומפעיל את ה-`TemperatureSensor`. ה-`TemperatureSensor` קורא נתונים ומעדכן את ה-`Nimbus1_0Temperature`. ה-`TemperatureHiLo` הוא ה-Observer שמקבל את הנתונים מה-`Nimbus1_0Temperature` ומעדכן את ה-`HiLoDataImp` דרך ה-`HiLoProxy` (שמטפל ב-Persistence). לכן, הסדר הוא: `Nimbus1_0Clock` -> `AlarmClock` -> `TemperatureSensor` -> `Nimbus1_0Temperature` -> `TemperatureHiLo` -> `HiLoProxy` (שמכיל את `HiLoDataImp`).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q16/question.md"
     }
@@ -1072,11 +1484,11 @@
     "question_text": "במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.",
     "options": [
       "א. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `PersistantImp`",
-      "ב. `Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`",
-      "ג. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `HiLoProxy`",
+      "ב. `Nimbus1_0Clock`, `AlarmClock`, `Nimbus1_0Temperature`, `TemperatureSensor`, `TemperatureHiLo`, `HiLoProxy`",
+      "ג. `Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`",
       "ד. `AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר (הגורם הראשוני) ועד הישיר ביותר (האובייקט המושפע ישירות), בהפעלת `HiLoDataImp` במערכת ניטור מזג האוויר הוא:\n1.  `Nimbus1_0Clock`: השעון הראשי שמפעיל את המערכת.\n2.  `AlarmClock`: מקבל התראות מהשעון ומפעיל פעולות בזמנים קבועים.\n3.  `TemperatureSensor`: החיישן שמודד את הטמפרטורה.\n4.  `Nimbus1_0Temperature`: אובייקט שמייצג את קריאת הטמפרטורה הספציפית מהחיישן.\n5.  `TemperatureHiLo`: מחשב את ערכי המינימום והמקסימום של הטמפרטורה.\n6.  `HiLoProxy`: פרוקסי ל-`HiLoDataImp` שמטפל בגישה לנתוני המינימום/מקסימום.\nהאפשרות הראשונה (והשלישית, שהיא כנראה כפולה בטעות במקור) משקפת את השרשרת הלוגית של הפעלת הפונקציות במערכת.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nהסדר הנכון של המחלקות, מהעקיף ביותר (הגורם הראשוני) ועד הישיר ביותר (האובייקט המושפע ישירות), בהפעלת `HiLoDataImp` במערכת ניטור מזג האוויר הוא:\n1.  `Nimbus1_0Clock`: השעון הראשי שמפעיל את המערכת.\n2.  `AlarmClock`: מקבל התראות מהשעון ומפעיל פעולות בזמנים קבועים.\n3.  `TemperatureSensor`: החיישן שמודד את הטמפרטורה.\n4.  `Nimbus1_0Temperature`: אובייקט שמייצג את קריאת הטמפרטורה הספציפית מהחיישן.\n5.  `TemperatureHiLo`: מחשב את ערכי המינימום והמקסימום של הטמפרטורה.\n6.  `HiLoProxy`: פרוקסי ל-`HiLoDataImp` שמטפל בגישה לנתוני המינימום/מקסימום.\nהאפשרות הראשונה (והשלישית, שהיא כנראה כפולה בטעות במקור) משקפת את השרשרת הלוגית של הפעלת הפונקציות במערכת.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q17/question.md"
     }
@@ -1097,12 +1509,12 @@
     ],
     "question_text": "מה הקשר העקרוני בין המחלקה `Human` (אדם) למחלקה `Heart` (לב)",
     "options": [
-      "א. Composition",
-      "ב. Dependency",
-      "ג. Aggregation",
+      "א. Aggregation",
+      "ב. Composition",
+      "ג. Dependency",
       "ד. Association"
     ],
-    "answer_text": "**התשובה הנכונה היא: א'**\n\nהקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition). קומפוזיציה היא סוג חזק של אגרגציה, המציין קשר של 'חלק-שלם' שבו החלק (לב) אינו יכול להתקיים ללא השלם (אדם). כאשר האדם נהרס, גם הלב נהרס (במובן של הקשר הספציפי הזה).",
+    "answer_text": "**התשובה הנכונה היא: ב'**\n\nהקשר בין `Human` ל-`Heart` הוא קומפוזיציה (Composition). קומפוזיציה היא סוג חזק של אגרגציה, המציין קשר של 'חלק-שלם' שבו החלק (לב) אינו יכול להתקיים ללא השלם (אדם). כאשר האדם נהרס, גם הלב נהרס (במובן של הקשר הספציפי הזה).",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q4/question.md"
     }
@@ -1124,8 +1536,8 @@
     "question_text": "נתון קטע מתרשים הרצף שנפלה בו טעות במיקום אחד\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_9_1.png)\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_9_2.png)\n![Image](./questions/exam_2025_B_B_MultipleChoice_q5/image_10_1.png)\nאיפה הטעות?",
     "options": [
       "א. מיקום 4",
-      "ב. מיקום 3",
-      "ג. מיקום 1",
+      "ב. מיקום 1",
+      "ג. מיקום 3",
       "ד. מיקום 2"
     ],
     "answer_text": "**התשובה הנכונה היא: א'**\n\nהטעות נמצאת במיקום 4. הפעולה `print(num = 2)` צריכה להיות חלק מהפעולה `isAboutToWin()` ולא פעולה נפרדת לאחר מכן. בדרך כלל, פעולות בתוך מצב או מעבר מבוצעות כחלק מהאירוע או התנאי, או כפעולת כניסה/יציאה מהמצב. הצבת `print(num = 2)` כפעולה נפרדת לאחר `isAboutToWin()` אינה תואמת את התחביר הסטנדרטי של תרשימי מצבים.",
@@ -1155,8 +1567,8 @@
     "question_text": "יישום של איזה מהעקרונות SOLID הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?",
     "options": [
       "א. LSP",
-      "ב. DIP",
-      "ג. SRP",
+      "ב. SRP",
+      "ג. DIP",
       "ד. ISP"
     ],
     "answer_text": "**התשובה הנכונה היא: ד'**\n\nעיקרון ה-Interface Segregation Principle (ISP) קובע כי לקוחות לא צריכים להיות תלויים בממשקים שהם לא משתמשים בהם. יישום ISP מוביל לפיצול ממשקים גדולים לממשקים קטנים וספציפיים יותר, מה שמוסיף ממשקים למערכת אך לא בהכרח משנה את מספר הפונקציות המופשטות הכולל, אלא מפיץ אותן בצורה יעילה יותר.",
@@ -1183,12 +1595,12 @@
     ],
     "question_text": "מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?",
     "options": [
-      "א. ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.",
-      "ב. הקוד נהיה קל יותר לתחזוקה.",
-      "ג. הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.",
-      "ד. הקוד נהיה יעיל יותר ודורש פחות משאבים."
+      "א. הקוד נהיה קל יותר לתחזוקה.",
+      "ב. הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.",
+      "ג. הקוד נהיה יעיל יותר ודורש פחות משאבים.",
+      "ד. ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל."
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעיקרון האחריות היחידה (SRP) מתמקד בהפרדת דאגות (separation of concerns) ובכך משפר תחזוקתיות, קריאות וקלות למידה, ומאפשר עבודה מקבילה. עם זאת, הוא אינו מבטיח שהקוד יהיה 'יעיל יותר' במובן של ביצועים או שימוש בפחות משאבים. לעיתים קרובות, פיצול מחלקות יכול אף להוסיף תקורה קטנה.",
+    "answer_text": "**התשובה הנכונה היא: ג'**\n\nעיקרון האחריות היחידה (SRP) מתמקד בהפרדת דאגות (separation of concerns) ובכך משפר תחזוקתיות, קריאות וקלות למידה, ומאפשר עבודה מקבילה. עם זאת, הוא אינו מבטיח שהקוד יהיה 'יעיל יותר' במובן של ביצועים או שימוש בפחות משאבים. לעיתים קרובות, פיצול מחלקות יכול אף להוסיף תקורה קטנה.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q7/question.md"
     }
@@ -1210,12 +1622,12 @@
     ],
     "question_text": "סמן את התשובה הנכונה ביותר\nתבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP",
     "options": [
-      "א. תבנית העיצוב `Bridge` משמשת לפתרון בעיית SRP",
-      "ב. תבנית העיצוב `Bridge` משמשת לפתרון בעיית ISP",
-      "ג. תבנית העיצוב `Bridge` משמשת לפתרון בעיית LSP",
-      "ד. תבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP"
+      "א. תבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP",
+      "ב. תבנית העיצוב `Bridge` משמשת לפתרון בעיית LSP",
+      "ג. תבנית העיצוב `Bridge` משמשת לפתרון בעיית ISP",
+      "ד. תבנית העיצוב `Bridge` משמשת לפתרון בעיית SRP"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nתבנית ה-Bridge מאפשרת להפריד בין אבסטרקציה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), שכן הוא מאפשר למודולים ברמה גבוהה להיות תלויים באבסטרקציות (הממשק של ה-Bridge) ולא במימושים קונקרטיים.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nתבנית ה-Bridge מאפשרת להפריד בין אבסטרקציה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), שכן הוא מאפשר למודולים ברמה גבוהה להיות תלויים באבסטרקציות (הממשק של ה-Bridge) ולא במימושים קונקרטיים.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q8/question.md"
     }
@@ -1236,12 +1648,12 @@
     ],
     "question_text": "נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?",
     "options": [
-      "א. פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`",
+      "א. פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`",
       "ב. פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`",
       "ג. פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`",
-      "ד. פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`"
+      "ד. פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`"
     ],
-    "answer_text": "**התשובה הנכונה היא: ד'**\n\nעיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת להשתנות. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום, בדיקת ריקות). בדיקת חברות במועדון (`checkClubMembership`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פונקציה זו מפרה את SRP.",
+    "answer_text": "**התשובה הנכונה היא: א'**\n\nעיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת להשתנות. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום, בדיקת ריקות). בדיקת חברות במועדון (`checkClubMembership`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פונקציה זו מפרה את SRP.",
     "assets": {
       "markdown": "./questions/exam_2025_B_B_MultipleChoice_q9/question.md"
     }
