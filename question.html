@@ -119,19 +119,33 @@
         loadQuestion();
     </script>
     <style>
-        #markdownContent code {
+        #markdownContent code, #answerContent code {
                 direction: ltr !important;
                 unicode-bidi: isolate;
                 display: inline-block;
-                background-color: #f3f4f6; /* רקע אפרפר עדין כמו ב-GitHub */
+                background-color: #f3f4f6;
                 padding: 0.1em 0.3em;
                 border-radius: 0.25rem;
                 font-family: monospace;
         }
-        #markdownContent ul { list-style: none; padding: 0; }
-        #markdownContent li { margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.25rem; }
-        #markdownContent pre { background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 0.5rem; direction: ltr; text-align: left; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;}
-        #markdownContent pre code { background: transparent; padding: 0; color: inherit; }
+        #markdownContent ul, #answerContent ul { list-style: none; padding: 0; }
+        #markdownContent li, #answerContent li { margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.25rem; }
+        #markdownContent pre, #answerContent pre { 
+            background: #1e293b; 
+            color: #f8fafc; 
+            padding: 1.5rem; 
+            border-radius: 0.5rem; 
+            direction: ltr !important; 
+            text-align: left !important; 
+            overflow-x: auto; 
+            margin-top: 1rem; 
+            margin-bottom: 1rem;
+        }
+        #markdownContent pre code, #answerContent pre code { 
+            background: transparent; 
+            padding: 0; 
+            color: inherit; 
+        }
     </style>
 </body>
 </html>
