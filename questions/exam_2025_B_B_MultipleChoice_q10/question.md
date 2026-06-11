@@ -1,26 +1,24 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q10
-title: LSP Check
+title: SRP Violation in Invoice Class
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- SOLID - LSP
-skills:
-- SOLID Principles
-- Polymorphism
+- SOLID - SRP
+skills: []
 ---
 
 ## Question
-מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`?
-הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.
+נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון `SRP`?
 
 ### Options
-- הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות HTTP מוגדר כסוג של חיבור רשת.
-- וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.
-- הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient` כולל התייחסות לפלטים ותופעות לוואי.
-- יש שתי תשובות אחרות נכונות.
+- `public boolean checkClubMembership()` - פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון
+- `public boolean isEmpty()` - פעולה שבודקת אם בחשבונית אין פריטים לחיוב
+- `public double getTotalAmount()` - פעולה שמחשבת את הסכום הכולל של הפריטים
+- `public void addItem(double price)` - פעולה שמוסיפה פריט לחשבונית
 
 ## Answer
-עיקרון LSP קובע שאובייקטים של מחלקת בסיס צריכים להיות ניתנים להחלפה באובייקטים של מחלקות יורשות מבלי לשבור את תקינות התוכנית. תהליך הבדיקה כולל וידוא שההתנהגות של המחלקה היורשת (כמו `HttpClient`) תואמת את הציפיות מהמחלקה הבסיסית (כמו `NetworkConnection`). הנחה שהירושה תקינה רק בגלל הגדרה סמנטית בעולם הדומיין (HTTP הוא סוג של חיבור רשת) אינה מספיקה לבדיקת LSP; יש צורך בבדיקות התנהגותיות קונקרטיות כדי לוודא שההחלפה אכן עובדת בפועל ללא תקלות.
+The `Invoice` class should primarily be responsible for managing invoice details (items, total amount, etc.). Checking club membership is a responsibility related to customer management or loyalty programs, not the invoice itself. This violates the Single Responsibility Principle (SRP) by giving the `Invoice` class more than one reason to change.

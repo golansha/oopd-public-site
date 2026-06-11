@@ -1,27 +1,27 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q15
-title: Template Method Implementation
+title: Design Patterns in WMS
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- WMS - Template method
+- WMS - Observer
 - Design patterns - General
-skills:
-- Design Patterns
-- Inheritance
-- Polymorphism
+skills: []
 ---
 
 ## Question
-כיצד יש לממש את תבנית העיצוב `template method`?
+להלן תרשים מחלקות מתוך מקרה בוחן תחנת מזג האוויר.
+![Image](image_15_1.png)
+מהן תבניות העיצוב שבאות לידי ביטוי בתרשים?
 
 ### Options
-- ליצור מימושים שונים במחלקות היורשות לפונקציה מופשטת שנקראת מתוך פונקציה במחלקת הבסיס.
-- לתאם בין מחלקות נתונות לממשק שהגדרנו ושאין לשנותו.
-- להגדיר במחלקות היורשות פונקציות שקוראות לפונקציה מופשטת של מחלקת הבסיס.
-- ליצור פונקציה במחלקות היורשות, שהמימוש שלה יופיע במחלקת הבסיס.
+- `Adapter`-ו `Observer`
+- `Bridge`-ו `Observer`
+- `Bridge`-ו `AlarmClock`
+- `Proxy`-ו `Observer`
 
 ## Answer
-תבנית ה-Template Method מגדירה את השלד של אלגוריתם בפעולה של מחלקת בסיס, אך מאפשרת למחלקות יורשות לשנות שלבים מסוימים באלגוריתם מבלי לשנות את המבנה הכללי שלו. זה מושג על ידי קריאה לפונקציות מופשטות (או 'ווים' - hook methods) מתוך פונקציית ה-template method במחלקת הבסיס, כאשר המימוש הספציפי של פונקציות אלו ניתן במחלקות היורשות.
+The diagram shows `TemperatureSensor` (Abstraction) and `MS_TemperatureX` (Refined Abstraction) which uses an `X` interface (Implementor) with concrete implementations `Y`. This structure is characteristic of the Bridge pattern, decoupling the abstraction from its implementation. Additionally, `MonitoringScreen` observes `MS_TemperatureX` (via `update` method), and `Y` notifies `X`s, which is a clear indication of the Observer pattern where `Y` is the Subject and `X` is the Observer interface.

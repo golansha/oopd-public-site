@@ -1,27 +1,24 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q8
-title: Bridge Pattern and DIP
+title: SRP Disadvantage
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- Design patterns - General
-- SOLID - DIP
-skills:
-- Design Patterns
-- SOLID Principles
+- SOLID - SRP
+skills: []
 ---
 
 ## Question
-סמן את התשובה הנכונה ביותר
-תבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP
+מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?
 
 ### Options
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית DIP
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית ISP
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית LSP
-- תבנית העיצוב `Bridge` משמשת לפתרון בעיית SRP
+- הקוד נהיה יעיל יותר ודורש פחות משאבים.
+- הקוד נהיה קל יותר לתחזוקה.
+- הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.
+- ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.
 
 ## Answer
-תבנית ה-Bridge מאפשרת להפריד בין אבסטרקציה למימוש שלה, כך שניתן לשנות אותם באופן בלתי תלוי. זהו יישום ישיר של עיקרון ה-Dependency Inversion Principle (DIP), שכן הוא מאפשר למודולים ברמה גבוהה להיות תלויים באבסטרקציות (הממשק של ה-Bridge) ולא במימושים קונקרטיים.
+SRP focuses on maintainability, readability, and parallel development by ensuring each class has only one reason to change. It does not inherently make the code more efficient or require fewer resources; in fact, it might lead to more classes and potentially more overhead, though this is usually negligible compared to the benefits.

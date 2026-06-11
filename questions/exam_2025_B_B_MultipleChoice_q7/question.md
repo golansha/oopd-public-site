@@ -1,25 +1,24 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q7
-title: SRP Benefits
+title: SOLID Principle for Interface Addition
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- SOLID - SRP
-skills:
-- SOLID Principles
-- Software Design
+- SOLID - ISP
+skills: []
 ---
 
 ## Question
-מהו אינו יתרון של יישום עיקרון האחריות היחידה (SRP) בתכנון מחלקות בתוכנה?
+יישום של איזה מהעקרונות SOLID הבאים מוביל להוספת ממשקים אך אינו משנה את מספר הפונקציות המופשטות במערכת?
 
 ### Options
-- הקוד נהיה יעיל יותר ודורש פחות משאבים.
-- הקוד נהיה קל יותר לתחזוקה.
-- הקוד נהיה קל יותר ללמידה עבור מתכנתים חדשים.
-- ניתן לחלק את העבודה על המחלקות בין יותר מתכנתים במקביל.
+- ISP
+- LSP
+- DIP
+- SRP
 
 ## Answer
-עיקרון האחריות היחידה (SRP) מתמקד בהפרדת דאגות (separation of concerns) ובכך משפר תחזוקתיות, קריאות וקלות למידה, ומאפשר עבודה מקבילה. עם זאת, הוא אינו מבטיח שהקוד יהיה 'יעיל יותר' במובן של ביצועים או שימוש בפחות משאבים. לעיתים קרובות, פיצול מחלקות יכול אף להוסיף תקורה קטנה.
+The Interface Segregation Principle (ISP) states that clients should not be forced to depend on interfaces they do not use. This often leads to breaking down large interfaces into smaller, more specific ones, thus adding interfaces without necessarily changing the total number of abstract functions if they are just redistributed.

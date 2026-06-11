@@ -1,32 +1,25 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q11
-title: Generics Copy Method
+title: LSP Verification
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- Generic - Streams
-skills:
-- Java Generics
-- Type Safety
+- SOLID - LSP
+skills: []
 ---
 
 ## Question
-נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src`,`dest`
-```java
-public static <T> void copy(dest, src){
-    for (int i=0; i<src.size(); i++)
-        dest.set(i,src.get(i));
-}
-```
-מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?
+מחלקת `NetworkConnection` מממשת ממשק כללי לניהול חיבורי רשת ושליחת נתונים. מחלקת `HttpConnection` יורשת ממחלקת `NetworkConnection` ומממשת את פעולות החיבור והשליחה בהתאם לפרוטוקול HTTP.
+מה מהדברים הבאים אינו מהווה חלק מתהליך הבדיקה של עמידה בעקרון `Liskov Substitution Principle (LSP)`?
 
 ### Options
-- `public static <T> void copy (List<? super T> dest, List<? extends T> src)`
-- `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`
-- `public static <T> void copy (List<? super T> dest, List<? super T> src)`
-- `public static <T> void copy (List<? extends T> dest, List<? super T> src)`
+- הנחה שהירושה תקינה משום שבמושגים מעולם הרשתות `HTTP` מוגדר כסוג של חיבור רשת.
+- וידוא שפונקציית ה-`sendData` של `HttpClient` מסוגלת להתמודד עם כל המידע שמחלקת `NetworkConnection` יכולה לשלוח.
+- הרצת סדרת בדיקות על מופע `NetworkConnection` ולוודא שהתנהגותן נשמרת גם על מופע `HttpClient`, כולל התייחסות לפלטים ותופעות לוואי.
+- יש שתי תשובות אחרות נכונות.
 
 ## Answer
-החתימה הנכונה היא `public static <T> void copy (List<? super T> dest, List<? extends T> src)`. זהו יישום של עקרון PECS (Producer-`extends`, Consumer-`super`). הרשימה `src` היא 'מפיקה' (producer) של אובייקטים, ולכן אנו יכולים לקרוא ממנה אובייקטים שהם `T` או תת-טיפוס של `T` (`? extends T`). הרשימה `dest` היא 'צרכנית' (consumer) של אובייקטים, ולכן אנו יכולים להכניס אליה אובייקטים שהם `T` או על-טיפוס של `T` (`? super T`).
+LSP is about behavioral subtyping, meaning that objects of a superclass should be replaceable with objects of a subclass without breaking the application. Assuming inheritance is valid based on conceptual definitions (like 'HTTP is a type of network connection') without verifying behavioral compatibility is not part of LSP verification. The other options describe actual behavioral checks.

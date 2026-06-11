@@ -1,16 +1,20 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q17
-title: סדר מחלקות במערכת ניטור מזג אוויר
+title: WMS - HiLoDataImp Activation Order
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
-topics: []
+language: Hebrew
+topics:
+- WMS - אתחול
+- WMS - Proxy
+- WMS - Persistence
 skills: []
 ---
 
 ## Question
-במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDataImp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.
+במערכת לניטור מזג האוויר שנלמדה בכיתה ישנה מחלקה `HiLoDataImp` המחשבת את ערך המדידה המינימלי/מקסימלי היומי של חישן בכל פעם שמתקבלת מדידה חדשה. הפעלת המופע של המחלקה תלויה ברצף של פעולות של מופעים של מחלקות אחרות. מהו סדר המחלקות (מהעקיף ביותר עד הישיר ביותר) של המחלקות המעורבות בהפעלת `HiLoDatalmp`. התייחס לסדר שבו נקראות הפונקציות של המחלקות.
 
 ### Options
 - `Nimbus1_0Clock`, `AlarmClock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`
@@ -19,11 +23,4 @@ skills: []
 - `AlarmClock`, `Nimbus1_0Clock`, `TemperatureSensor`, `Nimbus1_0Temperature`, `TemperatureHiLo`, `HiLoProxy`
 
 ## Answer
-הסדר הנכון של המחלקות, מהעקיף ביותר (הגורם הראשוני) ועד הישיר ביותר (האובייקט המושפע ישירות), בהפעלת `HiLoDataImp` במערכת ניטור מזג האוויר הוא:
-1.  `Nimbus1_0Clock`: השעון הראשי שמפעיל את המערכת.
-2.  `AlarmClock`: מקבל התראות מהשעון ומפעיל פעולות בזמנים קבועים.
-3.  `TemperatureSensor`: החיישן שמודד את הטמפרטורה.
-4.  `Nimbus1_0Temperature`: אובייקט שמייצג את קריאת הטמפרטורה הספציפית מהחיישן.
-5.  `TemperatureHiLo`: מחשב את ערכי המינימום והמקסימום של הטמפרטורה.
-6.  `HiLoProxy`: פרוקסי ל-`HiLoDataImp` שמטפל בגישה לנתוני המינימום/מקסימום.
-האפשרות הראשונה (והשלישית, שהיא כנראה כפולה בטעות במקור) משקפת את השרשרת הלוגית של הפעלת הפונקציות במערכת.
+The correct order from the most indirect (outermost) to the most direct (innermost) component involved in activating `HiLoDataImp` in the WMS system is typically: `Nimbus1_0Clock` (the main application clock), which triggers `AlarmClock` (for scheduled events), which then interacts with `TemperatureSensor` (to get data), which might involve `Nimbus1_0Temperature` (a specific temperature reading component), then `TemperatureHiLo` (to calculate high/low), and finally `HiLoProxy` (which might delegate to `HiLoDataImp` for persistence or actual calculation). This sequence represents the flow of control from scheduling to data processing and persistence.

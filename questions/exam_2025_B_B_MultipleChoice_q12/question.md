@@ -1,26 +1,31 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q12
-title: Package Design Principles
+title: Generics - Wildcards
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- Package design - Cohesion
-- Package design - Coupling
-skills:
-- Package Design
-- Software Architecture
+- Generic - Streams
+skills: []
 ---
 
 ## Question
-בחברת 'אפליקציות בע"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:
+נתון הקוד של הפונקציה `copy` המעתיקה את האלמנטים הנמצאים ברשימה `src` לתוך הרשימה `dest`. בקוד הושמטו הטיפוסים של `src,dest`
+```java
+public static <T> void copy(dest, src){
+    for (int i=0; i<src.size(); i++)
+        dest.set(i,src.get(i));
+}
+```
+מהי חתימת הפונקציה שתעבור קומפילציה ותעבוד באופן נכון?
 
 ### Options
-- קיימת הפרה של עיקרון CCP
-- קיימת הפרה של עיקרון CRP
-- עיקרון CRP ו-CCP מופרים
-- אף עיקרון לא מופר
+- `public static <T> void copy (List<? super T> dest, List<? extends T> src)`
+- `public static <T> void copy (List<? extends T> dest, List<? extends T> src)`
+- `public static <T> void copy (List<? super T> dest, List<? super T> src)`
+- `public static <T> void copy (List<? extends T> dest, List<? super T> src)`
 
 ## Answer
-עיקרון ה-Common Closure Principle (CCP) קובע כי מחלקות שמשתנות יחד מאותה סיבה צריכות להיות באותה חבילה. אם יש סיבה אחת לשינוי שמשפיעה על *כל* המחלקות באפליקציה, והן כולן נכללות בחבילה אחת גדולה, זה תואם את CCP. לעומת זאת, עיקרון ה-Common Reuse Principle (CRP) קובע כי מחלקות שאינן משתמשות זו בזו לא צריכות להיות באותה חבילה. אם רוב הלקוחות זקוקים רק לחלק מהפונקציונליות, ושחרור חבילה גדולה שכוללת הכל גורם להם להיות תלויים בקוד שהם לא צריכים, אז CRP מופר. לכן, קיימת הפרה של עיקרון CRP.
+This follows the PECS (Producer Extends, Consumer Super) principle. The `src` list is a producer of `T` (we `get` from it), so it should use `? extends T`. The `dest` list is a consumer of `T` (we `set` into it), so it should use `? super T`. This allows for maximum flexibility in the types that can be passed to the method.

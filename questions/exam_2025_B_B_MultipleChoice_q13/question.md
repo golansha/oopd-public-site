@@ -1,26 +1,25 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q13
-title: Dependency Injection Definition
+title: Package Design - Release Principles
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- Frameworks - Dependency injection
-skills:
-- Dependency Injection
-- Software Design
+- Package design - Cohesion
+- Package design - Coupling
+skills: []
 ---
 
 ## Question
-Dependency Injection - "הזרקת תלויות"
-סמן מהמשפטים הבאים את הנכון ביותר:
+בחברת 'אפליקציות בע"מ' מתלבטים לגבי מבנה החבילות של הגרסה הבאה עבור אפליקציה פופולארית שהם מפתחים. מצד אחד, מרבית הלקוחות שלהם זקוקים רק לחלק מהפונקציונליות. מצד שני, יש סיבה אחת לשינוי שמשפיעה על כל המחלקות שבאפליקציה. אחרי התלבטויות הם החליטו לשחרר חבילה גדולה שכוללת הכול. מה נכון לפי עקרונות ניהול חבילות שלמדנו:
 
 ### Options
-- Dependency Injection הוא שיטה מובנית לאתחול אובייקטים המזריקה עבורם את השדות שהם תלויים בהם.
-- ישנן שתי תשובות אחרות נכונות.
-- כדי להזריק תלויות באמצעות Dependency Injection, השדות המוזרקים חייבים להיות מוגדרות כממשקים.
-- אם מזריקים למחלקה שדה מסוג ממשק, שאותו מממשות כמה מחלקות, יש דו משמעות ולא ניתן להגדיר מאיזה מחלקה יהיה האובייקט שיוזרק.
+- קיימת הפרה של עיקרון `CRP`
+- קיימת הפרה של עיקרון `CCP`
+- עיקרון `CRP` ו-`CCP` מופרים
+- אף עיקרון לא מופר
 
 ## Answer
-המשפט הראשון מתאר בצורה מדויקת את Dependency Injection: זוהי טכניקה שבה אובייקטים מקבלים את התלויות שלהם (שדות, פרמטרים) מבחוץ, במקום ליצור אותן בעצמם. זה מקדם צימוד רפוי (loose coupling) וקלות בבדיקות. שדות מוזרקים לא חייבים להיות ממשקים (אף שזה מומלץ), וניתן לפתור דו-משמעות בהזרקה של ממשקים באמצעות קונפיגורציה או שימוש באנוטציות כמו `@Named`.
+The decision to release a large package containing everything, even if most clients only need a part, violates the Common Reuse Principle (CRP) because clients are forced to depend on things they don't use. The fact that one change affects all classes in the application, leading to a single large package, suggests a violation of the Common Closure Principle (CCP), which states that classes that change together should be packaged together. If a single change affects *all* classes, it implies they are not properly grouped into smaller, cohesive units.

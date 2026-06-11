@@ -1,25 +1,25 @@
 ---
 id: exam_2025_B_B_MultipleChoice_q9
-title: SRP in Invoice Class
+title: Bridge Pattern Application
 year: 2025
 semester: B
 moed: B
 type: Multiple Choice
+language: Hebrew
 topics:
-- SOLID - SRP
-skills:
-- SOLID Principles
-- Class Design
+- Design patterns - General
+- SOLID - DIP
+skills: []
 ---
 
 ## Question
-נתונה מחלקה בשם `Invoice` שמייצגת חשבונית. לפניך מספר פעולות הקשורות למחלקה. איזו מהפונקציות הבאות אינה שייכת למחלקה על פי עקרון SRP?
+סמן את התשובה הנכונה ביותר
 
 ### Options
-- פעולה שבודקת אם הלקוח של החשבונית הוא חבר מועדון - `public boolean checkClubMembership()`
-- פעולה שבודקת אם בחשבונית אין פריטים לחיוב - `public boolean isEmpty()`
-- פעולה שמחשבת את הסכום הכולל של הפריטים - `public double getTotalAmount()`
-- פעולה שמוסיפה פריט לחשבונית - `public void addItem(double price)`
+- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `DIP`
+- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `ISP`
+- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `LSP`
+- תבנית העיצוב `Bridge` משמשת לפתרון בעיית `SRP`
 
 ## Answer
-עיקרון האחריות היחידה (SRP) קובע שלמחלקה צריכה להיות רק סיבה אחת להשתנות. מחלקת `Invoice` אחראית על ניהול פרטי החשבונית (הוספת פריטים, חישוב סכום, בדיקת ריקות). בדיקת חברות במועדון (`checkClubMembership`) היא אחריות שקשורה ללקוח או למערכת ניהול לקוחות, ולא ישירות לחשבונית עצמה. לכן, פונקציה זו מפרה את SRP.
+The Bridge design pattern is primarily used to decouple an abstraction from its implementation so that the two can vary independently. This directly supports the Dependency Inversion Principle (DIP) by allowing high-level modules to depend on abstractions, not on concrete implementations.
